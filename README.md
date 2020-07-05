@@ -17,6 +17,18 @@ First install MIkTeX from an admin powershell console in the project root:
 
 - **Run it, PDF will be saved in the dir the `.tex` file resides in.**
 
+-- OR --
+
+**TRY** to make the following work **(HAVEN'T SUCCEEDED YET)**
+
+- Using `Atom` Install the following packages:
+  - `atom-latex`
+  - `latex`
+  - `latex-tree`
+
+
+- Hit `CTRL+SHIFT+P` > Search `Latex` >
+
 ---
 ### Misc. Notes
 None yet
