@@ -26,15 +26,12 @@ First install MIkTeX from an admin powershell console in the project root:
 
 -- OR --
 
-**TRY** to make the following work **(HAVEN'T SUCCEEDED YET)**
+**TRY** to make the following work
 
 - Using `Atom` Install the following packages:
   - `atom-latex`
   - `latex`
   - `latex-tree`
-
-
-- Hit `CTRL+SHIFT+P` > Search `Latex` >
 
 ---
 ### Misc. Notes
