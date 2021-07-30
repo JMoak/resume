@@ -1,5 +1,5 @@
 # resume
-Hopefully contains my most up-to-date information.
+Not quite up to date, but still some good stuff.
 
 <object data="https://github.com/JMoak/resume/blob/master/Jordan%20Moak%20Resume.pdf" type="application/pdf" width="700px" height="700px">
     <embed src="https://github.com/JMoak/resume/blob/master/Jordan%20Moak%20Resume.pdf">
