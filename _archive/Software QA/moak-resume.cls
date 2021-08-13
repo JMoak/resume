@@ -12,7 +12,6 @@
 \ProcessOptions\relax
 \LoadClass{article}
 
-
 %%%%%%%%%%
 % Colors %
 %%%%%%%%%%
@@ -20,18 +19,6 @@
 \RequirePackage{xcolor}
 
 \definecolor{white}{RGB}{255,255,255}
-
-\definecolor{redsRED}{HTML}{BA0C2F}
-\definecolor{headerred}{HTML}{e00d38}
-\definecolor{redsNode}{HTML}{e8788e}
-
-\definecolor{redsFigureColor1}{HTML}{af2844}
-\definecolor{redsFigureColor2}{HTML}{75414b}
-\definecolor{redsFigureColor3}{HTML}{c15e72}
-\definecolor{redsFigureColor4}{HTML}{e84062}
-\definecolor{redsFigureColor5}{HTML}{b77985}
-\definecolor{redsFigureColor6}{HTML}{5e0c1b}
-\definecolor{redsFigureColor7}{HTML}{a50124}
 
 \definecolor{mainpurple}{HTML}{8d5daf}
 \definecolor{headerpurple}{HTML}{8d5daf}
@@ -89,6 +76,7 @@
 {texgyreheros-regular.otf}
 \newfontfamily\thinfont[Path = Fonts/]{Lato-Hairline.ttf}
 \newfontfamily\headingfont[Path = Fonts/]{texgyreheros-bold.otf}
+\newfontfamily\fafont[Path = Fonts/]{FontAwesome.otf}
 
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont
@@ -125,7 +113,7 @@
       {\thinfont #1}{\bodyfont  #2}
     };
     \node [anchor=north] at (name.south) {%
-      \fontsize{14pt}{24pt}\color{headerred}%
+      \fontsize{14pt}{24pt}\color{headerpurple}%
       \bodyfont #3%
     };
   \end{tikzpicture}
@@ -142,11 +130,11 @@
 	\begin{tikzpicture}[remember picture,overlay]
 	\node [rectangle, fill=fillheader, anchor=south, minimum width=\paperwidth, minimum height=1cm] (box) at (current page.south){};
 	\node [anchor=center] (name) at (box) {%
-		\fontsize{14pt}{24pt}\color{headerred}%
+		\fontsize{14pt}{24pt}\color{headerpurple}%
 		\bodyfont #1%
 	};
 	\end{tikzpicture}
-	\vspace{0.5cm}
+	\vspace{0.7cm}
 	\vspace{-2\parskip}
 }
 
@@ -161,12 +149,12 @@
   {%
     \color{%
       \ifcase\value{colorCounter}%
-        redsRED\or%
-        redsRED\or%
-        redsRED\or%
-        redsRED\or%
-        redsRED\else%
-        redsRED\fi%
+        mainpurple\or%
+        mainpurple\or%
+        mainpurple\or%
+        mainpurple\or%
+        mainpurple\else%
+        mainpurple\fi%
     } #1#2#3%
   }%
   \stepcounter{colorCounter}%
@@ -234,7 +222,7 @@
   #1&\parbox[t]{11.8cm}{%
     \textbf{#2}%
     \hfill%
-    {\footnotesize\addfontfeature{Color=redsRED} #3}\\%
+    {\footnotesize\addfontfeature{Color=mainpurple} #3}\\%
     #4\vspace{\parsep}%
   }\\}
 
@@ -244,12 +232,13 @@
 %%%%%%%%%%%%%%
 
 \RequirePackage[absolute,overlay]{textpos}
+\usepackage{fontawesome}
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 \newenvironment{aside}{%
   \let\oldsection\section
   \renewcommand{\section}[1]{
-    \par\vspace{\baselineskip}{\Large\headingfont\color{redsRED} ##1}
+    \par\vspace{\baselineskip}{\Large\headingfont\color{mainpurple} ##1}
   }
   \begin{textblock}{3.6}(1.25, 2.8)
   \begin{flushright}
@@ -277,7 +266,7 @@
 			%square,
 			polar,
 			%cloud,
-			color={redsFigureColor1, redsFigureColor2, redsFigureColor3, redsFigureColor4, redsFigureColor5, redsFigureColor6, redsFigureColor7},
+			color={materialcyan, materialred, materialorange, materialteal, materialamber, materialindigo, materialgreen},
 			before number=\phantom, 
 			after number=,
 			%text=inside
@@ -297,7 +286,7 @@
 		\begin{tikzpicture}[remember picture]
 		\foreach [count=\i] \x/\y in {#1}{
 			\draw[fill=lightgray,lightgray] (0,\i) rectangle (6,\i+0.4);
-			\draw[fill=white,redsRED](0,\i) rectangle (\y,\i+0.4);
+			\draw[fill=white,mainpurple](0,\i) rectangle (\y,\i+0.4);
 			\node [above left] at (0,\i+0.4) {\x};
 		}
 		\end{tikzpicture}
@@ -325,13 +314,13 @@
 	% sets the distance from the text to the border of the bubble center node
 	distance text center bubble = 0.5cm,
 	% set center bubble color
-	bubble center node color = redsNode,
+	bubble center node color = mainpurple,
 	% define the list of colors usable in the diagram
-	set color list = {redsFigureColor1,redsFigureColor2, redsFigureColor3, redsFigureColor6, redsFigureColor7},
+	set color list = {lightgray, materialcyan, orange, green, materialorange, materialteal, materialamber, materialindigo, materialgreen, materiallime},
 	% sets the opacity at which the bubbles are shown
 	bubble fill opacity = 0.6,
 	% sets the opacity at which the bubble text is shown
-	bubble text opacity = 0.8,
+	bubble text opacity = 0.5,
 }
 
 
