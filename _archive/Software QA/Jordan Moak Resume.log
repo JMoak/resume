@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (MiKTeX 21.8) (preloaded format=xelatex 2021.8.13)  13 AUG 2021 04:00
+This is XeTeX, Version 3.141592653-2.6-0.999993 (MiKTeX 21.8) (preloaded format=xelatex 2021.8.15)  15 AUG 2021 05:25
 entering extended mode
 **"c:/Projects/resume/_archive/Software QA/Jordan Moak Resume.tex"
 (c:/Projects/resume/_archive/Software QA/Jordan Moak Resume.tex
@@ -22,28 +22,7 @@ File: size10.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
 )
-(C:\Program Files\MiKTeX\tex/latex/xcolor\xcolor.sty
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
-
-(C:\Program Files\MiKTeX\tex/latex/graphics-cfg\color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package xcolor Info: Driver file: xetex.def on input line 225.
-
-(C:\Program Files\MiKTeX\tex/latex/graphics-def\xetex.def
-File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
-)
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-)
-(C:\Program Files\MiKTeX\tex/latex/fontspec\fontspec.sty
-(C:\Program Files\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
+(C:\Program Files\MiKTeX\tex/latex/fontawesome5\fontawesome5.sty
 (C:\Program Files\MiKTeX\tex/latex/l3kernel\expl3.sty
 Package: expl3 2021-07-12 L3 programming layer (loader) 
 
@@ -59,8 +38,33 @@ File: l3backend-xetex.def 2021-08-04 L3 backend support: XeTeX
 \g__pdf_backend_annotation_int=\count191
 \g__pdf_backend_link_int=\count192
 ))
+Package: fontawesome5 2020/03/24 v5.13.0 Font Awesome 5
+
+(C:\Program Files\MiKTeX\tex/latex/l3packages/l3keys2e\l3keys2e.sty
+Package: l3keys2e 2021-08-04 LaTeX2e option processing using LaTeX3 keys
+)
+(C:\Program Files\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
 Package: xparse 2021-08-04 L3 Experimental document command parser
 )
+(C:\Program Files\MiKTeX\tex/latex/fontawesome5\fontawesome5-utex-helper.sty
+Package: fontawesome5-utex-helper 2020/03/24 v5.13.0 uTeX helper for fontawesom
+e5
+LaTeX Font Info:    Trying to load font information for TU+fontawesomefree on i
+nput line 69.
+
+(C:\Program Files\MiKTeX\tex/latex/fontawesome5\tufontawesomefree.fd)
+LaTeX Font Info:    Trying to load font information for TU+fontawesomebrands on
+ input line 70.
+
+(C:\Program Files\MiKTeX\tex/latex/fontawesome5\tufontawesomebrands.fd)))
+(C:\Program Files\MiKTeX\tex/latex/unicode-math\unicode-math.sty
+Package: unicode-math 2020/01/31 v0.8q Unicode maths in XeLaTeX and LuaLaTeX
+
+(C:\Program Files\MiKTeX\tex/latex/unicode-math\unicode-math-xetex.sty
+Package: unicode-math-xetex 2020/01/31 v0.8q Unicode maths in XeLaTeX and LuaLa
+TeX
+
+(C:\Program Files\MiKTeX\tex/latex/fontspec\fontspec.sty
 Package: fontspec 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTeX
 
 (C:\Program Files\MiKTeX\tex/latex/fontspec\fontspec-xetex.sty
@@ -85,16 +89,6 @@ X
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 )
 (C:\Program Files\MiKTeX\tex/latex/fontspec\fontspec.cfg)))
-(C:\Program Files\MiKTeX\tex/latex/unicode-math\unicode-math.sty
-Package: unicode-math 2020/01/31 v0.8q Unicode maths in XeLaTeX and LuaLaTeX
-
-(C:\Program Files\MiKTeX\tex/latex/unicode-math\unicode-math-xetex.sty
-Package: unicode-math-xetex 2020/01/31 v0.8q Unicode maths in XeLaTeX and LuaLa
-TeX
-
-(C:\Program Files\MiKTeX\tex/latex/l3packages/l3keys2e\l3keys2e.sty
-Package: l3keys2e 2021-08-04 LaTeX2e option processing using LaTeX3 keys
-)
 (C:\Program Files\MiKTeX\tex/latex/base\fix-cm.sty
 Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
 
@@ -166,15 +160,245 @@ LaTeX Info: Redefining \] on input line 2924.
 \g__um_primekern_muskip=\muskip17
 
 (C:\Program Files\MiKTeX\tex/latex/unicode-math\unicode-math-table.tex)))
+(C:\Program Files\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(C:\Program Files\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 225.
+
+(C:\Program Files\MiKTeX\tex/latex/graphics-def\xetex.def
+File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(C:\Program Files\MiKTeX\tex/latex/textpos\textpos.sty
+Package: textpos 2020/09/26 v1.10
+
+Package: textpos 2020/09/26 1.10, absolute positioning of text on the page
+Package textpos Info: choosing support for LaTeX3 on input line 61.
+(C:\Program Files\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks21
+)
+\TP@textbox=\box53
+\TP@holdbox=\box54
+\TPHorizModule=\dimen151
+\TPVertModule=\dimen152
+\TP@margin=\dimen153
+\TP@absmargin=\dimen154
+
+Grid set 16 x 16 = 38.39343pt x 49.68562pt
+\TPboxrulesize=\dimen155
+\TP@ox=\dimen156
+\TP@oy=\dimen157
+\TP@tbargs=\toks22
+TextBlockOrigin set to 0pt x 0pt
+)
+
+Package fontspec Info: Font family 'texgyreheros-regular.otf(0)' created for
+(fontspec)             font 'texgyreheros-regular.otf' with options [Path =
+(fontspec)             Fonts/,BoldFont=texgyreheros-bold.otf,ItalicFont=texgyre
+heros-italic.otf,BoldItalicFont=texgyreheros-bolditalic.otf].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-regular.otf]/OT:script=latn;lang
+uage=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-regular.otf]/OT:script=latn;lang
+uage=dflt;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bold.otf]/OT:script=latn;languag
+e=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bold.otf]/OT:script=latn;languag
+e=dflt;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-italic.otf]/OT:script=latn;langu
+age=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-italic.otf]/OT:script=latn;langu
+age=dflt;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bolditalic.otf]/OT:script=latn;l
+anguage=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bolditalic.otf]/OT:script=latn;l
+anguage=dflt;+smcp;"
+
+
+Package fontspec Info: Font family 'Lato-Hairline.ttf(0)' created for font
+(fontspec)             'Lato-Hairline.ttf' with options [Path = Fonts/].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[Fonts/Lato-Hairline.ttf]/OT:script=latn;language=df
+lt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+
+Package fontspec Info: Font family 'texgyreheros-bold.otf(0)' created for font
+(fontspec)             'texgyreheros-bold.otf' with options [Path = Fonts/].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bold.otf]/OT:script=latn;languag
+e=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bold.otf]/OT:script=latn;languag
+e=dflt;+smcp;"
+
+
+Package fontspec Info: Could not resolve font "FontAwesome Regular/BI" (it
+(fontspec)             probably doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "FontAwesome Regular/B" (it
+(fontspec)             probably doesn't exist).
+
+
+Package fontspec Info: Could not resolve font "FontAwesome Regular/I" (it
+(fontspec)             probably doesn't exist).
+
+
+Package fontspec Info: Font family 'FontAwesomeRegular(0)' created for font
+(fontspec)             'FontAwesome Regular' with options [].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"FontAwesome
+(fontspec)             Regular/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+
+Package fontspec Info: Font family 'texgyreheros-regular.otf(1)' created for
+(fontspec)             font 'texgyreheros-regular.otf' with options
+(fontspec)             [Mapping=tex-text,Ligatures=TeX,Path=Fonts/,Mapping=tex-
+text,Color=textcolor,BoldFont=texgyreheros-bold.otf,ItalicFont=texgyreheros-ita
+lic.otf,BoldItalicFont=texgyreheros-bolditalic.otf].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-regular.otf]/OT:script=latn;lang
+uage=dflt;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-regular.otf]/OT:script=latn;lang
+uage=dflt;+smcp;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bold.otf]/OT:script=latn;languag
+e=dflt;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bold.otf]/OT:script=latn;languag
+e=dflt;+smcp;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-italic.otf]/OT:script=latn;langu
+age=dflt;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-italic.otf]/OT:script=latn;langu
+age=dflt;+smcp;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bolditalic.otf]/OT:script=latn;l
+anguage=dflt;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bolditalic.otf]/OT:script=latn;l
+anguage=dflt;+smcp;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+
+
+Package fontspec Info: Font family 'texgyreheros-regular.otf(2)' created for
+(fontspec)             font 'texgyreheros-regular.otf' with options
+(fontspec)             [Mapping=tex-text,Path=Fonts/,Mapping=tex-text,Color=tex
+tcolor,BoldFont=texgyreheros-bold.otf,ItalicFont=texgyreheros-italic.otf,BoldIt
+alicFont=texgyreheros-bolditalic.otf].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-regular.otf]/OT:script=latn;lang
+uage=dflt;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-regular.otf]/OT:script=latn;lang
+uage=dflt;+smcp;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bold.otf]/OT:script=latn;languag
+e=dflt;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bold.otf]/OT:script=latn;languag
+e=dflt;+smcp;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-italic.otf]/OT:script=latn;langu
+age=dflt;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-italic.otf]/OT:script=latn;langu
+age=dflt;+smcp;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bolditalic.otf]/OT:script=latn;l
+anguage=dflt;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bolditalic.otf]/OT:script=latn;l
+anguage=dflt;+smcp;mapping=tex-text;color=4D4D4DFF
+(fontspec)             ;"
+
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
 (Font)                  OT1/cmr/m/n --> TU/texgyreheros-regular.otf(2)/m/n on i
-nput line 92.
+nput line 93.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> TU/texgyreheros-regular.otf(2)/m/it on
- input line 92.
+ input line 93.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> TU/texgyreheros-regular.otf(2)/b/n on 
-input line 92.
+input line 93.
+
+
+Package fontspec Warning: Font "texgyreheros-regular" does not contain
+(fontspec)                requested Script "Math".
+
+
+Package fontspec Info: Font family 'texgyreheros-regular.otf(3)' created for
+(fontspec)             font 'texgyreheros-regular.otf' with options
+(fontspec)             [Mapping=tex-text,BoldItalicFont={},ItalicFont={},SmallC
+apsFont={},Script=Math,Path={Fonts/}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-regular.otf]/OT:script=latn;lang
+uage=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 
 Package unicode-math Warning: The first font loaded by unicode-math must be an
@@ -184,27 +408,59 @@ Package unicode-math Warning: The first font loaded by unicode-math must be an
 (unicode-math)                ranges, use: 
 (unicode-math)                  \setmathfont{latinmodern-math.otf}
 
+
+Package fontspec Warning: Font "texgyreheros-regular" does not contain
+(fontspec)                requested Script "Math".
+
+
+Package fontspec Warning: OpenType feature 'Style=MathScript' (ssty) not
+(fontspec)                available for font 'texgyreheros-regular' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+
+Package fontspec Warning: OpenType feature 'Style=MathScriptScript' (ssty) not
+(fontspec)                available for font 'texgyreheros-regular' with
+(fontspec)                script 'CustomDefault' and language 'Default'.
+
+
+Package fontspec Info: Font family 'texgyreheros-regular.otf(4)' created for
+(fontspec)             font 'texgyreheros-regular.otf' with options
+(fontspec)             [Mapping=tex-text,BoldItalicFont={},ItalicFont={},SmallC
+apsFont={},Script=Math,SizeFeatures={{Size=0-},{Size=0-0,Font=texgyreheros-regu
+lar.otf,Style=MathScript},{Size=-0,Font=texgyreheros-regular.otf,Style=MathScri
+ptScript}},Path={Fonts/}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <0->"[Fonts/texgyreheros-regular.otf]/OT:script=latn;lan
+guage=dflt;mapping=tex-text;"<0-0>"[Fonts/texgyreheros-regular.otf]/OT:script=l
+atn;language=dflt;mapping=tex-text;"<-0>"[Fonts/texgyreheros-regular.otf]/OT:sc
+ript=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 95.
+(Font)              `operators' in the math version `normal' on input line 96.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> TU/texgyreheros-regular.otf(4)/m/n on i
-nput line 95.
+nput line 96.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 95.
+(Font)              `operators' in the math version `bold' on input line 96.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> TU/texgyreheros-regular.otf(4)/b/n on 
-input line 95.
+input line 96.
 (C:\Program Files\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty
 (C:\Program Files\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
 (C:\Program Files\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty
 (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
-\pgfutil@everybye=\toks21
-\pgfutil@tempdima=\dimen151
-\pgfutil@tempdimb=\dimen152
+\pgfutil@everybye=\toks23
+\pgfutil@tempdima=\dimen158
+\pgfutil@tempdimb=\dimen159
 
 (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfutil-common-lists.tex))
 (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
-\pgfutil@abb=\box53
+\pgfutil@abb=\box55
 )
 (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex
 (C:\Program Files\MiKTeX\tex/generic/pgf\pgf.revision.tex)
@@ -216,10 +472,6 @@ Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
 (C:\Program Files\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2020/12/05 v1.2c Enhanced LaTeX Graphics (DPC,SPQR)
 
-(C:\Program Files\MiKTeX\tex/latex/graphics\keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks22
-)
 (C:\Program Files\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
 
@@ -231,39 +483,39 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 107.
 )
-\Gin@req@height=\dimen153
-\Gin@req@width=\dimen154
+\Gin@req@height=\dimen160
+\Gin@req@width=\dimen161
 )
 (C:\Program Files\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty
 (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
 Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
 
 (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks23
-\pgfkeys@temptoks=\toks24
+\pgfkeys@pathtoks=\toks24
+\pgfkeys@temptoks=\toks25
 
 (C:\Program Files\MiKTeX\tex/generic/pgf/utilities\pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks25
+\pgfkeys@tmptoks=\toks26
 ))
-\pgf@x=\dimen155
-\pgf@y=\dimen156
-\pgf@xa=\dimen157
-\pgf@ya=\dimen158
-\pgf@xb=\dimen159
-\pgf@yb=\dimen160
-\pgf@xc=\dimen161
-\pgf@yc=\dimen162
-\pgf@xd=\dimen163
-\pgf@yd=\dimen164
+\pgf@x=\dimen162
+\pgf@y=\dimen163
+\pgf@xa=\dimen164
+\pgf@ya=\dimen165
+\pgf@xb=\dimen166
+\pgf@yb=\dimen167
+\pgf@xc=\dimen168
+\pgf@yc=\dimen169
+\pgf@xd=\dimen170
+\pgf@yd=\dimen171
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
 \c@pgf@counta=\count285
 \c@pgf@countb=\count286
 \c@pgf@countc=\count287
 \c@pgf@countd=\count288
-\t@pgf@toka=\toks26
-\t@pgf@tokb=\toks27
-\t@pgf@tokc=\toks28
+\t@pgf@toka=\toks27
+\t@pgf@tokb=\toks28
+\t@pgf@tokc=\toks29
 \pgf@sys@id@count=\count289
 
 (C:\Program Files\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
@@ -297,12 +549,12 @@ Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex)
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
-\pgfmath@dimen=\dimen165
+\pgfmath@dimen=\dimen172
 \pgfmath@count=\count293
-\pgfmath@box=\box54
-\pgfmath@toks=\toks29
-\pgfmath@stack@operand=\toks30
-\pgfmath@stack@operation=\toks31
+\pgfmath@box=\box56
+\pgfmath@toks=\toks30
+\pgfmath@stack@operand=\toks31
+\pgfmath@stack@operation=\toks32
 )
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex)
@@ -323,50 +575,50 @@ cs.code.tex)))
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfint.code.tex)
 (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@picminx=\dimen166
-\pgf@picmaxx=\dimen167
-\pgf@picminy=\dimen168
-\pgf@picmaxy=\dimen169
-\pgf@pathminx=\dimen170
-\pgf@pathmaxx=\dimen171
-\pgf@pathminy=\dimen172
-\pgf@pathmaxy=\dimen173
-\pgf@xx=\dimen174
-\pgf@xy=\dimen175
-\pgf@yx=\dimen176
-\pgf@yy=\dimen177
-\pgf@zx=\dimen178
-\pgf@zy=\dimen179
+\pgf@picminx=\dimen173
+\pgf@picmaxx=\dimen174
+\pgf@picminy=\dimen175
+\pgf@picmaxy=\dimen176
+\pgf@pathminx=\dimen177
+\pgf@pathmaxx=\dimen178
+\pgf@pathminy=\dimen179
+\pgf@pathmaxy=\dimen180
+\pgf@xx=\dimen181
+\pgf@xy=\dimen182
+\pgf@yx=\dimen183
+\pgf@yy=\dimen184
+\pgf@zx=\dimen185
+\pgf@zy=\dimen186
 )
 (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.t
 ex
 File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@path@lastx=\dimen180
-\pgf@path@lasty=\dimen181
+\pgf@path@lastx=\dimen187
+\pgf@path@lasty=\dimen188
 )
 (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@shorten@end@additional=\dimen182
-\pgf@shorten@start@additional=\dimen183
+\pgf@shorten@end@additional=\dimen189
+\pgf@shorten@start@additional=\dimen190
 )
 (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfpic=\box55
-\pgf@hbox=\box56
-\pgf@layerbox@main=\box57
+\pgfpic=\box57
+\pgf@hbox=\box58
+\pgf@layerbox@main=\box59
 \pgf@picture@serial@count=\count295
 )
 (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.te
 x
 File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgflinewidth=\dimen184
+\pgflinewidth=\dimen191
 )
 (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code
 .tex
 File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@pt@x=\dimen185
-\pgf@pt@y=\dimen186
-\pgf@pt@temp=\dimen187
+\pgf@pt@x=\dimen192
+\pgf@pt@y=\dimen193
+\pgf@pt@temp=\dimen194
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
@@ -377,10 +629,10 @@ tex
 File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfarrowsep=\dimen188
+\pgfarrowsep=\dimen195
 ) (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@max=\dimen189
+\pgf@max=\dimen196
 \pgf@sys@shading@range@num=\count296
 \pgf@shadingcount=\count297
 )
@@ -389,7 +641,7 @@ File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 
 (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfexternal@startupbox=\box58
+\pgfexternal@startupbox=\box60
 ))
 (C:\Program Files\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -404,15 +656,15 @@ File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )))
 (C:\Program Files\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfnodeparttextbox=\box59
+\pgfnodeparttextbox=\box61
 )
 (C:\Program Files\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )
 (C:\Program Files\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@nodesepstart=\dimen190
-\pgf@nodesepend=\dimen191
+\pgf@nodesepstart=\dimen197
+\pgf@nodesepend=\dimen198
 )
 (C:\Program Files\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
@@ -425,10 +677,10 @@ Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
 Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
 
 (C:\Program Files\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)
-\pgffor@iter=\dimen192
-\pgffor@skip=\dimen193
-\pgffor@stack=\toks32
-\pgffor@toks=\toks33
+\pgffor@iter=\dimen199
+\pgffor@skip=\dimen256
+\pgffor@stack=\toks33
+\pgffor@toks=\toks34
 ))
 (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
 Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
@@ -437,20 +689,20 @@ Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
 tex
 File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@plot@mark@count=\count298
-\pgfplotmarksize=\dimen194
+\pgfplotmarksize=\dimen257
 )
-\tikz@lastx=\dimen195
-\tikz@lasty=\dimen196
-\tikz@lastxsaved=\dimen197
-\tikz@lastysaved=\dimen198
-\tikz@lastmovetox=\dimen199
-\tikz@lastmovetoy=\dimen256
-\tikzleveldistance=\dimen257
-\tikzsiblingdistance=\dimen258
-\tikz@figbox=\box60
-\tikz@figbox@bg=\box61
-\tikz@tempbox=\box62
-\tikz@tempbox@bg=\box63
+\tikz@lastx=\dimen258
+\tikz@lasty=\dimen259
+\tikz@lastxsaved=\dimen260
+\tikz@lastysaved=\dimen261
+\tikz@lastmovetox=\dimen262
+\tikz@lastmovetoy=\dimen263
+\tikzleveldistance=\dimen264
+\tikzsiblingdistance=\dimen265
+\tikz@figbox=\box62
+\tikz@figbox@bg=\box63
+\tikz@tempbox=\box64
+\tikz@tempbox@bg=\box65
 \tikztreelevel=\count299
 \tikznumberofchildren=\count300
 \tikznumberofcurrentchild=\count301
@@ -484,38 +736,7 @@ Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 ))
 \c@colorCounter=\count308
 
-(C:\Program Files\MiKTeX\tex/latex/textpos\textpos.sty
-Package: textpos 2020/09/26 v1.10
-
-Package: textpos 2020/09/26 1.10, absolute positioning of text on the page
-Package textpos Info: choosing support for LaTeX3 on input line 61.
-\TP@textbox=\box64
-\TP@holdbox=\box65
-\TPHorizModule=\dimen259
-\TPVertModule=\dimen260
-\TP@margin=\dimen261
-\TP@absmargin=\dimen262
-Grid set 16 x 16 = 38.39343pt x 49.68562pt
-\TPboxrulesize=\dimen263
-\TP@ox=\dimen264
-\TP@oy=\dimen265
-\TP@tbargs=\toks34
-TextBlockOrigin set to 0pt x 0pt
-) (C:\Program Files\MiKTeX\tex/latex/fontawesome\fontawesome.sty
-Package: fontawesome 2016/05/15 v4.6.3.1 font awesome icons
-
-(C:\Program Files\MiKTeX\tex/generic/iftex\ifxetex.sty
-Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
-
-(C:\Program Files\MiKTeX\tex/generic/iftex\iftex.sty
-Package: iftex 2020/03/06 v1.0d TeX engine tests
-))
-(C:\Program Files\MiKTeX\tex/generic/iftex\ifluatex.sty
-Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
-)
-(C:\Program Files\MiKTeX\tex/latex/fontawesome\fontawesomesymbols-generic.tex)
-(C:\Program Files\MiKTeX\tex/latex/fontawesome\fontawesomesymbols-xeluatex.tex)
-) (C:\Program Files\MiKTeX\tex/latex/pgf-pie\pgf-pie.sty
+(C:\Program Files\MiKTeX\tex/latex/pgf-pie\pgf-pie.sty
 Package: pgf-pie 2021/07/30 v0.6 Some LaTeX macros for pie chart by using PGF/T
 ikz package.
 
@@ -529,6 +750,9 @@ ikz package.
 (C:\Program Files\MiKTeX\tex/latex/pstricks\pstricks.sty
 Package: pstricks 2020/06/11 v0.70 LaTeX wrapper for `PSTricks' (RN,HV)
 
+(C:\Program Files\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+)
 (C:\Program Files\MiKTeX\tex/generic/xkeyval\pst-xkey.tex
 File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
 
@@ -818,27 +1042,463 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip52
 )
+(C:\Program Files\MiKTeX\tex/latex/tools\afterpage.sty
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks41
+\AP@partial=\box74
+\AP@footins=\box75
+)
+(C:\Program Files\MiKTeX\tex/latex/metalogo\metalogo.sty
+Package: metalogo 2010/05/29 v0.12 Extended TeX logo macros
 
-! LaTeX Error: File `afterpage.sty' not found.
+(C:\Program Files\MiKTeX\tex/generic/iftex\ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+)
+\xl@everylogo=\toks42
+\xl@@everylogo=\toks43
+LaTeX Info: Redefining \TeX on input line 193.
+LaTeX Info: Redefining \LaTeX on input line 202.
+LaTeX Info: Redefining \LaTeXe on input line 219.
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibra
+rymindmap.code.tex
+File: tikzlibrarymindmap.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
+(C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibra
+rytrees.code.tex
+File: tikzlibrarytrees.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibra
+rydecorations.code.tex
+(C:\Program Files\MiKTeX\tex/generic/pgf/modules\pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen304
+\pgfdecoratedremainingdistance=\dimen305
+\pgfdecoratedinputsegmentcompleteddistance=\dimen306
+\pgfdecoratedinputsegmentremainingdistance=\dimen307
+\pgf@decorate@distancetomove=\dimen308
+\pgf@decorate@repeatstate=\count352
+\pgfdecorationsegmentamplitude=\dimen309
+\pgfdecorationsegmentlength=\dimen310
+)
+\tikz@lib@dec@box=\box76
+))
+Package hyperref Info: Option `colorlinks' set `false' on input line 32.
+ (Jordan Moak Resume.aux)
+\openout1 = `"Jordan Moak Resume.aux"'.
 
-Enter file name: 
-^^@:12: Emergency stop.
-<read *> 
-         
-l.12 \usepackage
-                {hyperref}^^M
-*** (cannot \read from terminal in nonstop modes)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 35.
 
- 
+Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Mapping=tex-text,BoldItalicFont={},ItalicFont={},SmallC
+apsFont={},Script=Math,BoldFont={latinmodern-math.otf}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[latinmodern-math.otf]/OT:script=math;language=dflt;
+mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[latinmodern-math.otf]/OT:script=math;language=dflt;
+mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(1)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Mapping=tex-text,BoldItalicFont={},ItalicFont={},SmallC
+apsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,Font=latinmodern-m
+ath.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,Style=MathScriptSc
+ript}},BoldFont={latinmodern-math.otf}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.5->"[latinmodern-math.otf]/OT:script=math;language=df
+lt;mapping=tex-text;"<6-8.5>"[latinmodern-math.otf]/OT:script=math;language=dfl
+t;+ssty=0;mapping=tex-text;"<-6>"[latinmodern-math.otf]/OT:script=math;language
+=dflt;+ssty=1;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[latinmodern-math.otf]/OT:script=math;language=dflt;
+mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  TU/texgyreheros-regular.otf(4)/m/n --> TU/latinmodern-m
+ath.otf(1)/m/n on input line 35.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  TU/texgyreheros-regular.otf(4)/b/n --> TU/latinmodern-m
+ath.otf(1)/b/n on input line 35.
+
+Package fontspec Info: latinmodern-math scale = 1.0001.
+
+
+Package fontspec Info: latinmodern-math scale = 1.0001.
+
+
+Package fontspec Info: latinmodern-math scale = 1.0001.
+
+
+Package fontspec Info: latinmodern-math scale = 1.0001.
+
+
+Package fontspec Info: latinmodern-math scale = 1.0001.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(2)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Mapping=tex-text,BoldItalicFont={},ItalicFont={},SmallC
+apsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,Font=latinmodern-m
+ath.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,Style=MathScriptSc
+ript}},BoldFont={latinmodern-math.otf},ScaleAgain=1.0001,FontAdjustment={\fontd
+imen
+(fontspec)             8\font =6.77pt\relax \fontdimen 9\font =3.94pt\relax
+(fontspec)             \fontdimen 10\font =4.44pt\relax \fontdimen 11\font
+(fontspec)             =6.86pt\relax \fontdimen 12\font =3.45pt\relax
+(fontspec)             \fontdimen 13\font =3.63pt\relax \fontdimen 14\font
+(fontspec)             =3.63pt\relax \fontdimen 15\font =2.89pt\relax
+(fontspec)             \fontdimen 16\font =2.47pt\relax \fontdimen 17\font
+(fontspec)             =2.47pt\relax \fontdimen 18\font =2.5pt\relax
+(fontspec)             \fontdimen 19\font =2.0pt\relax \fontdimen 22\font
+(fontspec)             =2.5pt\relax \fontdimen 20\font =0pt\relax \fontdimen
+(fontspec)             21\font =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.5->s*[1.0001]"[latinmodern-math.otf]/OT:script=math;l
+anguage=dflt;mapping=tex-text;"<6-8.5>s*[1.0001]"[latinmodern-math.otf]/OT:scri
+pt=math;language=dflt;+ssty=0;mapping=tex-text;"<-6>s*[1.0001]"[latinmodern-mat
+h.otf]/OT:script=math;language=dflt;+ssty=1;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =6.77pt\relax \fontdimen 9\font
+(fontspec)             =3.94pt\relax \fontdimen 10\font =4.44pt\relax
+(fontspec)             \fontdimen 11\font =6.86pt\relax \fontdimen 12\font
+(fontspec)             =3.45pt\relax \fontdimen 13\font =3.63pt\relax
+(fontspec)             \fontdimen 14\font =3.63pt\relax \fontdimen 15\font
+(fontspec)             =2.89pt\relax \fontdimen 16\font =2.47pt\relax
+(fontspec)             \fontdimen 17\font =2.47pt\relax \fontdimen 18\font
+(fontspec)             =2.5pt\relax \fontdimen 19\font =2.0pt\relax \fontdimen
+(fontspec)             22\font =2.5pt\relax \fontdimen 20\font =0pt\relax
+(fontspec)             \fontdimen 21\font =0pt\relax 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1.0001]"[latinmodern-math.otf]/OT:script=math;lang
+uage=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =6.77pt\relax \fontdimen 9\font
+(fontspec)             =3.94pt\relax \fontdimen 10\font =4.44pt\relax
+(fontspec)             \fontdimen 11\font =6.86pt\relax \fontdimen 12\font
+(fontspec)             =3.45pt\relax \fontdimen 13\font =3.63pt\relax
+(fontspec)             \fontdimen 14\font =3.63pt\relax \fontdimen 15\font
+(fontspec)             =2.89pt\relax \fontdimen 16\font =2.47pt\relax
+(fontspec)             \fontdimen 17\font =2.47pt\relax \fontdimen 18\font
+(fontspec)             =2.5pt\relax \fontdimen 19\font =2.0pt\relax \fontdimen
+(fontspec)             22\font =2.5pt\relax \fontdimen 20\font =0pt\relax
+(fontspec)             \fontdimen 21\font =0pt\relax 
+
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 35.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
+t line 35.
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 35.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
+t line 35.
+
+Package fontspec Info: latinmodern-math scale = 0.9999.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999.
+
+
+Package fontspec Info: latinmodern-math scale = 0.9999.
+
+
+Package fontspec Info: Font family 'latinmodern-math.otf(3)' created for font
+(fontspec)             'latinmodern-math.otf' with options
+(fontspec)             [Mapping=tex-text,BoldItalicFont={},ItalicFont={},SmallC
+apsFont={},Script=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,Font=latinmodern-m
+ath.otf,Style=MathScript},{Size=-6,Font=latinmodern-math.otf,Style=MathScriptSc
+ript}},BoldFont={latinmodern-math.otf},ScaleAgain=0.9999,FontAdjustment={\fontd
+imen
+(fontspec)             8\font =0.4pt\relax \fontdimen 9\font =2.0pt\relax
+(fontspec)             \fontdimen 10\font =1.67pt\relax \fontdimen 11\font
+(fontspec)             =1.11pt\relax \fontdimen 12\font =6.0pt\relax
+(fontspec)             \fontdimen 13\font =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.5->s*[0.9999]"[latinmodern-math.otf]/OT:script=math;l
+anguage=dflt;mapping=tex-text;"<6-8.5>s*[0.9999]"[latinmodern-math.otf]/OT:scri
+pt=math;language=dflt;+ssty=0;mapping=tex-text;"<-6>s*[0.9999]"[latinmodern-mat
+h.otf]/OT:script=math;language=dflt;+ssty=1;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =0.4pt\relax \fontdimen 9\font
+(fontspec)             =2.0pt\relax \fontdimen 10\font =1.67pt\relax
+(fontspec)             \fontdimen 11\font =1.11pt\relax \fontdimen 12\font
+(fontspec)             =6.0pt\relax \fontdimen 13\font =0pt\relax 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999]"[latinmodern-math.otf]/OT:script=math;lang
+uage=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =0.4pt\relax \fontdimen 9\font
+(fontspec)             =2.0pt\relax \fontdimen 10\font =1.67pt\relax
+(fontspec)             \fontdimen 11\font =1.11pt\relax \fontdimen 12\font
+(fontspec)             =6.0pt\relax \fontdimen 13\font =0pt\relax 
+
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 3
+5.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
+t line 35.
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 35.
+
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
+t line 35.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(173.56198pt, 398.0539pt, 42.67912pt)
+* v-part:(T,H,B)=(56.9055pt, 666.9326pt, 71.13188pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=398.0539pt
+* \textheight=666.9326pt
+* \oddsidemargin=101.29199pt
+* \evensidemargin=101.29199pt
+* \topmargin=-15.36449pt
+* \headheight=0.0pt
+* \headsep=0.0pt
+* \topskip=10.0pt
+* \footskip=0.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring OFF on input line 35.
+(C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+
+(C:\Program Files\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(C:\Program Files\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count353
+)
+LaTeX Info: Redefining \ref on input line 35.
+LaTeX Info: Redefining \pageref on input line 35.
+LaTeX Info: Redefining \nameref on input line 35.
+
+(Jordan Moak Resume.out) (Jordan Moak Resume.out)
+\@outlinefile=\write4
+\openout4 = `"Jordan Moak Resume.out"'.
+
+
+Overfull \hbox (38.11154pt too wide) in paragraph at lines 54--54
+ [][]
+ []
+
+File: img/5stars.png Graphic file (type bmp)
+<img/5stars.png>
+File: img/5stars.png Graphic file (type bmp)
+<img/5stars.png>
+File: img/5stars.png Graphic file (type bmp)
+<img/5stars.png>
+File: img/4stars.png Graphic file (type bmp)
+<img/4stars.png>
+File: img/4stars.png Graphic file (type bmp)
+<img/4stars.png>
+File: img/4stars.png Graphic file (type bmp)
+<img/4stars.png>
+File: img/3stars.png Graphic file (type bmp)
+<img/3stars.png>
+
+Overfull \hbox (33.00586pt too wide) in paragraph at lines 75--75
+ [][]
+ []
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.00107pt on input line 80.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.00075pt on input line 80.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.00053pt on input line 80.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.99893pt on input line 80.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.99925pt on input line 80.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 80.
+
+Package fontspec Info: Font family 'texgyreheros-regular.otf(5)' created for
+(fontspec)             font 'texgyreheros-regular.otf' with options
+(fontspec)             [Mapping=tex-text,Ligatures=TeX,Path=Fonts/,Mapping=tex-
+text,Color=textcolor,BoldFont=texgyreheros-bold.otf,ItalicFont=texgyreheros-ita
+lic.otf,BoldItalicFont=texgyreheros-bolditalic.otf,Color=mainpurple].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-regular.otf]/OT:script=latn;lang
+uage=dflt;mapping=tex-text;color=8D5DAFFF
+(fontspec)             ;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-regular.otf]/OT:script=latn;lang
+uage=dflt;+smcp;mapping=tex-text;color=8D5DAFFF
+(fontspec)             ;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bold.otf]/OT:script=latn;languag
+e=dflt;mapping=tex-text;color=8D5DAFFF
+(fontspec)             ;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bold.otf]/OT:script=latn;languag
+e=dflt;+smcp;mapping=tex-text;color=8D5DAFFF
+(fontspec)             ;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-italic.otf]/OT:script=latn;langu
+age=dflt;mapping=tex-text;color=8D5DAFFF
+(fontspec)             ;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-italic.otf]/OT:script=latn;langu
+age=dflt;+smcp;mapping=tex-text;color=8D5DAFFF
+(fontspec)             ;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bolditalic.otf]/OT:script=latn;l
+anguage=dflt;mapping=tex-text;color=8D5DAFFF
+(fontspec)             ;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"[Fonts/texgyreheros-bolditalic.otf]/OT:script=latn;l
+anguage=dflt;+smcp;mapping=tex-text;color=8D5DAFFF
+(fontspec)             ;"
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--88
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--88
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--114
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--114
+
+ []
+
+[1
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 115--135
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--135
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--169
+
+ []
+
+[2] (Jordan Moak Resume.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package rerunfilecheck Info: File `"Jordan Moak Resume".out' has not changed.
+(rerunfilecheck)             Checksum: <no file>.
+ ) 
 Here is how much of TeX's memory you used:
- 30130 strings out of 411276
- 567231 string characters out of 2833274
- 996596 words of memory out of 3000000
- 50140 multiletter control sequences out of 15000+600000
- 403966 words of font info for 50 fonts, out of 8000000 for 9000
+ 31779 strings out of 411276
+ 606182 string characters out of 2833274
+ 1162100 words of memory out of 3000000
+ 51712 multiletter control sequences out of 15000+600000
+ 404874 words of font info for 78 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 117i,5n,122p,554b,668s stack positions out of 5000i,500n,10000p,200000b,80000s
-No pages of output.
+ 117i,9n,122p,703b,978s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on Jordan Moak Resume.pdf (2 pages).

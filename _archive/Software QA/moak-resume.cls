@@ -12,12 +12,14 @@
 \ProcessOptions\relax
 \LoadClass{article}
 
+\usepackage{fontawesome5}
+\RequirePackage[math-style=TeX]{unicode-math}
+\RequirePackage{xcolor}
+\RequirePackage[absolute,overlay]{textpos}
+
 %%%%%%%%%%
 % Colors %
 %%%%%%%%%%
-
-\RequirePackage{xcolor}
-
 \definecolor{white}{RGB}{255,255,255}
 
 \definecolor{mainpurple}{HTML}{8d5daf}
@@ -63,8 +65,6 @@
 % Fonts %
 %%%%%%%%%
 
-\RequirePackage[quiet]{fontspec}
-\RequirePackage[math-style=TeX]{unicode-math}
 
 \newfontfamily\bodyfont
 [
@@ -76,7 +76,8 @@
 {texgyreheros-regular.otf}
 \newfontfamily\thinfont[Path = Fonts/]{Lato-Hairline.ttf}
 \newfontfamily\headingfont[Path = Fonts/]{texgyreheros-bold.otf}
-\newfontfamily\fafont[Path = Fonts/]{FontAwesome.otf}
+% \newfontfamily\fontAwesome[Path = Fonts/]{FontAwesome.otf}
+\newfontfamily{\FontAwesome}{FontAwesome Regular}
 
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont
@@ -230,9 +231,6 @@
 %%%%%%%%%%%%%%
 % Side block %
 %%%%%%%%%%%%%%
-
-\RequirePackage[absolute,overlay]{textpos}
-\usepackage{fontawesome}
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 \newenvironment{aside}{%
