@@ -196,11 +196,12 @@
 }
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
 \newcommand{\entry}[4]{%
-  #1&\parbox[t]{11.8cm}{%
-    \textbf{#2}%
+  {\textbf{\tiny\addfontfeature{Color=textcolor} #1}}&\parbox[t]{12.3cm}{%
+ 	\textbf{#2}%
     \hfill%
-    {\footnotesize\addfontfeature{Color=mainpurple} #3}\\%
-    #4\vspace{\parsep}%
+	\hfill%
+	\hfill%
+    {\textbf{\scriptsize\addfontfeature{Color=mainpurple} #3}}%
   }\\}
 
 
@@ -353,5 +354,5 @@
 % Other tweaks %
 %%%%%%%%%%%%%%%%
 
-\RequirePackage[left=6.1cm,top=-2.2cm,right=1.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
+\RequirePackage[left=6.1cm,top=-2.2cm,right=1cm,bottom=0cm,nohead,nofoot]{geometry}
 \RequirePackage{hyperref}
