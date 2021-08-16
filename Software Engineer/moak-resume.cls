@@ -25,13 +25,16 @@
 % Colors %
 %%%%%%%%%%
 \definecolor{white}{RGB}{255,255,255}
-\definecolor{sidecolor}{HTML}{E7E7E7}
-\definecolor{mainpurple}{HTML}{8d5daf}
-\definecolor{headerpurple}{HTML}{8d5daf}
+\definecolor{black}{HTML}{18101f}
 \definecolor{darkgray}{HTML}{5e5e5e}
 \definecolor{gray}{HTML}{4D4D4D}
-
 \definecolor{lightgray}{HTML}{999999}
+\definecolor{reallylightgray}{HTML}{E7E7E7}
+
+\definecolor{mainpurple}{HTML}{8d5daf}
+\definecolor{darkpurple}{HTML}{5c3975}
+\definecolor{headerpurple}{HTML}{8d5daf}
+
 \definecolor{green}{HTML}{C2E15F}
 \definecolor{orange}{HTML}{FDA333}
 \definecolor{purple}{HTML}{D3A4F9}
@@ -102,8 +105,8 @@
 
 \newcommand{\contactfont}{%
   \fontsize{10pt}{10pt}\selectfont%
-  \headingfont%
-  \color{textcolor}%
+  \bodyfont%
+  \color{darkgray}%
 }
 
 %%%%%%%%%%
@@ -213,7 +216,7 @@
 
 \newcommand{\makesidebar}{
 	\begin{tikzpicture}[remember picture,overlay]
-   		\node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+2.2cm] (sidebox) at (-5cm,0cm){};
+   		\node [rectangle, fill=reallylightgray, anchor=north, minimum width=9cm, minimum height=\paperheight+2.2cm] (sidebox) at (-5cm,0cm){};
 	\end{tikzpicture}
 }
 
@@ -266,7 +269,7 @@
   \renewcommand{\section}[1]{
     \par\vspace{\baselineskip}{\Large\headingfont\color{mainpurple} ##1}
   }
-  \begin{textblock}{3.6}(0.5, 5.8)
+  \begin{textblock}{4.9}(0.4, 6.0)
   \begin{flushleft}
   \obeycr
 }{%
@@ -275,6 +278,20 @@
   \end{textblock}
   \let\section\oldsection
 }
+
+
+\newlength{\TotalSectionLength} % Define a new length to hold the remaining line width after the section title is printed
+\newlength{\SectionTitleLength} % Define a new length to hold the width of the section title
+\newcommand{\profilesection}[1]{%
+	\setlength\TotalSectionLength{\linewidth}% Set the total line width
+	\settowidth{\SectionTitleLength}{\Large #1 }% Calculate the width of the section title
+	\addtolength\TotalSectionLength{-\SectionTitleLength}% Subtract the section title width from the total width
+	\addtolength\TotalSectionLength{-2.22221pt}% Modifier to remove overfull box warning
+	\vspace{0.8cm}% Whitespace before the section title
+	{\large\headingfont\color{mainpurple} #1 \rule[0.15\baselineskip]{\TotalSectionLength}{1pt}}% Print the title and auto-width rule
+	\vspace{0.2cm}
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%
 % Diagrams and Charts %
@@ -292,15 +309,15 @@
 			%square,
 			polar,
 			%cloud,
-			color={materialcyan, materialred, materialorange, materialteal, materialamber, materialindigo, materialgreen},
+			color={materialcyan, materialred, materialorange, materialteal, materialamber, materialindigo, materialgreen, materialpurple},
 			before number=\phantom, 
 			after number=,
-			%text=inside
+			%text=inside,
 			text=pin
 			%style = drop shadow,
 			%scale font
 	]
-	{17/Java, 5/C\#, 30/SAS, 17/R, 10/SQL, 14/PowerShell, 7/HTML}% values and labels
+	{10/\scriptsize R, 14/\scriptsize Java, 17/\scriptsize C\#, 20/\scriptsize SAS, 25/\scriptsize JS, 30/\scriptsize Python, 5/\scriptsize Ruby, 7/\scriptsize Scala}% values and labels
 	\end{tikzpicture}
 	\vspace{0.1cm}
 	\vspace{-2\parskip}
@@ -329,8 +346,8 @@
 \RequirePackage{smartdiagram}
 
 \smartdiagramset{
-	bubble center node font = \footnotesize,
-	bubble node font = \footnotesize,
+	bubble center node font = \scriptsize,
+	bubble node font = \scriptsize,
 	% specifies the minimum size of the bubble center node
 	bubble center node size = 0.5cm,
 	%  specifies the minimum size of the bubbles
@@ -344,9 +361,9 @@
 	% define the list of colors usable in the diagram
 	set color list = {lightgray, materialcyan, orange, green, materialorange, materialteal, materialamber, materialindigo, materialgreen, materiallime},
 	% sets the opacity at which the bubbles are shown
-	bubble fill opacity = 0.6,
+	bubble fill opacity = 0.75,
 	% sets the opacity at which the bubble text is shown
-	bubble text opacity = 0.5,
+	bubble text opacity = 1.0,
 }
 
 
