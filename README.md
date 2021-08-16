@@ -1,5 +1,5 @@
 # resume
-Not quite up to date, but still some good stuff.
+Last updated 8/16/2021
 
 <object data="https://github.com/JMoak/resume/blob/master/Jordan%20Moak%20Resume.pdf" type="application/pdf" width="700px" height="700px">
     <embed src="https://github.com/JMoak/resume/blob/master/Jordan%20Moak%20Resume.pdf">
@@ -15,6 +15,10 @@ First install MIkTeX from an admin powershell console in the project root:
 ```
 [project-root]> install-miktex.ps1
 ```
+- Use the VSCode package `LaTeX Workshop`
+
+
+-- OR --
 
 - Run the MikTeX Package Manager and install the `xetex` package
   - May need to delete `miktex-package.lock` file if package manager won't open
@@ -24,14 +28,11 @@ First install MIkTeX from an admin powershell console in the project root:
 
 - **Run it, PDF will be saved in the dir the `.tex` file resides in.**
 
--- OR --
+---
 
-**TRY** to make the following work
+## Sources
 
-- Using `Atom` Install the following packages:
-  - `atom-latex`
-  - `latex`
-  - `latex-tree`
+Credit to https://github.com/spagnuolocarmine/TwentySecondsCurriculumVitae-LaTex which I pulled many examples from!
 
 ---
 ### Misc. Notes

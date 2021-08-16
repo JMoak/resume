@@ -2,7 +2,7 @@
 % Jordan Moak  Resume/CV Class
 % Edited from a template on 10/22/2017
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ProvidesClass{moak-resume}[2015/02/28 CV class]
+\ProvidesClass{moak-resume}[2021/08/15 CV class]
 \NeedsTeXFormat{LaTeX2e}
 
 \DeclareOption{print}{\def\@cv@print{}}
@@ -12,39 +12,36 @@
 \ProcessOptions\relax
 \LoadClass{article}
 
+\usepackage{fontawesome5}
+\RequirePackage[math-style=TeX]{unicode-math}
+\RequirePackage{xcolor}
+\RequirePackage[absolute,overlay]{textpos}
+\RequirePackage{ifthen}
+\RequirePackage{parskip}
+\RequirePackage{tikz}
+
 
 %%%%%%%%%%
 % Colors %
 %%%%%%%%%%
-
-\RequirePackage{xcolor}
-
 \definecolor{white}{RGB}{255,255,255}
-
-\definecolor{redsRED}{HTML}{BA0C2F}
-\definecolor{headerred}{HTML}{e00d38}
-\definecolor{redsNode}{HTML}{e8788e}
-
-\definecolor{redsFigureColor1}{HTML}{af2844}
-\definecolor{redsFigureColor2}{HTML}{75414b}
-\definecolor{redsFigureColor3}{HTML}{c15e72}
-\definecolor{redsFigureColor4}{HTML}{e84062}
-\definecolor{redsFigureColor5}{HTML}{b77985}
-\definecolor{redsFigureColor6}{HTML}{5e0c1b}
-\definecolor{redsFigureColor7}{HTML}{a50124}
-
-\definecolor{mainpurple}{HTML}{8d5daf}
-\definecolor{headerpurple}{HTML}{8d5daf}
+\definecolor{black}{HTML}{18101f}
 \definecolor{darkgray}{HTML}{5e5e5e}
 \definecolor{gray}{HTML}{4D4D4D}
-
 \definecolor{lightgray}{HTML}{999999}
+\definecolor{reallylightgray}{HTML}{E7E7E7}
+
+\definecolor{mainpurple}{HTML}{8d5daf}
+\definecolor{darkpurple}{HTML}{5c3975}
+\definecolor{headerpurple}{HTML}{8d5daf}
+
 \definecolor{green}{HTML}{C2E15F}
 \definecolor{orange}{HTML}{FDA333}
 \definecolor{purple}{HTML}{D3A4F9}
 \definecolor{red}{HTML}{FB4485}
 \definecolor{blue}{HTML}{6CE0F1}
 \definecolor{pblue}{HTML}{0395DE}
+
 \definecolor{materialpurple}{HTML}{9C27B0}
 \definecolor{materialindigo}{HTML}{3F51B5}
 \definecolor{materialblue}{HTML}{2196F3}
@@ -75,10 +72,6 @@
 %%%%%%%%%
 % Fonts %
 %%%%%%%%%
-
-\RequirePackage[quiet]{fontspec}
-\RequirePackage[math-style=TeX]{unicode-math}
-
 \newfontfamily\bodyfont
 [
 	Path = Fonts/,
@@ -103,13 +96,6 @@
 {texgyreheros-regular.otf}
 
 \setmathfont[Path=Fonts/]{texgyreheros-regular.otf}
-%%%
-
-%%%%%%%%%%
-% Header %
-%%%%%%%%%%
-
-\RequirePackage{tikz}
 
 \newcommand{\rolefont}{%
   \fontsize{14pt}{24pt}\selectfont%
@@ -117,22 +103,11 @@
   \color{white}%
 }
 
-\newcommand{\header}[3]{%
-  \begin{tikzpicture}[remember picture,overlay]
-    \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=3cm] (box) at (current page.north){};
-    \node [anchor=center] (name) at (box) {%
-      \fontsize{30pt}{62pt}\color{white}%
-      {\thinfont #1}{\bodyfont  #2}
-    };
-    \node [anchor=north] at (name.south) {%
-      \fontsize{14pt}{24pt}\color{headerred}%
-      \bodyfont #3%
-    };
-  \end{tikzpicture}
-  \vspace{0.5cm}
-  \vspace{-2\parskip}
+\newcommand{\contactfont}{%
+  \fontsize{10pt}{10pt}\selectfont%
+  \bodyfont%
+  \color{darkgray}%
 }
-
 
 %%%%%%%%%%
 % Footer %
@@ -142,11 +117,11 @@
 	\begin{tikzpicture}[remember picture,overlay]
 	\node [rectangle, fill=fillheader, anchor=south, minimum width=\paperwidth, minimum height=1cm] (box) at (current page.south){};
 	\node [anchor=center] (name) at (box) {%
-		\fontsize{14pt}{24pt}\color{headerred}%
+		\fontsize{14pt}{24pt}\color{headerpurple}%
 		\bodyfont #1%
 	};
 	\end{tikzpicture}
-	\vspace{0.5cm}
+	\vspace{0.7cm}
 	\vspace{-2\parskip}
 }
 
@@ -154,19 +129,18 @@
 %%%%%%%%%%%%%
 % Structure %
 %%%%%%%%%%%%%
-\RequirePackage{parskip}
 
 \newcounter{colorCounter}
 \def\@sectioncolor#1#2#3{%
   {%
     \color{%
       \ifcase\value{colorCounter}%
-        redsRED\or%
-        redsRED\or%
-        redsRED\or%
-        redsRED\or%
-        redsRED\else%
-        redsRED\fi%
+        mainpurple\or%
+        mainpurple\or%
+        mainpurple\or%
+        mainpurple\or%
+        mainpurple\else%
+        mainpurple\fi%
     } #1#2#3%
   }%
   \stepcounter{colorCounter}%
@@ -175,17 +149,12 @@
 \renewcommand{\section}[1]{
   \par\vspace{\parskip}
   {%
-    \LARGE\headingfont\color{headercolor}%
-    \@sectioncolor #1%
+    \Large\headingfont\color{headercolor}%
+    \@sectioncolor #1
   }
   \par\vspace{\parskip}
 }
 
-%\renewcommand{\subsection}[2]{
-%  \par\vspace{.5\parskip}%
-%  \Large\headingfont\color{headercolor} #2%
-%  \par\vspace{.25\parskip}%
-%}
 \renewcommand{\subsection}[1]{
 	\par\vspace{.5\parskip}%
 	{\Large\headingfont\color{headercolor} #1}
@@ -222,7 +191,6 @@
 %%%%%%%%%%%%%%%%%%%%
 % List environment %
 %%%%%%%%%%%%%%%%%%%%
-
 \setlength{\tabcolsep}{0pt}
 \newenvironment{entrylist}{%
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
@@ -231,35 +199,99 @@
 }
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
 \newcommand{\entry}[4]{%
-  #1&\parbox[t]{11.8cm}{%
-    \textbf{#2}%
+  {\textbf{\tiny\addfontfeature{Color=textcolor} #1}}&\parbox[t]{12.3cm}{%
+ 	\textbf{#2}%
     \hfill%
-    {\footnotesize\addfontfeature{Color=redsRED} #3}\\%
-    #4\vspace{\parsep}%
+	\hfill%
+	\hfill%
+    {\textbf{\scriptsize\addfontfeature{Color=mainpurple} #3}}%
   }\\}
 
 
 %%%%%%%%%%%%%%
 % Side block %
 %%%%%%%%%%%%%%
+% Command for printing the contact information icons
+\newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainpurple,mainpurple,text=white] (char) {#1};}}
 
-\RequirePackage[absolute,overlay]{textpos}
+\newcommand{\makesidebar}{
+	\begin{tikzpicture}[remember picture,overlay]
+   		\node [rectangle, fill=reallylightgray, anchor=north, minimum width=9cm, minimum height=\paperheight+2.2cm] (sidebox) at (-5cm,0cm){};
+	\end{tikzpicture}
+}
+
+\newcommand{\makeprofile}[8]{
+
+  	\makesidebar
+
+	\begin{tikzpicture}[remember picture,overlay]
+   		\node [rectangle, fill=lightgray, anchor=north, minimum width=9cm, minimum height=9.5cm] (contactbox) at (-5cm,2cm){};
+		\node [anchor=west] (phone) at (-5.95cm,-4.4cm) {%
+			\fontsize{12pt}{12pt}\color{textcolor}%
+			{\contactfont #4}
+		};
+		\node [anchor=west] (email) at (-5.95cm,-5.0cm) {%
+			\fontsize{12pt}{12pt}\color{textcolor}%
+			{\contactfont #5}
+		};
+		\node [anchor=west] (github) at (-5.95cm,-5.6cm) {%
+			\fontsize{12pt}{12pt}\color{textcolor}%
+			{\contactfont #6}
+		};
+		\node [anchor=west] (linkedin) at (-5.95cm,-6.2cm) {%
+			\fontsize{12pt}{12pt}\color{textcolor}%
+			{\contactfont #7}
+		};
+		\node [anchor=west] (location) at (-5.95cm,-6.8cm) {%
+			\fontsize{12pt}{12pt}\color{textcolor}%
+			{\contactfont #8}
+		};
+	\end{tikzpicture}
+
+	\begin{tikzpicture}[remember picture,overlay]
+   		\node [rectangle, fill=headercolor, anchor=north, minimum width=9cm, minimum height=5.2cm] (namebox) at (-5cm,2cm){};
+		\node [anchor=west] (name) at (-5.75cm,-1.95cm) {%
+			\fontsize{24pt}{50pt}\color{white}%
+			{\thinfont #1}{\bodyfont  #2}
+		};
+		\node [anchor=west] at (-4.82cm,-2.72cm) {%
+			\fontsize{12pt}{24pt}\color{headerpurple}%
+			\bodyfont ~#3%
+		};
+	\end{tikzpicture}
+}
+
+
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
 \newenvironment{aside}{%
   \let\oldsection\section
   \renewcommand{\section}[1]{
-    \par\vspace{\baselineskip}{\Large\headingfont\color{redsRED} ##1}
+    \par\vspace{\baselineskip}{\Large\headingfont\color{mainpurple} ##1}
   }
-  \begin{textblock}{3.6}(1.25, 2.8)
-  \begin{flushright}
+  \begin{textblock}{4.9}(0.4, 6.0)
+  \begin{flushleft}
   \obeycr
 }{%
   \restorecr
-  \end{flushright}
+  \end{flushleft}
   \end{textblock}
   \let\section\oldsection
 }
+
+
+\newlength{\TotalSectionLength} % Define a new length to hold the remaining line width after the section title is printed
+\newlength{\SectionTitleLength} % Define a new length to hold the width of the section title
+\newcommand{\profilesection}[1]{%
+	\setlength\TotalSectionLength{\linewidth}% Set the total line width
+	\settowidth{\SectionTitleLength}{\Large #1 }% Calculate the width of the section title
+	\addtolength\TotalSectionLength{-\SectionTitleLength}% Subtract the section title width from the total width
+	\addtolength\TotalSectionLength{-2.22221pt}% Modifier to remove overfull box warning
+	\vspace{0.8cm}% Whitespace before the section title
+	{\large\headingfont\color{mainpurple} #1 \rule[0.15\baselineskip]{\TotalSectionLength}{1pt}}% Print the title and auto-width rule
+	\vspace{0.2cm}
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%
 % Diagrams and Charts %
@@ -277,15 +309,15 @@
 			%square,
 			polar,
 			%cloud,
-			color={redsFigureColor1, redsFigureColor2, redsFigureColor3, redsFigureColor4, redsFigureColor5, redsFigureColor6, redsFigureColor7},
+			color={materialcyan, materialred, materialorange, materialteal, materialamber, materialindigo, materialgreen, materialpurple},
 			before number=\phantom, 
 			after number=,
-			%text=inside
+			%text=inside,
 			text=pin
 			%style = drop shadow,
 			%scale font
 	]
-	{17/Java, 5/C\#, 30/SAS, 17/R, 10/SQL, 14/PowerShell, 7/HTML}% values and labels
+	{10/\scriptsize R, 14/\scriptsize Java, 17/\scriptsize C\#, 20/\scriptsize SAS, 25/\scriptsize JS, 30/\scriptsize Python, 5/\scriptsize Ruby, 7/\scriptsize Scala}% values and labels
 	\end{tikzpicture}
 	\vspace{0.1cm}
 	\vspace{-2\parskip}
@@ -297,7 +329,7 @@
 		\begin{tikzpicture}[remember picture]
 		\foreach [count=\i] \x/\y in {#1}{
 			\draw[fill=lightgray,lightgray] (0,\i) rectangle (6,\i+0.4);
-			\draw[fill=white,redsRED](0,\i) rectangle (\y,\i+0.4);
+			\draw[fill=white,mainpurple](0,\i) rectangle (\y,\i+0.4);
 			\node [above left] at (0,\i+0.4) {\x};
 		}
 		\end{tikzpicture}
@@ -314,8 +346,8 @@
 \RequirePackage{smartdiagram}
 
 \smartdiagramset{
-	bubble center node font = \footnotesize,
-	bubble node font = \footnotesize,
+	bubble center node font = \scriptsize,
+	bubble node font = \scriptsize,
 	% specifies the minimum size of the bubble center node
 	bubble center node size = 0.5cm,
 	%  specifies the minimum size of the bubbles
@@ -325,13 +357,13 @@
 	% sets the distance from the text to the border of the bubble center node
 	distance text center bubble = 0.5cm,
 	% set center bubble color
-	bubble center node color = redsNode,
+	bubble center node color = mainpurple,
 	% define the list of colors usable in the diagram
-	set color list = {redsFigureColor1,redsFigureColor2, redsFigureColor3, redsFigureColor6, redsFigureColor7},
+	set color list = {lightgray, materialcyan, orange, green, materialorange, materialteal, materialamber, materialindigo, materialgreen, materiallime},
 	% sets the opacity at which the bubbles are shown
-	bubble fill opacity = 0.6,
+	bubble fill opacity = 0.75,
 	% sets the opacity at which the bubble text is shown
-	bubble text opacity = 0.8,
+	bubble text opacity = 1.0,
 }
 
 
@@ -339,5 +371,5 @@
 % Other tweaks %
 %%%%%%%%%%%%%%%%
 
-\RequirePackage[left=6.1cm,top=2cm,right=1.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
+\RequirePackage[left=6.1cm,top=-2.2cm,right=1cm,bottom=0cm,nohead,nofoot]{geometry}
 \RequirePackage{hyperref}

@@ -1,0 +1,175 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Jordan Moak's Resume				 %
+% Date: 10/22/2017					 %
+% Type: Software QA					 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%!TEX TS-program = xelatex
+\documentclass[]{moak-resume}
+
+% Packages
+\usepackage{afterpage}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{smartdiagram}
+\usepackage{fontspec}
+\usepackage{metalogo}
+\usepackage{tikz}
+\usetikzlibrary{mindmap,shadows}
+\usepackage{pgf-pie}
+\usepackage{pstricks}
+\usepackage{fontawesome5}
+
+% Document Meta information.
+\hypersetup{
+    pdftitle={Jordan Moak's Resume},
+    pdfauthor={Jordan Moak},
+    pdfsubject={Resume},
+    pdfkeywords={The Best},
+    colorlinks=false,           % no link border color
+    allbordercolors=white       % white border color for all
+}
+
+\begin{document}
+
+\makeprofile{Jordan}{Moak}
+            {Software Engineer}
+            {\icon{\faPhone} +513 417 4499}
+            {\icon{\faEnvelope[regular]} \href{mailto:ordan.moak@gmail.com}{ jordan.moak@gmail.com}}
+            {\icon{\faGithub} \href{https://github.com/JMoak/}{ JMoak}}
+            {\icon{\faLinkedin} \href{https://www.linkedin.com/JMoak}{ /in/JMoak/}}
+            {\icon{\faMapMarker} \href{https://www.google.com/maps/place/Indianapolis,+IN/@39.7794476,-86.412935,10z/data=!3m1!4b1!4m5!3m4!1s0x886b50ffa7796a03:0xd68e9df640b9ea7c!8m2!3d39.768403!4d-86.158068}{ Indianapolis, IN}}
+
+% In the aside, each new line forces a line break
+\begin{aside}
+  \profilesection{About Me}
+  \small\bodyfont I'm a hard-working engineer nearing nine years of experience ranging across a variety of tech stacks and industries.  Starting with statistical programming and eventually moving into webservices, I've found a passion for creating software tools and automation solutions in whatever tech stack I'm in.
+  \profilesection{Programming}
+	\programmingPie{}
+  ~
+  \profilesection{Technical Skills}
+  \smartdiagram[bubble diagram]{
+      \textbf{Test}\\\textbf{Automation},
+      \textbf{DevOps},
+      \textbf{CI/CD},
+      \textbf{Mobile}\\\textbf{Automation},
+      \textbf{GameDev},
+      \textbf{Statistical}\\\textbf{Analysis}
+  }
+  ~
+\end{aside}
+~
+% \section{Summary}
+% \begin{entrylist}
+% 	\entry
+% 	{}
+% 	{}
+% 	{}
+% 	{Dedicated, enthusiastic, and passionate programmer with experience in testing automation and the statistical analysis associated with medical device QA and clinical trials.  Driven by the prospect of exceeding expectations in the confrontation of challenging projects and responsibilities which expand personal skills, knowledge, and problem-solving ability.  Ambitious indiviudal offering a combination of exceptional motivation and a great logical sense to ensure the completion of projects ahead of expected timelines.\\}
+% \end{entrylist}
+% \\
+\section{Experience}
+
+ % -- ANGI
+ \begin{entrylist}
+  \entry
+    {[Nov 2018 - Now]}
+    {Software Engineer III}
+    {Angi (formerly known as Angie's List)}
+    {}
+\end{entrylist}
+\begin{itemize}
+  \setlength\itemsep{-0.4em}
+  \item \small\bodyfont Collaborate as a member of a foundation team to design and create tools and code-generation templates issued to delivery teams throughout the organization.
+  \item \small\bodyfont Upgrade and maintain an in-house test-data-management application using Ruby, MySQL, and Javascript/Python for API distribution.
+  \item \small\bodyfont Develop and maintain a state-of-the-art RESTful Miscroservice testing framwork using NodeJS, Mountebank, Cucumber, and in-house test data management to provide CI/CD support via CircleCI.
+  \item \small\bodyfont Lead the design and development of an Appium-based mobile app testing framework using Python, XCUITest/UIAutomator2 integration, and in-house test data management to provide support to four mobile applications.
+  \item \small\bodyfont Improve and maintain a Selenium-based front-end testing framework using Python, Mountebank, Gherkin, and in-house test data management to provide CI/CD support for a Microfrontend architecture.
+  \item \small\bodyfont Act as an automation evanagelist for various testing frameworks; providing documentation, learning bootcamps, and day-to-day support in order to nurture adoption within the organization.
+  \newline
+\end{itemize}
+
+ % -- ROCHE
+\begin{entrylist}
+  \entry
+    {[Sep 2014 - Nov 2018]}
+    {DV Software Engineer}
+    {Roche Diagnostics (Contracted through PRO Unlimited)}
+    {}
+\end{entrylist}
+\begin{itemize}
+  \setlength\itemsep{-0.4em}
+  \item \small\bodyfont Automated an entire mobile-web-medical-device ecosystem using Java, Appium, Selenium, and linux-bash to verify a medical device companion mobile application met rigorous software requirements.
+  \item \small\bodyfont Independently created a reusable suite of tools using a Java, Selenium, Powershell, and SAS to automate software validation within standard operating procedures.
+  \item \small\bodyfont Double-programmed statistical analyses to verify applications developed in server-hosted SAS BI development environments. 
+  \item \small\bodyfont Lead and operated within a team to automate the generation of test datasets and configuration files to ensure proper functionality of software applications.
+  \newline
+\end{itemize}
+
+% -- TSC
+\begin{entrylist}
+  \entry
+    {[Mar 2014 - Aug 2014]}
+    {Programmer/Analyst}
+    {The Stevenson Company}
+    {}
+\end{entrylist}
+\begin{itemize}
+  \setlength\itemsep{-0.4em}
+  \item \small\bodyfont Developed statistical procedures to conduct quality analyses and clean data for statistical web applications and tools for market research. 
+  \item \small\bodyfont Evaluated existing methods of data processing to improve efficiency and code readability, as well as converting existing SAS programs into MySQL and PHP.
+  \item \small\bodyfont Investigated anomalous occurrences and statistical trends to provide feedback to clients.
+  \newline
+\end{itemize}
+
+% -- STATKING
+\begin{entrylist}
+    \entry
+    {[Jan 2013 - Dec 2013]}
+    {Statistical Programmer}
+    {STATKING Clinical Services}
+    {}
+  \end{entrylist}
+\begin{itemize}
+  \setlength\itemsep{-0.4em}
+  \item \small\bodyfont Collaborated within a programming team to complete data management and statistical analysis of 20+ phase I, II, and III clinical trials in various therapeutic areas.
+  \item \small\bodyfont Developed CDISC standard SDTM and ADaM submission datasets using the SAS programming language.
+  \item \small\bodyfont Lead the production of 160+ analysis tables and listings for a Phase III Clinical Trial.
+  \item \small\bodyfont Authored and executed Data Management Plans, Program Design Documents, Logic Checks, Test Plans, and Test Plan Summary Reports.
+  \newline
+\end{itemize}  
+
+% -- Little Miami
+\begin{entrylist}
+    \entry
+    {[Jan 2008 - Jun 2008]}
+    {Intern/Student Teacher (Mathematics)}
+    {Little Miami Junior High}
+    {}
+\end{entrylist}
+\begin{itemize}
+  \setlength\itemsep{-0.4em}
+  \item \small\bodyfont Assisted in class instruction and maintaining productive and enjoyable work environment for students.
+  \item \small\bodyfont Created keys, recorded and maintained records for student assessment, and reviewed lesson plans to ensure accordance with state education regulations.
+  \item \small\bodyfont Tutored students individually to better solidify understanding of the material.
+  \newline
+\end{itemize}  
+
+
+\section{Education}
+\begin{entrylist}
+  \entry
+    {[2008 - 2013]}
+    {Bachelor's Degree in Mathematics}
+    {Northern Kentucky University}
+    {Specialization in Applied Mathematics\\}
+  \entry
+    {[2008 - 2013]}
+    {Bachelor's Degree in Statistics}
+    {Northern Kentucky University}
+    {Capstone project written in the R programming language to detect anomalies in credit card usage data, then predict the legitimacy of such detections as occurrences of fraudulent behavior.\\}
+\end{entrylist}
+\\
+% \footer {References Available Upon Request}
+\end{document}
