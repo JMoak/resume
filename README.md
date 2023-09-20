@@ -36,4 +36,4 @@ Credit to https://github.com/spagnuolocarmine/TwentySecondsCurriculumVitae-LaTex
 
 ---
 ### Misc. Notes
-None yet
+Note to self, if using LaTeX Workshop in VSCode, some configuration and compliation settings may need to be udpated.  
