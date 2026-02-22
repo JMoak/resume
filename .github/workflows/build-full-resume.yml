@@ -1,0 +1,73 @@
+name: Build Resume PDF - Full Version Test
+
+on:
+  push:
+    branches: [ test/** ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Install TeX Live packages
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          texlive-xetex \
+          texlive-fonts-recommended \
+          texlive-fonts-extra \
+          texlive-latex-extra \
+          texlive-lang-english \
+          texlive-pictures \
+          texlive-pstricks \
+          texlive-science \
+          texlive-font-utils
+        
+    - name: Verify xelatex
+      run: |
+        which xelatex
+        xelatex --version
+        
+    - name: List files
+      working-directory: Software Engineer
+      run: |
+        echo "Files:"
+        ls -la
+        echo ""
+        echo "Fonts:"
+        ls -la Fonts/
+        
+    - name: Compile Full Resume
+      working-directory: Software Engineer
+      run: |
+        echo "=== Compiling full resume ==="
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee compile.log
+        EXIT_CODE=$?
+        echo "First run exit code: $EXIT_CODE"
+        
+        if [ $EXIT_CODE -eq 0 ] || [ -f "Jordan Moak Resume.pdf" ]; then
+          echo "First run succeeded or PDF created, running second pass..."
+          xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee -a compile.log
+        fi
+        
+        echo ""
+        echo "=== Checking for PDF ==="
+        ls -la *.pdf
+        
+    - name: Upload compile log
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: compile-log
+        path: Software Engineer/compile.log
+        
+    - name: Upload PDF
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: resume-pdf
+        path: Software Engineer/Jordan Moak Resume.pdf
