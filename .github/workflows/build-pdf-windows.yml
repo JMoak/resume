@@ -1,0 +1,47 @@
+name: Build Resume PDF - Windows (MiKTeX)
+
+on:
+  push:
+    branches: [ master, main, 'update/**', 'test/**' ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup MiKTeX
+      uses: xu-cheng/texlive-action/full@v2
+      with:
+        run: |
+          echo "MiKTeX setup would go here"
+          
+    - name: Alternative - Install MiKTeX manually
+      run: |
+        # Download MiKTeX portable
+        $url = "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/basic-miktex-23.12-x64.exe"
+        Invoke-WebRequest -Uri $url -OutFile "miktex-setup.exe"
+        
+        # Silent install
+        Start-Process -FilePath ".\miktex-setup.exe" -ArgumentList "--auto-install=yes", "--unattended" -Wait
+        
+        # Add to PATH
+        $env:PATH += ";C:\Program Files\MiKTeX\miktex\bin\x64"
+        
+    - name: Compile Resume
+      working-directory: Software Engineer
+      run: |
+        $env:PATH += ";C:\Program Files\MiKTeX\miktex\bin\x64"
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
+        
+    - name: Upload PDF
+      uses: actions/upload-artifact@v4
+      with:
+        name: resume-pdf-windows
+        path: Software Engineer/Jordan Moak Resume.pdf

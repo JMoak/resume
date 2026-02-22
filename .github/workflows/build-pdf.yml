@@ -2,69 +2,91 @@ name: Build Resume PDF
 
 on:
   push:
-    branches: [ master, main, 'update/**' ]
+    branches: [ master, main, 'update/**', 'test/**' ]
   pull_request:
     branches: [ master, main ]
   workflow_dispatch:
 
 jobs:
-  build:
+  build-linux:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Install TeX Live packages
+    - name: Install TeX Live
       run: |
         sudo apt-get update
-        sudo apt-get install -y \
-          texlive-xetex \
-          texlive-fonts-recommended \
-          texlive-fonts-extra \
-          texlive-latex-extra \
-          texlive-lang-english \
-          texlive-pictures \
-          texlive-pstricks \
-          texlive-science \
-          texlive-font-utils
+        # Install texlive-full which includes everything
+        sudo apt-get install -y texlive-full fonts-liberation
+        # This is large (~5GB) but ensures we have all packages
         
-    - name: Verify xelatex
+    - name: Verify installation and list fonts
       run: |
         which xelatex
-        xelatex --version | head -3
+        xelatex --version
+        echo ""
+        echo "System fonts available:"
+        fc-list | head -20
         
-    - name: Compile Resume
+    - name: List local files
       working-directory: Software Engineer
       run: |
-        echo "=== Compiling resume ==="
-        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee compile.log
-        EXIT_CODE=$?
-        echo "First run exit code: $EXIT_CODE"
+        echo "Files in directory:"
+        ls -la
+        echo ""
+        echo "Fonts directory:"
+        ls -la Fonts/
         
+    - name: Compile Resume (First Pass)
+      working-directory: Software Engineer
+      run: |
+        echo "=== First xelatex run ==="
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee compile1.log
+        echo "Exit code: $?"
+        
+    - name: Check PDF after first pass
+      working-directory: Software Engineer
+      run: |
         if [ -f "Jordan Moak Resume.pdf" ]; then
-          echo "PDF created, running second pass..."
-          xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee -a compile.log
+          echo "✓ PDF created after first pass"
+          ls -lh "Jordan Moak Resume.pdf"
+        else
+          echo "✗ No PDF after first pass"
+          echo "=== Errors from first run ==="
+          grep -i "error\|!" compile1.log | head -30
         fi
         
-        echo ""
-        echo "=== Checking for PDF ==="
-        ls -la *.pdf
+    - name: Compile Resume (Second Pass)
+      working-directory: Software Engineer
+      run: |
+        echo "=== Second xelatex run ==="
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee compile2.log
         
-    - name: Upload PDF artifact
+    - name: Upload all logs
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: compile-logs
+        path: |
+          Software Engineer/compile*.log
+          Software Engineer/*.aux
+          Software Engineer/*.log
+        
+    - name: Upload PDF
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: resume-pdf
         path: Software Engineer/Jordan Moak Resume.pdf
         
-    - name: Verify PDF created
+    - name: Verify PDF
       run: |
         if [ -f "Software Engineer/Jordan Moak Resume.pdf" ]; then
           echo "✓ PDF compiled successfully"
           ls -lh "Software Engineer/Jordan Moak Resume.pdf"
         else
           echo "Error: PDF was not created"
-          cat "Software Engineer/compile.log" | tail -50
           exit 1
         fi
