@@ -19,71 +19,35 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-english texlive-pictures texlive-fonts-extra
-        sudo apt-get install -y fonts-font-awesome
+        sudo apt-get install -y fonts-liberation fonts-font-awesome
         
     - name: Verify installation
       run: |
         which xelatex
         xelatex --version | head -3
         
-    - name: Try full resume compilation
+    - name: Compile Minimal Resume (Primary)
       working-directory: Software Engineer
       run: |
-        echo "=== Attempting full resume compilation ==="
-        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee compile.log
-        FIRST_EXIT=$?
-        echo "First run exit code: $FIRST_EXIT"
+        echo "=== Compiling minimal resume ==="
+        xelatex -interaction=nonstopmode -halt-on-error "Jordan Moak Resume Minimal.tex" 2>&1 | tee compile.log
+        xelatex -interaction=nonstopmode -halt-on-error "Jordan Moak Resume Minimal.tex" 2>&1 | tee -a compile.log
         
-        if [ $FIRST_EXIT -eq 0 ]; then
-          echo "First run succeeded, running second pass..."
-          xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee -a compile.log
+        if [ -f "Jordan Moak Resume Minimal.pdf" ]; then
+          mv "Jordan Moak Resume Minimal.pdf" "Jordan Moak Resume.pdf"
+          echo "✓ Minimal resume compiled successfully"
+        else
+          echo "Error: PDF not created"
+          cat compile.log
+          exit 1
         fi
-        
-        echo ""
-        echo "=== Checking for PDF ==="
-        ls -la *.pdf 2>/dev/null || echo "No PDF found"
-        
-    - name: Fallback to minimal resume if full version failed
-      working-directory: Software Engineer
-      run: |
-        if [ ! -f "Jordan Moak Resume.pdf" ]; then
-          echo "Full resume compilation failed, trying minimal version..."
-          xelatex -interaction=nonstopmode "Jordan Moak Resume Minimal.tex" 2>&1 | tee minimal.log
-          xelatex -interaction=nonstopmode "Jordan Moak Resume Minimal.tex" 2>&1 | tee -a minimal.log
-          
-          if [ -f "Jordan Moak Resume Minimal.pdf" ]; then
-            mv "Jordan Moak Resume Minimal.pdf" "Jordan Moak Resume.pdf"
-            echo "Used minimal version as fallback"
-          fi
-        fi
-        
-    - name: Upload compile logs
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: compile-logs
-        path: |
-          Software Engineer/compile.log
-          Software Engineer/minimal.log
         
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
-      if: always()
       with:
         name: resume-pdf
         path: Software Engineer/Jordan Moak Resume.pdf
         
-    - name: Check PDF was created
+    - name: Verify PDF
       run: |
-        if [ -f "Software Engineer/Jordan Moak Resume.pdf" ]; then
-          echo "✓ PDF compiled successfully"
-          ls -lh "Software Engineer/Jordan Moak Resume.pdf"
-        else
-          echo "Error: PDF was not created"
-          echo "=== Compile errors (full) ==="
-          cat "Software Engineer/compile.log" 2>/dev/null | grep -i "error\|!" | head -30 || echo "No full log"
-          echo ""
-          echo "=== Compile errors (minimal) ==="
-          cat "Software Engineer/minimal.log" 2>/dev/null | grep -i "error\|!" | head -30 || echo "No minimal log"
-          exit 1
-        fi
+        ls -lh "Software Engineer/Jordan Moak Resume.pdf"
