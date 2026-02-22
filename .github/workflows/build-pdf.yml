@@ -15,39 +15,56 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Install TeX Live
+    - name: Install TeX Live packages
       run: |
         sudo apt-get update
-        sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-english texlive-pictures texlive-fonts-extra
-        sudo apt-get install -y fonts-liberation fonts-font-awesome
+        sudo apt-get install -y \
+          texlive-xetex \
+          texlive-fonts-recommended \
+          texlive-fonts-extra \
+          texlive-latex-extra \
+          texlive-lang-english \
+          texlive-pictures \
+          texlive-pstricks \
+          texlive-science \
+          texlive-font-utils
         
-    - name: Verify installation
+    - name: Verify xelatex
       run: |
         which xelatex
         xelatex --version | head -3
         
-    - name: Compile Minimal Resume (Primary)
+    - name: Compile Resume
       working-directory: Software Engineer
       run: |
-        echo "=== Compiling minimal resume ==="
-        xelatex -interaction=nonstopmode -halt-on-error "Jordan Moak Resume Minimal.tex" 2>&1 | tee compile.log
-        xelatex -interaction=nonstopmode -halt-on-error "Jordan Moak Resume Minimal.tex" 2>&1 | tee -a compile.log
+        echo "=== Compiling resume ==="
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee compile.log
+        EXIT_CODE=$?
+        echo "First run exit code: $EXIT_CODE"
         
-        if [ -f "Jordan Moak Resume Minimal.pdf" ]; then
-          mv "Jordan Moak Resume Minimal.pdf" "Jordan Moak Resume.pdf"
-          echo "✓ Minimal resume compiled successfully"
-        else
-          echo "Error: PDF not created"
-          cat compile.log
-          exit 1
+        if [ -f "Jordan Moak Resume.pdf" ]; then
+          echo "PDF created, running second pass..."
+          xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee -a compile.log
         fi
+        
+        echo ""
+        echo "=== Checking for PDF ==="
+        ls -la *.pdf
         
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
+      if: always()
       with:
         name: resume-pdf
         path: Software Engineer/Jordan Moak Resume.pdf
         
-    - name: Verify PDF
+    - name: Verify PDF created
       run: |
-        ls -lh "Software Engineer/Jordan Moak Resume.pdf"
+        if [ -f "Software Engineer/Jordan Moak Resume.pdf" ]; then
+          echo "✓ PDF compiled successfully"
+          ls -lh "Software Engineer/Jordan Moak Resume.pdf"
+        else
+          echo "Error: PDF was not created"
+          cat "Software Engineer/compile.log" | tail -50
+          exit 1
+        fi
