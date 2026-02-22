@@ -34,7 +34,8 @@ jobs:
       shell: pwsh
       run: |
         Write-Host "::group::Downloading MiKTeX Portable"
-        $miktexUrl = "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktex-portable-${env:MIKTEX_VERSION}.exe"
+        # MiKTeX portable is the basic installer renamed to miktex-portable.exe
+        $miktexUrl = "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/basic-miktex-${env:MIKTEX_VERSION}-x64.exe"
         $outputPath = "${{ runner.temp }}\\miktex-portable.exe"
         
         Write-Host "Downloading from: $miktexUrl"
@@ -42,7 +43,8 @@ jobs:
           Invoke-WebRequest -Uri $miktexUrl -OutFile $outputPath -MaximumRetryCount 3 -RetryIntervalSec 5
           Write-Host "Downloaded: $([math]::Round((Get-Item $outputPath).Length / 1MB, 2)) MB"
         } catch {
-          $miktexUrl = "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktex-portable.exe"
+          # Try latest without version number
+          $miktexUrl = "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/basic-miktex-x64.exe"
           Write-Host "Trying fallback: $miktexUrl"
           Invoke-WebRequest -Uri $miktexUrl -OutFile $outputPath
         }
