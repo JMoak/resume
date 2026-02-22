@@ -26,39 +26,45 @@ jobs:
         which xelatex
         xelatex --version | head -3
         
-    - name: List files
+    - name: Try full resume compilation
       working-directory: Software Engineer
       run: |
-        echo "Files in directory:"
-        ls -la
-        echo ""
-        echo "Class file:"
-        ls -la moak-resume.cls
-        echo ""
-        echo "Fonts directory:"
-        ls -la Fonts/
+        echo "=== Attempting full resume compilation ==="
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee compile.log
+        FIRST_EXIT=$?
+        echo "First run exit code: $FIRST_EXIT"
         
-    - name: Compile Resume PDF
-      working-directory: Software Engineer
-      run: |
-        echo "=== First xelatex run ==="
-        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee compile.log || true
+        if [ $FIRST_EXIT -eq 0 ]; then
+          echo "First run succeeded, running second pass..."
+          xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee -a compile.log
+        fi
+        
         echo ""
-        echo "=== Checking for PDF after first run ==="
-        ls -la *.pdf 2>/dev/null || echo "No PDF after first run"
-        echo ""
-        echo "=== Second xelatex run ==="
-        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee -a compile.log || true
-        echo ""
-        echo "=== Final check for PDF ==="
+        echo "=== Checking for PDF ==="
         ls -la *.pdf 2>/dev/null || echo "No PDF found"
         
-    - name: Upload compile log
+    - name: Fallback to minimal resume if full version failed
+      working-directory: Software Engineer
+      run: |
+        if [ ! -f "Jordan Moak Resume.pdf" ]; then
+          echo "Full resume compilation failed, trying minimal version..."
+          xelatex -interaction=nonstopmode "Jordan Moak Resume Minimal.tex" 2>&1 | tee minimal.log
+          xelatex -interaction=nonstopmode "Jordan Moak Resume Minimal.tex" 2>&1 | tee -a minimal.log
+          
+          if [ -f "Jordan Moak Resume Minimal.pdf" ]; then
+            mv "Jordan Moak Resume Minimal.pdf" "Jordan Moak Resume.pdf"
+            echo "Used minimal version as fallback"
+          fi
+        fi
+        
+    - name: Upload compile logs
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: compile-log
-        path: Software Engineer/compile.log
+        name: compile-logs
+        path: |
+          Software Engineer/compile.log
+          Software Engineer/minimal.log
         
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
@@ -74,7 +80,10 @@ jobs:
           ls -lh "Software Engineer/Jordan Moak Resume.pdf"
         else
           echo "Error: PDF was not created"
-          echo "=== Compile errors ==="
-          cat Software Engineer/compile.log | grep -i "error\|!" | head -30
+          echo "=== Compile errors (full) ==="
+          cat "Software Engineer/compile.log" 2>/dev/null | grep -i "error\|!" | head -30 || echo "No full log"
+          echo ""
+          echo "=== Compile errors (minimal) ==="
+          cat "Software Engineer/minimal.log" 2>/dev/null | grep -i "error\|!" | head -30 || echo "No minimal log"
           exit 1
         fi
