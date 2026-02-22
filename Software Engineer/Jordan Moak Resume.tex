@@ -21,9 +21,8 @@
 \usepackage{pstricks}
 \usepackage{fontawesome5}
 
-% Hidden text for LLM parsing (recruiters)
-\definecolor{invisible}{RGB}{255,255,255}
-\newcommand{\invisibletext}[1]{\textcolor{invisible}{#1}}
+% Light gray for subtle keywords
+\definecolor{keywordgray}{RGB}{180,180,180}
 
 % Document Meta information.
 \hypersetup{
@@ -38,7 +37,7 @@
 \begin{document}
 
 % Visible keywords for LLM/ATS parsing (subtle gray)
-\noindent\textcolor{lightgray}{\small\textit{Keywords: Senior Software Engineer, 13+ years, platform engineering, system architecture, automation, $48K+ savings, AI/LLM, MCP, TypeScript, Java, Node.js}}
+\noindent\textcolor{keywordgray}{\small\textit{Keywords: Senior Software Engineer, 13+ years, platform engineering, system architecture, automation, $48K+ savings, AI/LLM, MCP, TypeScript, Java, Node.js}}
 
 \makeprofile{Jordan}{Moak}
             {Senior Software Engineer}
