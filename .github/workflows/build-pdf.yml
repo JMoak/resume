@@ -7,86 +7,90 @@ on:
     branches: [ master, main ]
   workflow_dispatch:
 
+env:
+  MIKTEX_DIR: ${{ github.workspace }}\miktex-portable
+
 jobs:
-  build-linux:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: windows-latest
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Install TeX Live
-      run: |
-        sudo apt-get update
-        # Install texlive-full which includes everything
-        sudo apt-get install -y texlive-full fonts-liberation
-        # This is large (~5GB) but ensures we have all packages
-        
-    - name: Verify installation and list fonts
-      run: |
-        which xelatex
-        xelatex --version
-        echo ""
-        echo "System fonts available:"
-        fc-list | head -20
-        
-    - name: List local files
-      working-directory: Software Engineer
-      run: |
-        echo "Files in directory:"
-        ls -la
-        echo ""
-        echo "Fonts directory:"
-        ls -la Fonts/
-        
-    - name: Compile Resume (First Pass)
-      working-directory: Software Engineer
-      run: |
-        echo "=== First xelatex run ==="
-        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee compile1.log
-        echo "Exit code: $?"
-        
-    - name: Check PDF after first pass
-      working-directory: Software Engineer
-      run: |
-        if [ -f "Jordan Moak Resume.pdf" ]; then
-          echo "✓ PDF created after first pass"
-          ls -lh "Jordan Moak Resume.pdf"
-        else
-          echo "✗ No PDF after first pass"
-          echo "=== Errors from first run ==="
-          grep -i "error\|!" compile1.log | head -30
-        fi
-        
-    - name: Compile Resume (Second Pass)
-      working-directory: Software Engineer
-      run: |
-        echo "=== Second xelatex run ==="
-        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | tee compile2.log
-        
-    - name: Upload all logs
-      uses: actions/upload-artifact@v4
-      if: always()
+    - name: Cache MiKTeX
+      uses: actions/cache@v4
+      id: cache-miktex
       with:
-        name: compile-logs
-        path: |
-          Software Engineer/compile*.log
-          Software Engineer/*.aux
-          Software Engineer/*.log
+        path: ${{ env.MIKTEX_DIR }}
+        key: miktex-portable-23.12-${{ runner.os }}
+        
+    - name: Download MiKTeX Portable
+      if: steps.cache-miktex.outputs.cache-hit != 'true'
+      run: |
+        Write-Host "Downloading MiKTeX Portable..."
+        $url = "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktex-portable-23.12-x64.exe"
+        $output = "miktex-portable.exe"
+        Invoke-WebRequest -Uri $url -OutFile $output -UseBasicParsing
+        
+        Write-Host "Extracting MiKTeX Portable..."
+        Start-Process -FilePath $output -ArgumentList "--portable=$env:MIKTEX_DIR", "--unattended" -Wait -NoNewWindow
+        
+        Write-Host "MiKTeX extracted to: $env:MIKTEX_DIR"
+        
+    - name: Setup MiKTeX PATH
+      run: |
+        $miktexBin = "$env:MIKTEX_DIR\texmfs\install\miktex\bin\x64"
+        Write-Host "Adding to PATH: $miktexBin"
+        Add-Content -Path $env:GITHUB_PATH -Value $miktexBin
+        
+    - name: Configure MiKTeX
+      run: |
+        Write-Host "Configuring MiKTeX..."
+        mpm --update-db
+        initexmf --set-config-value [MPM]AutoInstall=1
+        
+        Write-Host "Installing required packages..."
+        mpm --install=smartdiagram
+        mpm --install=fontawesome5
+        mpm --install=pgf-pie
+        mpm --install=pstricks
+        mpm --install=fontspec
+        mpm --install=xcolor
+        mpm --install=tikz
+        mpm --install=unicode-math
+        mpm --install=textpos
+        mpm --install=parskip
+        mpm --install=afterpage
+        mpm --install=hyperref
+        mpm --install=metalogo
+        
+        mpm --update
+        
+    - name: Verify xelatex
+      run: |
+        Get-Command xelatex
+        xelatex --version
+        
+    - name: Compile Resume
+      working-directory: Software Engineer
+      run: |
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
         
     - name: Upload PDF
       uses: actions/upload-artifact@v4
-      if: always()
       with:
         name: resume-pdf
         path: Software Engineer/Jordan Moak Resume.pdf
         
     - name: Verify PDF
+      working-directory: Software Engineer
       run: |
-        if [ -f "Software Engineer/Jordan Moak Resume.pdf" ]; then
-          echo "✓ PDF compiled successfully"
-          ls -lh "Software Engineer/Jordan Moak Resume.pdf"
-        else
-          echo "Error: PDF was not created"
+        if (Test-Path "Jordan Moak Resume.pdf") {
+          Write-Host "✓ PDF compiled successfully"
+          Get-ChildItem "Jordan Moak Resume.pdf"
+        } else {
+          Write-Host "Error: PDF was not created"
           exit 1
-        fi
+        }

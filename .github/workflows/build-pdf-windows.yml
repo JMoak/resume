@@ -1,4 +1,4 @@
-name: Build Resume PDF - Windows (MiKTeX)
+name: Build Resume PDF - Windows MiKTeX
 
 on:
   push:
@@ -7,41 +7,129 @@ on:
     branches: [ master, main ]
   workflow_dispatch:
 
+env:
+  MIKTEX_DIR: ${{ github.workspace }}\miktex-portable
+
 jobs:
-  build-windows:
+  build:
     runs-on: windows-latest
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Setup MiKTeX
-      uses: xu-cheng/texlive-action/full@v2
+    - name: Cache MiKTeX
+      uses: actions/cache@v4
+      id: cache-miktex
       with:
-        run: |
-          echo "MiKTeX setup would go here"
-          
-    - name: Alternative - Install MiKTeX manually
+        path: ${{ env.MIKTEX_DIR }}
+        key: miktex-portable-23.12-${{ runner.os }}
+        
+    - name: Download MiKTeX Portable
+      if: steps.cache-miktex.outputs.cache-hit != 'true'
       run: |
-        # Download MiKTeX portable
-        $url = "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/basic-miktex-23.12-x64.exe"
-        Invoke-WebRequest -Uri $url -OutFile "miktex-setup.exe"
+        Write-Host "Downloading MiKTeX Portable..."
+        $url = "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktex-portable-23.12-x64.exe"
+        $output = "miktex-portable.exe"
+        Invoke-WebRequest -Uri $url -OutFile $output -UseBasicParsing
         
-        # Silent install
-        Start-Process -FilePath ".\miktex-setup.exe" -ArgumentList "--auto-install=yes", "--unattended" -Wait
+        Write-Host "Extracting MiKTeX Portable..."
+        # Extract the self-extracting archive
+        Start-Process -FilePath $output -ArgumentList "--portable=$env:MIKTEX_DIR", "--unattended" -Wait -NoNewWindow
         
-        # Add to PATH
-        $env:PATH += ";C:\Program Files\MiKTeX\miktex\bin\x64"
+        Write-Host "MiKTeX extracted to: $env:MIKTEX_DIR"
         
-    - name: Compile Resume
+    - name: Setup MiKTeX PATH
+      run: |
+        $miktexBin = "$env:MIKTEX_DIR\texmfs\install\miktex\bin\x64"
+        Write-Host "Adding to PATH: $miktexBin"
+        Add-Content -Path $env:GITHUB_PATH -Value $miktexBin
+        
+    - name: Configure MiKTeX
+      run: |
+        Write-Host "Configuring MiKTeX..."
+        # Update package database
+        mpm --update-db
+        
+        # Enable auto-install of missing packages
+        initexmf --set-config-value [MPM]AutoInstall=1
+        
+        # Install required packages upfront to avoid interactive prompts
+        Write-Host "Installing required packages..."
+        mpm --install=smartdiagram
+        mpm --install=fontawesome5
+        mpm --install=pgf-pie
+        mpm --install=pstricks
+        mpm --install=fontspec
+        mpm --install=xcolor
+        mpm --install=tikz
+        mpm --install=unicode-math
+        mpm --install=textpos
+        mpm --install=parskip
+        mpm --install=afterpage
+        mpm --install=hyperref
+        mpm --install=metalogo
+        
+        # Update all packages
+        mpm --update
+        
+    - name: Verify xelatex
+      run: |
+        Write-Host "Verifying xelatex installation..."
+        Get-Command xelatex
+        xelatex --version
+        
+    - name: List files
       working-directory: Software Engineer
       run: |
-        $env:PATH += ";C:\Program Files\MiKTeX\miktex\bin\x64"
-        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
-        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
+        Write-Host "Files in Software Engineer directory:"
+        Get-ChildItem
         
+    - name: Compile Resume (First Pass)
+      working-directory: Software Engineer
+      run: |
+        Write-Host "=== First xelatex run ==="
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | Tee-Object -FilePath compile1.log
+        $exitCode = $LASTEXITCODE
+        Write-Host "Exit code: $exitCode"
+        
+        if (Test-Path "Jordan Moak Resume.pdf") {
+          Write-Host "✓ PDF created after first pass"
+          Get-ChildItem "Jordan Moak Resume.pdf"
+        } else {
+          Write-Host "✗ No PDF after first pass"
+          Write-Host "=== Errors from first run ==="
+          Select-String -Path compile1.log -Pattern "error|!" | Select-Object -First 30
+        }
+        
+    - name: Compile Resume (Second Pass)
+      working-directory: Software Engineer
+      run: |
+        Write-Host "=== Second xelatex run ==="
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 | Tee-Object -FilePath compile2.log
+        
+    - name: Upload compile logs
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: compile-logs
+        path: |
+          Software Engineer/compile*.log
+          
     - name: Upload PDF
       uses: actions/upload-artifact@v4
+      if: always()
       with:
-        name: resume-pdf-windows
+        name: resume-pdf
         path: Software Engineer/Jordan Moak Resume.pdf
+        
+    - name: Verify PDF
+      working-directory: Software Engineer
+      run: |
+        if (Test-Path "Jordan Moak Resume.pdf") {
+          Write-Host "✓ PDF compiled successfully"
+          Get-ChildItem "Jordan Moak Resume.pdf"
+        } else {
+          Write-Host "Error: PDF was not created"
+          exit 1
+        }
