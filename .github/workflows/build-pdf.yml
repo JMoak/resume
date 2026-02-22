@@ -121,7 +121,7 @@ jobs:
         
         # Second pass
         Write-Host "Second pass..."
-        & xelatex -interaction=nonstopmode -halt-onerror "Jordan Moak Resume.tex" 2>&1 | Tee-Object -Append -FilePath "compile.log"
+        & xelatex -interaction=nonstopmode -halt-on-error "Jordan Moak Resume.tex" 2>&1 | Tee-Object -Append -FilePath "compile.log"
         if ($LASTEXITCODE -ne 0) {
           Write-Error "Second pass failed"
           exit 1
