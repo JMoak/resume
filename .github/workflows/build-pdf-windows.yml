@@ -9,7 +9,7 @@ on:
 
 env:
   # MiKTeX portable version to use (check https://miktex.org/download for latest)
-  MIKTEX_VERSION: "24.1"
+  MIKTEX_VERSION: "25.12"
   # Installation directory for MiKTeX portable
   MIKTEX_DIR: "C:\\miktex"
 

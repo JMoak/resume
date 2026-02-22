@@ -1,0 +1,56 @@
+name: Build Resume PDF - Chocolatey MiKTeX
+
+on:
+  push:
+    branches: [ master, main, 'update/**', 'test/**' ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Install MiKTeX via Chocolatey
+      run: |
+        choco install miktex.install --yes --no-progress
+        
+    - name: Add MiKTeX to PATH
+      run: |
+        $miktexBin = "C:\Program Files\MiKTeX\miktex\bin\x64"
+        echo "$miktexBin" | Out-File -FilePath $env:GITHUB_PATH -Append
+        
+    - name: Configure MiKTeX
+      run: |
+        initexmf --set-config-value="[MPM]AutoInstall=1"
+        mpm --update-db
+        
+    - name: Install required packages
+      run: |
+        $packages = @(
+          "xetex", "fontspec", "unicode-math", "xcolor",
+          "smartdiagram", "fontawesome5", "tikz", "pgf-pie",
+          "textpos", "parskip", "hyperref", "afterpage",
+          "pstricks", "metalogo"
+        )
+        foreach ($pkg in $packages) {
+          mpm --install=$pkg 2>&1 | Out-Null
+        }
+        
+    - name: Compile Resume
+      working-directory: Software Engineer
+      run: |
+        $env:MIKTEX_ENABLE_INSTALLER = "true"
+        $env:MIKTEX_MPM_AUTOINSTALL = "1"
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
+        
+    - name: Upload PDF
+      uses: actions/upload-artifact@v4
+      with:
+        name: resume-pdf
+        path: Software Engineer/Jordan Moak Resume.pdf
