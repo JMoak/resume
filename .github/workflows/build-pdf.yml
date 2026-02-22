@@ -10,19 +10,32 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: texlive/texlive:latest-full
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Compile Resume PDF
+    - name: Install TeX Live
       run: |
-        cd "Software Engineer"
-        xelatex -interaction=nonstopmode -halt-on-error "Jordan Moak Resume.tex" || true
-        # Run twice to resolve references
-        xelatex -interaction=nonstopmode -halt-on-error "Jordan Moak Resume.tex"
+        sudo apt-get update
+        sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-latex-extra texlive-lang-english
+        sudo apt-get install -y fonts-font-awesome
+        
+    - name: Compile Resume PDF
+      working-directory: Software Engineer
+      run: |
+        echo "Current directory: $(pwd)"
+        echo "Files in directory:"
+        ls -la
+        echo ""
+        echo "Attempting first xelatex run..."
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 || echo "First run had warnings/errors (normal)"
+        echo ""
+        echo "Attempting second xelatex run..."
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex" 2>&1 || echo "Second run had warnings/errors"
+        echo ""
+        echo "Checking for PDF..."
+        ls -la *.pdf 2>/dev/null || echo "No PDF found"
         
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
@@ -37,6 +50,6 @@ jobs:
           echo "✓ PDF compiled successfully"
           ls -lh "Software Engineer/Jordan Moak Resume.pdf"
         else
-          echo "Warning: PDF was not created"
-          # Don't fail - the artifact upload handles missing files
+          echo "Error: PDF was not created"
+          exit 1
         fi
