@@ -1,0 +1,43 @@
+name: Build Resume PDF
+
+on:
+  push:
+    branches: [ master, main, 'update/**' ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Install TeX Live
+      uses: xu-cheng/texlive-action@v3
+      with:
+        scheme: full
+        
+    - name: Compile Resume PDF
+      working-directory: Software Engineer
+      run: |
+        xelatex -interaction=nonstopmode -halt-on-error "Jordan Moak Resume.tex"
+        # Run twice to resolve references
+        xelatex -interaction=nonstopmode -halt-on-error "Jordan Moak Resume.tex"
+        
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: resume-pdf
+        path: Software Engineer/Jordan Moak Resume.pdf
+        
+    - name: Check PDF was created
+      run: |
+        if [ ! -f "Software Engineer/Jordan Moak Resume.pdf" ]; then
+          echo "Error: PDF was not created"
+          exit 1
+        fi
+        echo "✓ PDF compiled successfully"
+        ls -lh "Software Engineer/Jordan Moak Resume.pdf"
