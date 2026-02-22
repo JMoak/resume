@@ -7,10 +7,6 @@ on:
     branches: [ master, main ]
   workflow_dispatch:
 
-env:
-  MIKTEX_VERSION: "25.12"
-  MIKTEX_DIR: "C:\\miktex"
-
 jobs:
   build:
     runs-on: windows-latest
@@ -19,123 +15,39 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Cache MiKTeX Portable
-      id: cache-miktex
-      uses: actions/cache@v4
-      with:
-        path: ${{ env.MIKTEX_DIR }}
-        key: miktex-portable-${{ env.MIKTEX_VERSION }}-${{ runner.os }}
-        restore-keys: |
-          miktex-portable-${{ env.MIKTEX_VERSION }}-
-          miktex-portable-
-          
-    - name: Download MiKTeX Portable
-      if: steps.cache-miktex.outputs.cache-hit != 'true'
-      shell: pwsh
+    - name: Install MiKTeX via Chocolatey
       run: |
-        Write-Host "::group::Downloading MiKTeX Portable"
-        # Use the version-less URL that redirects to current version
-        # Current version is 25.12 as of Feb 2025
-        $miktexUrl = "https://miktex.org/download/win/basic-miktex-x64.exe"
-        $outputPath = "${{ runner.temp }}\\miktex-portable.exe"
+        choco install miktex.install --yes --no-progress
         
-        Write-Host "Downloading from: $miktexUrl"
-        Invoke-WebRequest -Uri $miktexUrl -OutFile $outputPath -MaximumRetryCount 3 -RetryIntervalSec 5
-        Write-Host "Downloaded: $([math]::Round((Get-Item $outputPath).Length / 1MB, 2)) MB"
-        Write-Host "::endgroup::"
-        
-        Write-Host "::group::Extracting MiKTeX"
-        New-Item -ItemType Directory -Force -Path "${env:MIKTEX_DIR}" | Out-Null
-        $process = Start-Process -FilePath $outputPath -ArgumentList "--target=`"${env:MIKTEX_DIR}`"", "--auto-install=yes" -Wait -PassThru
-        if ($process.ExitCode -ne 0) {
-          Write-Error "Extraction failed with exit code $($process.ExitCode)"
-          exit 1
-        }
-        Write-Host "Extracted to: ${env:MIKTEX_DIR}"
-        Write-Host "::endgroup::"
-
-    - name: Configure MiKTeX
-      shell: pwsh
+    - name: Add MiKTeX to PATH
       run: |
-        Write-Host "::group::Configuring MiKTeX"
-        
-        $miktexBin = "${env:MIKTEX_DIR}\\texmfs\\install\\miktex\\bin\\x64"
+        $miktexBin = "C:\Program Files\MiKTeX\miktex\bin\x64"
         echo "$miktexBin" | Out-File -FilePath $env:GITHUB_PATH -Append
-        $env:PATH = "$miktexBin;$env:PATH"
         
-        # Auto-install settings
-        & "$miktexBin\\initexmf.exe" --set-config-value="[MPM]AutoInstall=1" --verbose
-        & "$miktexBin\\initexmf.exe" --set-config-value="[Core]OnTheFlyInstall=1" --verbose
-        
-        # Update package database
-        & "$miktexBin\\mpm.exe" --update-db --verbose
-        
-        Write-Host "::endgroup::"
-
-    - name: Pre-install Packages
-      shell: pwsh
+    - name: Configure MiKTeX
       run: |
-        Write-Host "::group::Installing LaTeX Packages"
+        initexmf --set-config-value="[MPM]AutoInstall=1"
+        mpm --update-db
         
-        $miktexBin = "${env:MIKTEX_DIR}\\texmfs\\install\\miktex\\bin\\x64"
-        $env:PATH = "$miktexBin;$env:PATH"
-        
+    - name: Install required packages
+      run: |
         $packages = @(
           "xetex", "fontspec", "unicode-math", "xcolor",
           "smartdiagram", "fontawesome5", "tikz", "pgf-pie",
           "textpos", "parskip", "hyperref", "afterpage",
-          "pstricks", "metalogo", "geometry", "ifthen",
-          "enumitem", "etoolbox", "pgfopts"
+          "pstricks", "metalogo"
         )
-        
         foreach ($pkg in $packages) {
-          Write-Host "Installing $pkg..." -NoNewline
-          & "$miktexBin\\mpm.exe" --install=$pkg 2>&1 | Out-Null
-          if ($LASTEXITCODE -eq 0) { Write-Host " ✓" } else { Write-Host " (auto)" }
+          mpm --install=$pkg 2>&1 | Out-Null
         }
         
-        Write-Host "::endgroup::"
-
     - name: Compile Resume
       working-directory: "Software Engineer"
-      shell: pwsh
       run: |
-        Write-Host "::group::Compiling Resume"
-        
-        $miktexBin = "${env:MIKTEX_DIR}\\texmfs\\install\\miktex\\bin\\x64"
-        $env:PATH = "$miktexBin;$env:PATH"
         $env:MIKTEX_ENABLE_INSTALLER = "true"
         $env:MIKTEX_MPM_AUTOINSTALL = "1"
-        
-        # First pass
-        Write-Host "First pass..."
-        & xelatex -interaction=nonstopmode -halt-on-error "Jordan Moak Resume.tex" 2>&1 | Tee-Object -FilePath "compile.log"
-        if ($LASTEXITCODE -ne 0) {
-          Write-Error "First pass failed"
-          exit 1
-        }
-        
-        # Second pass
-        Write-Host "Second pass..."
-        & xelatex -interaction=nonstopmode -halt-on-error "Jordan Moak Resume.tex" 2>&1 | Tee-Object -Append -FilePath "compile.log"
-        if ($LASTEXITCODE -ne 0) {
-          Write-Error "Second pass failed"
-          exit 1
-        }
-        
-        Write-Host "::endgroup::"
-
-    - name: Verify and Upload
-      working-directory: "Software Engineer"
-      shell: pwsh
-      run: |
-        if (Test-Path "Jordan Moak Resume.pdf") {
-          $size = [math]::Round((Get-Item "Jordan Moak Resume.pdf").Length / 1KB, 2)
-          Write-Host "✓ PDF generated: $size KB"
-        } else {
-          Write-Error "PDF not found"
-          exit 1
-        }
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
+        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
         
     - name: Upload PDF
       uses: actions/upload-artifact@v4
