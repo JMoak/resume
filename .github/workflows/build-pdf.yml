@@ -8,7 +8,8 @@ on:
   workflow_dispatch:
 
 env:
-  MIKTEX_DIR: ${{ github.workspace }}\miktex-portable
+  MIKTEX_VERSION: "24.1"
+  MIKTEX_DIR: "C:\\miktex"
 
 jobs:
   build:
@@ -18,79 +19,131 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Cache MiKTeX
-      uses: actions/cache@v4
+    - name: Cache MiKTeX Portable
       id: cache-miktex
+      uses: actions/cache@v4
       with:
         path: ${{ env.MIKTEX_DIR }}
-        key: miktex-portable-23.12-${{ runner.os }}
-        
+        key: miktex-portable-${{ env.MIKTEX_VERSION }}-${{ runner.os }}
+        restore-keys: |
+          miktex-portable-${{ env.MIKTEX_VERSION }}-
+          miktex-portable-
+          
     - name: Download MiKTeX Portable
       if: steps.cache-miktex.outputs.cache-hit != 'true'
+      shell: pwsh
       run: |
-        Write-Host "Downloading MiKTeX Portable..."
-        $url = "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktex-portable-23.12-x64.exe"
-        $output = "miktex-portable.exe"
-        Invoke-WebRequest -Uri $url -OutFile $output -UseBasicParsing
+        Write-Host "::group::Downloading MiKTeX Portable"
+        $miktexUrl = "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktex-portable-${env:MIKTEX_VERSION}.exe"
+        $outputPath = "${{ runner.temp }}\\miktex-portable.exe"
         
-        Write-Host "Extracting MiKTeX Portable..."
-        Start-Process -FilePath $output -ArgumentList "--portable=$env:MIKTEX_DIR", "--unattended" -Wait -NoNewWindow
+        Write-Host "Downloading from: $miktexUrl"
+        try {
+          Invoke-WebRequest -Uri $miktexUrl -OutFile $outputPath -MaximumRetryCount 3 -RetryIntervalSec 5
+          Write-Host "Downloaded: $([math]::Round((Get-Item $outputPath).Length / 1MB, 2)) MB"
+        } catch {
+          $miktexUrl = "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/miktex-portable.exe"
+          Write-Host "Trying fallback: $miktexUrl"
+          Invoke-WebRequest -Uri $miktexUrl -OutFile $outputPath
+        }
+        Write-Host "::endgroup::"
         
-        Write-Host "MiKTeX extracted to: $env:MIKTEX_DIR"
-        
-    - name: Setup MiKTeX PATH
-      run: |
-        $miktexBin = "$env:MIKTEX_DIR\texmfs\install\miktex\bin\x64"
-        Write-Host "Adding to PATH: $miktexBin"
-        Add-Content -Path $env:GITHUB_PATH -Value $miktexBin
-        
+        Write-Host "::group::Extracting MiKTeX"
+        New-Item -ItemType Directory -Force -Path "${env:MIKTEX_DIR}" | Out-Null
+        $process = Start-Process -FilePath $outputPath -ArgumentList "--target=`"${env:MIKTEX_DIR}`"", "--auto-install=yes" -Wait -PassThru
+        if ($process.ExitCode -ne 0) {
+          Write-Error "Extraction failed with exit code $($process.ExitCode)"
+          exit 1
+        }
+        Write-Host "Extracted to: ${env:MIKTEX_DIR}"
+        Write-Host "::endgroup::"
+
     - name: Configure MiKTeX
+      shell: pwsh
       run: |
-        Write-Host "Configuring MiKTeX..."
-        mpm --update-db
-        initexmf --set-config-value [MPM]AutoInstall=1
+        Write-Host "::group::Configuring MiKTeX"
         
-        Write-Host "Installing required packages..."
-        mpm --install=smartdiagram
-        mpm --install=fontawesome5
-        mpm --install=pgf-pie
-        mpm --install=pstricks
-        mpm --install=fontspec
-        mpm --install=xcolor
-        mpm --install=tikz
-        mpm --install=unicode-math
-        mpm --install=textpos
-        mpm --install=parskip
-        mpm --install=afterpage
-        mpm --install=hyperref
-        mpm --install=metalogo
+        $miktexBin = "${env:MIKTEX_DIR}\\texmfs\\install\\miktex\\bin\\x64"
+        echo "$miktexBin" | Out-File -FilePath $env:GITHUB_PATH -Append
+        $env:PATH = "$miktexBin;$env:PATH"
         
-        mpm --update
+        # Auto-install settings
+        & "$miktexBin\\initexmf.exe" --set-config-value="[MPM]AutoInstall=1" --verbose
+        & "$miktexBin\\initexmf.exe" --set-config-value="[Core]OnTheFlyInstall=1" --verbose
         
-    - name: Verify xelatex
+        # Update package database
+        & "$miktexBin\\mpm.exe" --update-db --verbose
+        
+        Write-Host "::endgroup::"
+
+    - name: Pre-install Packages
+      shell: pwsh
       run: |
-        Get-Command xelatex
-        xelatex --version
+        Write-Host "::group::Installing LaTeX Packages"
         
+        $miktexBin = "${env:MIKTEX_DIR}\\texmfs\\install\\miktex\\bin\\x64"
+        $env:PATH = "$miktexBin;$env:PATH"
+        
+        $packages = @(
+          "xetex", "fontspec", "unicode-math", "xcolor",
+          "smartdiagram", "fontawesome5", "tikz", "pgf-pie",
+          "textpos", "parskip", "hyperref", "afterpage",
+          "pstricks", "metalogo", "geometry", "ifthen",
+          "enumitem", "etoolbox", "pgfopts"
+        )
+        
+        foreach ($pkg in $packages) {
+          Write-Host "Installing $pkg..." -NoNewline
+          & "$miktexBin\\mpm.exe" --install=$pkg 2>&1 | Out-Null
+          if ($LASTEXITCODE -eq 0) { Write-Host " ✓" } else { Write-Host " (auto)" }
+        }
+        
+        Write-Host "::endgroup::"
+
     - name: Compile Resume
-      working-directory: Software Engineer
+      working-directory: "Software Engineer"
+      shell: pwsh
       run: |
-        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
-        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
+        Write-Host "::group::Compiling Resume"
+        
+        $miktexBin = "${env:MIKTEX_DIR}\\texmfs\\install\\miktex\\bin\\x64"
+        $env:PATH = "$miktexBin;$env:PATH"
+        $env:MIKTEX_ENABLE_INSTALLER = "true"
+        $env:MIKTEX_MPM_AUTOINSTALL = "1"
+        
+        # First pass
+        Write-Host "First pass..."
+        & xelatex -interaction=nonstopmode -halt-on-error "Jordan Moak Resume.tex" 2>&1 | Tee-Object -FilePath "compile.log"
+        if ($LASTEXITCODE -ne 0) {
+          Write-Error "First pass failed"
+          exit 1
+        }
+        
+        # Second pass
+        Write-Host "Second pass..."
+        & xelatex -interaction=nonstopmode -halt-onerror "Jordan Moak Resume.tex" 2>&1 | Tee-Object -Append -FilePath "compile.log"
+        if ($LASTEXITCODE -ne 0) {
+          Write-Error "Second pass failed"
+          exit 1
+        }
+        
+        Write-Host "::endgroup::"
+
+    - name: Verify and Upload
+      working-directory: "Software Engineer"
+      shell: pwsh
+      run: |
+        if (Test-Path "Jordan Moak Resume.pdf") {
+          $size = [math]::Round((Get-Item "Jordan Moak Resume.pdf").Length / 1KB, 2)
+          Write-Host "✓ PDF generated: $size KB"
+        } else {
+          Write-Error "PDF not found"
+          exit 1
+        }
         
     - name: Upload PDF
       uses: actions/upload-artifact@v4
       with:
         name: resume-pdf
         path: Software Engineer/Jordan Moak Resume.pdf
-        
-    - name: Verify PDF
-      working-directory: Software Engineer
-      run: |
-        if (Test-Path "Jordan Moak Resume.pdf") {
-          Write-Host "✓ PDF compiled successfully"
-          Get-ChildItem "Jordan Moak Resume.pdf"
-        } else {
-          Write-Host "Error: PDF was not created"
-          exit 1
-        }
+        retention-days: 30
