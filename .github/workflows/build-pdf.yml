@@ -2,10 +2,15 @@ name: Build Resume PDF
 
 on:
   push:
-    branches: [ master, main, 'update/**', 'test/**' ]
+    branches: [ master, main ]
+    tags: [ 'v*' ]
   pull_request:
     branches: [ master, main ]
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -46,12 +51,53 @@ jobs:
       run: |
         $env:MIKTEX_ENABLE_INSTALLER = "true"
         $env:MIKTEX_MPM_AUTOINSTALL = "1"
+        # First pass for aux files
         xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
+        # Second pass for references
         xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
         
-    - name: Upload PDF
+    - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
       with:
         name: resume-pdf
         path: Software Engineer/Jordan Moak Resume.pdf
         retention-days: 30
+        
+    - name: Copy PDF to repository root (on main branch push)
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      run: |
+        Copy-Item "Software Engineer/Jordan Moak Resume.pdf" -Destination "Jordan Moak Resume.pdf" -Force
+        
+    - name: Commit updated PDF (on main branch push)
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add "Jordan Moak Resume.pdf"
+        git diff --staged --quiet || git commit -m "chore: update compiled resume PDF [skip ci]"
+        git push
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Download PDF artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: resume-pdf
+        path: ./
+        
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: Jordan Moak Resume.pdf
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
