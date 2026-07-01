@@ -309,7 +309,7 @@
 			%square,
 			polar,
 			%cloud,
-			color={materialcyan, materialred, materialorange, materialteal, materialamber, materialindigo, materialgreen, materialpurple},
+			color={materialcyan, materialteal, materialorange, materialindigo, materialamber, materialgreen},
 			before number=\phantom, 
 			after number=,
 			%text=inside,
@@ -317,7 +317,7 @@
 			%style = drop shadow,
 			%scale font
 	]
-	{10/\scriptsize R, 14/\scriptsize Java, 17/\scriptsize C\#, 20/\scriptsize SAS, 25/\scriptsize JS, 30/\scriptsize Python, 5/\scriptsize Ruby, 7/\scriptsize Scala}% values and labels
+	{30/\scriptsize TypeScript, 25/\scriptsize Python, 20/\scriptsize Java, 12/\scriptsize C\#, 8/\scriptsize JS, 5/\scriptsize Other}% values and labels
 	\end{tikzpicture}
 	\vspace{0.1cm}
 	\vspace{-2\parskip}
