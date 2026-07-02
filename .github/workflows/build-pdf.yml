@@ -28,11 +28,7 @@ jobs:
         working_directory: "Software Engineer"
         root_file: "Jordan Moak Resume.tex"
         latexmk_use_xelatex: true
-        # Install additional packages needed by the resume
-        extra_system_packages: |
-          fonts-font-awesome
-        # Retry on network issues
-        continue_on_error: false
+        # texlive-full includes fontawesome5 and all needed packages
         
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
