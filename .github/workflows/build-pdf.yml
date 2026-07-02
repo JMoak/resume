@@ -16,7 +16,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read  # Changed from write - no commits needed
     
     steps:
     - name: Checkout repository
@@ -28,10 +28,8 @@ jobs:
         working_directory: "Software Engineer"
         root_file: "Jordan-Moak-Resume.tex"
         latexmk_use_xelatex: true
-        # Create a symlink without spaces as a workaround for latex-action
         pre_compile: |
           ln -s "Jordan Moak Resume.tex" "Jordan-Moak-Resume.tex"
-        # Rename output PDF back to original name with spaces
         post_compile: |
           mv "Jordan-Moak-Resume.pdf" "Jordan Moak Resume.pdf"
         
@@ -42,26 +40,15 @@ jobs:
         path: "Software Engineer/Jordan Moak Resume.pdf"
         retention-days: 30
         
-    - name: Copy PDF to repository root (on default branch push)
-      if: github.event_name == 'push' && contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)
-      run: |
-        cp "Software Engineer/Jordan Moak Resume.pdf" "Jordan Moak Resume.pdf"
+    # NO COMMIT STEP - keeps git history clean
+    # PDF is available as artifact from Actions tab
         
-    - name: Commit updated PDF (on default branch push)
-      if: github.event_name == 'push' && contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add "Jordan Moak Resume.pdf"
-        git diff --staged --quiet || git commit -m "chore: update compiled resume PDF [skip ci]"
-        git push
-
   release:
     needs: build
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
     permissions:
-      contents: write
+      contents: write  # Only needed for release creation
     
     steps:
     - name: Checkout repository

@@ -4,7 +4,9 @@
 
 **Current Role:** Senior Software Engineer @ Care.com (Promoted 2024)
 
-📄 **[View Latest Resume (PDF)](./Jordan%20Moak%20Resume.pdf)**
+📄 **[Download Latest Resume PDF](https://github.com/JMoak/resume/actions/workflows/build-pdf.yml)**
+
+> Click the latest successful workflow run → Scroll to "Artifacts" section → Download `resume-pdf`
 
 ---
 
