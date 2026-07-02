@@ -25,14 +25,15 @@ jobs:
     - name: Compile Resume with TeX Live
       uses: xu-cheng/latex-action@v3
       with:
-        # Use the directory containing the file as working directory
-        # and specify the file via args to handle spaces properly
         working_directory: "Software Engineer"
         root_file: "Jordan-Moak-Resume.tex"
         latexmk_use_xelatex: true
-        # Create a symlink without spaces as a workaround
+        # Create a symlink without spaces as a workaround for latex-action
         pre_compile: |
           ln -s "Jordan Moak Resume.tex" "Jordan-Moak-Resume.tex"
+        # Rename output PDF back to original name with spaces
+        post_compile: |
+          mv "Jordan-Moak-Resume.pdf" "Jordan Moak Resume.pdf"
         
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
