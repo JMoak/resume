@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     
@@ -22,53 +22,29 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Install MiKTeX via Chocolatey
-      run: |
-        choco install miktex.install --yes --no-progress
-        
-    - name: Add MiKTeX to PATH
-      run: |
-        $miktexBin = "C:\Program Files\MiKTeX\miktex\bin\x64"
-        echo "$miktexBin" | Out-File -FilePath $env:GITHUB_PATH -Append
-        
-    - name: Configure MiKTeX
-      run: |
-        initexmf --set-config-value="[MPM]AutoInstall=1"
-        mpm --update-db
-        
-    - name: Install required packages
-      run: |
-        $packages = @(
-          "xetex", "fontspec", "unicode-math", "xcolor",
-          "smartdiagram", "fontawesome5", "tikz", "pgf-pie",
-          "textpos", "parskip", "hyperref", "afterpage",
-          "pstricks", "metalogo"
-        )
-        foreach ($pkg in $packages) {
-          mpm --install=$pkg 2>&1 | Out-Null
-        }
-        
-    - name: Compile Resume
-      working-directory: "Software Engineer"
-      run: |
-        $env:MIKTEX_ENABLE_INSTALLER = "true"
-        $env:MIKTEX_MPM_AUTOINSTALL = "1"
-        # First pass for aux files
-        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
-        # Second pass for references
-        xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
+    - name: Compile Resume with TeX Live
+      uses: xu-cheng/latex-action@v3
+      with:
+        working_directory: "Software Engineer"
+        root_file: "Jordan Moak Resume.tex"
+        latexmk_use_xelatex: true
+        # Install additional packages needed by the resume
+        extra_system_packages: |
+          fonts-font-awesome
+        # Retry on network issues
+        continue_on_error: false
         
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
       with:
         name: resume-pdf
-        path: Software Engineer/Jordan Moak Resume.pdf
+        path: "Software Engineer/Jordan Moak Resume.pdf"
         retention-days: 30
         
     - name: Copy PDF to repository root (on default branch push)
       if: github.event_name == 'push' && contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)
       run: |
-        Copy-Item "Software Engineer/Jordan Moak Resume.pdf" -Destination "Jordan Moak Resume.pdf" -Force
+        cp "Software Engineer/Jordan Moak Resume.pdf" "Jordan Moak Resume.pdf"
         
     - name: Commit updated PDF (on default branch push)
       if: github.event_name == 'push' && contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref)
