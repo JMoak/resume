@@ -21,7 +21,8 @@
 \RequirePackage{tikz}
 \RequirePackage{needspace}
 \RequirePackage{enumitem}
-\setlist[itemize]{itemsep=-0.4em, parsep=0pt, topsep=2pt, leftmargin=1.2em}
+% Font is set at list level so wrapped lines and inter-item gaps share one baseline grid
+\setlist[itemize]{itemsep=2pt, parsep=0pt, topsep=3pt, partopsep=0pt, leftmargin=1.2em, before=\small\bodyfont}
 
 
 %%%%%%%%%%
