@@ -20,9 +20,9 @@
 
 ### Quick Start
 
-**Windows (PowerShell Admin):**
+**Windows:**
 ```powershell
-.\install-miktex.ps1
+winget install MiKTeX.MiKTeX
 ```
 
 **VS Code:**

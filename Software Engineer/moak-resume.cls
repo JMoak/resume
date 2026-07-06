@@ -2,7 +2,7 @@
 % Jordan Moak  Resume/CV Class
 % Edited from a template on 10/22/2017
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ProvidesClass{moak-resume}[2021/08/15 CV class]
+\ProvidesClass{moak-resume}[2026/07/06 CV class]
 \NeedsTeXFormat{LaTeX2e}
 
 \DeclareOption{print}{\def\@cv@print{}}
