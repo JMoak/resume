@@ -12,13 +12,14 @@
 \ProcessOptions\relax
 \LoadClass{article}
 
-\usepackage{fontawesome5}
+\RequirePackage{fontawesome5}
 \RequirePackage[math-style=TeX]{unicode-math}
 \RequirePackage{xcolor}
 \RequirePackage[absolute,overlay]{textpos}
 \RequirePackage{ifthen}
 \RequirePackage{parskip}
 \RequirePackage{tikz}
+\RequirePackage{needspace}
 \RequirePackage{enumitem}
 \setlist[itemize]{itemsep=-0.4em, parsep=0pt, topsep=2pt, leftmargin=1.2em}
 
@@ -27,33 +28,27 @@
 % Colors %
 %%%%%%%%%%
 \definecolor{white}{RGB}{255,255,255}
-\definecolor{black}{HTML}{18101f}
 \definecolor{darkgray}{HTML}{5e5e5e}
 \definecolor{gray}{HTML}{4D4D4D}
 \definecolor{lightgray}{HTML}{999999}
 \definecolor{reallylightgray}{HTML}{E7E7E7}
 
 \definecolor{mainpurple}{HTML}{8d5daf}
-\definecolor{darkpurple}{HTML}{5c3975}
-\definecolor{headerpurple}{HTML}{8d5daf}
+\colorlet{headerpurple}{mainpurple}
 
 \definecolor{green}{HTML}{C2E15F}
 \definecolor{orange}{HTML}{FDA333}
 \definecolor{purple}{HTML}{D3A4F9}
 \definecolor{red}{HTML}{FB4485}
 \definecolor{blue}{HTML}{6CE0F1}
-\definecolor{pblue}{HTML}{0395DE}
 
-\definecolor{materialpurple}{HTML}{9C27B0}
+% Accent palette used by the pie chart and bubble diagram
 \definecolor{materialindigo}{HTML}{3F51B5}
-\definecolor{materialblue}{HTML}{2196F3}
 \definecolor{materialcyan}{HTML}{00BCD4}
 \definecolor{materialteal}{HTML}{009688}
 \definecolor{materialgreen}{HTML}{4CAF50}
 \definecolor{materiallime}{HTML}{CDDC39}
 \definecolor{materialamber}{HTML}{FFC107}
-\definecolor{materialbrown}{HTML}{795548}
-\definecolor{materialred}{HTML}{FF4436}
 \definecolor{materialorange}{HTML}{FF5722}
 
 \ifdefined\@cv@print
@@ -62,11 +57,6 @@
   \colorlet{purple}{gray}
   \colorlet{red}{gray}
   \colorlet{blue}{gray}
-  \colorlet{fillheader}{white}
-  \colorlet{header}{lightgray}
-\else
-  \colorlet{fillheader}{darkgray}
-  \colorlet{header}{lightgray}
 \fi
 \colorlet{textcolor}{gray}
 \colorlet{headercolor}{gray}
@@ -111,42 +101,12 @@
   \color{darkgray}%
 }
 
-%%%%%%%%%%
-% Footer %
-%%%%%%%%%%
-
-\newcommand{\footer}[1]{%
-	\begin{tikzpicture}[remember picture,overlay]
-	\node [rectangle, fill=fillheader, anchor=south, minimum width=\paperwidth, minimum height=1cm] (box) at (current page.south){};
-	\node [anchor=center] (name) at (box) {%
-		\fontsize{14pt}{24pt}\color{headerpurple}%
-		\bodyfont #1%
-	};
-	\end{tikzpicture}
-	\vspace{0.7cm}
-	\vspace{-2\parskip}
-}
-
-
 %%%%%%%%%%%%%
 % Structure %
 %%%%%%%%%%%%%
 
-\newcounter{colorCounter}
-\def\@sectioncolor#1#2#3{%
-  {%
-    \color{%
-      \ifcase\value{colorCounter}%
-        mainpurple\or%
-        mainpurple\or%
-        mainpurple\or%
-        mainpurple\or%
-        mainpurple\else%
-        mainpurple\fi%
-    } #1#2#3%
-  }%
-  \stepcounter{colorCounter}%
-}
+% Colors the first three letters of a section title
+\def\@sectioncolor#1#2#3{{\color{mainpurple}#1#2#3}}
 
 \renewcommand{\section}[1]{
   \par\vspace{\parskip}
@@ -163,30 +123,6 @@
 	\par\vspace{.25\parskip}%
 }
 
-\renewcommand{\subsubsection}[2]{
-	\par\vspace{.5\parskip}%
-	{\Large\headingfont\color{headercolor} #2}
-	\par\vspace{.25\parskip}%
-}
-
-\renewcommand{\subsubsection}[3]{
-	\par\vspace{.5\parskip}%
-	{\Large\headingfont\color{headercolor} #3}
-	\par\vspace{.25\parskip}%
-}
-
-\renewcommand{\subsubsection}[4]{
-	\par\vspace{.5\parskip}%
-	{\Large\headingfont\color{headercolor} #4}
-	\par\vspace{.25\parskip}%
-}
-
-\renewcommand{\subsubsection}[5]{
-	\par\vspace{.5\parskip}%
-	{\Large\headingfont\color{headercolor} #5}
-	\par\vspace{.25\parskip}%
-}
-
 \pagestyle{empty}
 
 
@@ -195,6 +131,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \setlength{\tabcolsep}{0pt}
 \newenvironment{entrylist}{%
+  \needspace{4\baselineskip}% keep an entry heading with its first bullets
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
 }{%
   \end{tabular*}
@@ -300,7 +237,6 @@
 
 % Programming Pie Chart
 \RequirePackage{pgf-pie}
-\RequirePackage{pstricks}
 
 \newcommand{\programmingPie}{%
 	\begin{tikzpicture}[remember picture, xscale=0.55, yscale=0.55, opacity=0.5]
@@ -322,25 +258,6 @@
 	\end{tikzpicture}
 	\vspace{0.1cm}
 	\vspace{-2\parskip}
-}
-
-% Command for printing skill progress bars
-\newcommand\interests[1]{ 
-	\renewcommand{\interests}{
-		\begin{tikzpicture}[remember picture]
-		\foreach [count=\i] \x/\y in {#1}{
-			\draw[fill=lightgray,lightgray] (0,\i) rectangle (6,\i+0.4);
-			\draw[fill=white,mainpurple](0,\i) rectangle (\y,\i+0.4);
-			\node [above left] at (0,\i+0.4) {\x};
-		}
-		\end{tikzpicture}
-	}
-}
-
-\newcommand\showInterests
-{%
-	\interests{{Data Mining \& Statistical Analysis/5},{Software Development/5.8},{Cryptography/4.3},{UI Design/4},{Cloud Computing/5}}
-	\interests
 }
 
 %Bubble Diagram
