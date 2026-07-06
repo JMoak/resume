@@ -19,6 +19,8 @@
 \RequirePackage{ifthen}
 \RequirePackage{parskip}
 \RequirePackage{tikz}
+\RequirePackage{enumitem}
+\setlist[itemize]{itemsep=-0.4em, parsep=0pt, topsep=2pt, leftmargin=1.2em}
 
 
 %%%%%%%%%%
@@ -199,12 +201,11 @@
 }
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
 \newcommand{\entry}[4]{%
-  {\textbf{\tiny\addfontfeature{Color=textcolor} #1}}&\parbox[t]{12.3cm}{%
+  {\textbf{\tiny\addfontfeature{Color=textcolor} #1}}&\parbox[t]{\dimexpr\textwidth-2.4cm\relax}{%
  	\textbf{#2}%
     \hfill%
-	\hfill%
-	\hfill%
     {\textbf{\scriptsize\addfontfeature{Color=mainpurple} #3}}%
+    \ifthenelse{\equal{#4}{}}{}{\\{\footnotesize\itshape\addfontfeature{Color=darkgray} #4}}%
   }\\}
 
 
