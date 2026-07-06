@@ -106,14 +106,15 @@
 % Structure %
 %%%%%%%%%%%%%
 
-% Colors the first three letters of a section title
-\def\@sectioncolor#1#2#3{{\color{mainpurple}#1#2#3}}
+% Colored section prefix: \section{Exp|erience} colors "Exp"; move the
+% pipe to taste. A title without a pipe is colored entirely.
+\def\@colorsplit#1|#2|#3\@nil{{\color{mainpurple}#1}#2}
 
 \renewcommand{\section}[1]{
   \par\vspace{\parskip}
   {%
     \Large\headingfont\color{headercolor}%
-    \@sectioncolor #1
+    \@colorsplit#1||\@nil
   }
   \par\vspace{\parskip}
 }
@@ -210,6 +211,7 @@
   }
   \begin{textblock}{4.9}(0.4, 6.0)
   \begin{flushleft}
+  \setlength{\lineskip}{3pt}% breathing room between wrapped rows of skill chips
   \obeycr
 }{%
   \restorecr
@@ -255,35 +257,26 @@
 			%style = drop shadow,
 			%scale font
 	]
-	{30/\scriptsize TypeScript, 25/\scriptsize Python, 20/\scriptsize Java, 12/\scriptsize C\#, 8/\scriptsize JS, 5/\scriptsize Other}% values and labels
+	{25/\scriptsize Agentic Systems, 20/\scriptsize Context, 20/\scriptsize Platform, 15/\scriptsize Polyglot, 10/\scriptsize Tooling, 10/\scriptsize Architecture}% values size slices; numbers are hidden
 	\end{tikzpicture}
 	\vspace{0.1cm}
 	\vspace{-2\parskip}
 }
 
-%Bubble Diagram
-\RequirePackage{smartdiagram}
-
-\smartdiagramset{
-	bubble center node font = \scriptsize,
-	bubble node font = \scriptsize,
-	% specifies the minimum size of the bubble center node
-	bubble center node size = 0.5cm,
-	%  specifies the minimum size of the bubbles
-	bubble node size = 0.5cm,
-	% specifies which is the distance among the bubble center node and the other bubbles
-	distance center/other bubbles = 0.3cm,
-	% sets the distance from the text to the border of the bubble center node
-	distance text center bubble = 0.5cm,
-	% set center bubble color
-	bubble center node color = mainpurple,
-	% define the list of colors usable in the diagram
-	set color list = {lightgray, materialcyan, orange, green, materialorange, materialteal, materialamber, materialindigo, materialgreen, materiallime},
-	% sets the opacity at which the bubbles are shown
-	bubble fill opacity = 0.75,
-	% sets the opacity at which the bubble text is shown
-	bubble text opacity = 1.0,
-}
+% Skill chips: \skillgroup{Category} heads a run of \skilltag{...} pills.
+% Chips wrap naturally inside the aside; row spacing comes from \lineskip.
+\tikzset{skilltag/.style={
+	draw=mainpurple!60,
+	line width=0.6pt,
+	fill=white,
+	rounded corners=4pt,
+	inner xsep=5pt,
+	inner ysep=2.5pt,
+	outer sep=1.5pt,
+	text=darkgray,
+}}
+\newcommand{\skillgroup}[1]{{\footnotesize\headingfont\color{darkgray}\MakeUppercase{#1}}}
+\newcommand{\skilltag}[1]{\tikz[baseline=(t.base)]{\node[skilltag] (t) {\footnotesize\bodyfont #1};}}
 
 
 %%%%%%%%%%%%%%%%
