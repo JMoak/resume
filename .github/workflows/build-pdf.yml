@@ -28,8 +28,6 @@ jobs:
         working_directory: "Software Engineer"
         root_file: "Jordan-Moak-Resume.tex"
         latexmk_use_xelatex: true
-        pre_compile: |
-          ln -s "Jordan Moak Resume.tex" "Jordan-Moak-Resume.tex"
         post_compile: |
           mv "Jordan-Moak-Resume.pdf" "Jordan Moak Resume.pdf"
         

@@ -20,21 +20,21 @@
 
 ### Quick Start
 
-**Windows (PowerShell Admin):**
+**Windows:**
 ```powershell
-.\install-miktex.ps1
+winget install MiKTeX.MiKTeX
 ```
 
 **VS Code:**
 - Install the `LaTeX Workshop` extension
-- Open `Software Engineer/Jordan Moak Resume.tex`
+- Open `Software Engineer/Jordan-Moak-Resume.tex`
 - Press `Ctrl+Alt+B` to build
 
 **Manual:**
 ```bash
 cd "Software Engineer"
-xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"
-xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"  # Run twice for references
+xelatex -interaction=nonstopmode "Jordan-Moak-Resume.tex"
+xelatex -interaction=nonstopmode "Jordan-Moak-Resume.tex"  # Run twice for references
 ```
 
 ---
@@ -45,7 +45,7 @@ xelatex -interaction=nonstopmode "Jordan Moak Resume.tex"  # Run twice for refer
 resume/
 ├── .github/workflows/build-pdf.yml    # CI/CD pipeline
 ├── Software Engineer/
-│   ├── Jordan Moak Resume.tex         # Main resume source
+│   ├── Jordan-Moak-Resume.tex         # Main resume source
 │   ├── moak-resume.cls                # Custom LaTeX class
 │   └── Fonts/                         # Embedded fonts (TeX Gyre Heros, Lato)
 ├── _archive/                          # Previous resume versions

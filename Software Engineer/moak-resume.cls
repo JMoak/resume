@@ -2,7 +2,7 @@
 % Jordan Moak  Resume/CV Class
 % Edited from a template on 10/22/2017
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ProvidesClass{moak-resume}[2021/08/15 CV class]
+\ProvidesClass{moak-resume}[2026/07/06 CV class]
 \NeedsTeXFormat{LaTeX2e}
 
 \DeclareOption{print}{\def\@cv@print{}}
@@ -12,46 +12,44 @@
 \ProcessOptions\relax
 \LoadClass{article}
 
-\usepackage{fontawesome5}
+\RequirePackage{fontawesome5}
 \RequirePackage[math-style=TeX]{unicode-math}
 \RequirePackage{xcolor}
 \RequirePackage[absolute,overlay]{textpos}
 \RequirePackage{ifthen}
 \RequirePackage{parskip}
 \RequirePackage{tikz}
+\RequirePackage{needspace}
+\RequirePackage{enumitem}
+% Font is set at list level so wrapped lines and inter-item gaps share one baseline grid
+\setlist[itemize]{itemsep=2pt, parsep=0pt, topsep=2pt, partopsep=0pt, leftmargin=1.2em, before=\small\bodyfont}
 
 
 %%%%%%%%%%
 % Colors %
 %%%%%%%%%%
 \definecolor{white}{RGB}{255,255,255}
-\definecolor{black}{HTML}{18101f}
 \definecolor{darkgray}{HTML}{5e5e5e}
 \definecolor{gray}{HTML}{4D4D4D}
 \definecolor{lightgray}{HTML}{999999}
 \definecolor{reallylightgray}{HTML}{E7E7E7}
 
 \definecolor{mainpurple}{HTML}{8d5daf}
-\definecolor{darkpurple}{HTML}{5c3975}
-\definecolor{headerpurple}{HTML}{8d5daf}
+\colorlet{headerpurple}{mainpurple}
 
 \definecolor{green}{HTML}{C2E15F}
 \definecolor{orange}{HTML}{FDA333}
 \definecolor{purple}{HTML}{D3A4F9}
 \definecolor{red}{HTML}{FB4485}
 \definecolor{blue}{HTML}{6CE0F1}
-\definecolor{pblue}{HTML}{0395DE}
 
-\definecolor{materialpurple}{HTML}{9C27B0}
+% Accent palette used by the pie chart and bubble diagram
 \definecolor{materialindigo}{HTML}{3F51B5}
-\definecolor{materialblue}{HTML}{2196F3}
 \definecolor{materialcyan}{HTML}{00BCD4}
 \definecolor{materialteal}{HTML}{009688}
 \definecolor{materialgreen}{HTML}{4CAF50}
 \definecolor{materiallime}{HTML}{CDDC39}
 \definecolor{materialamber}{HTML}{FFC107}
-\definecolor{materialbrown}{HTML}{795548}
-\definecolor{materialred}{HTML}{FF4436}
 \definecolor{materialorange}{HTML}{FF5722}
 
 \ifdefined\@cv@print
@@ -60,11 +58,6 @@
   \colorlet{purple}{gray}
   \colorlet{red}{gray}
   \colorlet{blue}{gray}
-  \colorlet{fillheader}{white}
-  \colorlet{header}{lightgray}
-\else
-  \colorlet{fillheader}{darkgray}
-  \colorlet{header}{lightgray}
 \fi
 \colorlet{textcolor}{gray}
 \colorlet{headercolor}{gray}
@@ -109,48 +102,19 @@
   \color{darkgray}%
 }
 
-%%%%%%%%%%
-% Footer %
-%%%%%%%%%%
-
-\newcommand{\footer}[1]{%
-	\begin{tikzpicture}[remember picture,overlay]
-	\node [rectangle, fill=fillheader, anchor=south, minimum width=\paperwidth, minimum height=1cm] (box) at (current page.south){};
-	\node [anchor=center] (name) at (box) {%
-		\fontsize{14pt}{24pt}\color{headerpurple}%
-		\bodyfont #1%
-	};
-	\end{tikzpicture}
-	\vspace{0.7cm}
-	\vspace{-2\parskip}
-}
-
-
 %%%%%%%%%%%%%
 % Structure %
 %%%%%%%%%%%%%
 
-\newcounter{colorCounter}
-\def\@sectioncolor#1#2#3{%
-  {%
-    \color{%
-      \ifcase\value{colorCounter}%
-        mainpurple\or%
-        mainpurple\or%
-        mainpurple\or%
-        mainpurple\or%
-        mainpurple\else%
-        mainpurple\fi%
-    } #1#2#3%
-  }%
-  \stepcounter{colorCounter}%
-}
+% Colored section prefix: \section{Exp|erience} colors "Exp"; move the
+% pipe to taste. A title without a pipe is colored entirely.
+\def\@colorsplit#1|#2|#3\@nil{{\color{mainpurple}#1}#2}
 
 \renewcommand{\section}[1]{
   \par\vspace{\parskip}
   {%
     \Large\headingfont\color{headercolor}%
-    \@sectioncolor #1
+    \@colorsplit#1||\@nil
   }
   \par\vspace{\parskip}
 }
@@ -158,30 +122,6 @@
 \renewcommand{\subsection}[1]{
 	\par\vspace{.5\parskip}%
 	{\Large\headingfont\color{headercolor} #1}
-	\par\vspace{.25\parskip}%
-}
-
-\renewcommand{\subsubsection}[2]{
-	\par\vspace{.5\parskip}%
-	{\Large\headingfont\color{headercolor} #2}
-	\par\vspace{.25\parskip}%
-}
-
-\renewcommand{\subsubsection}[3]{
-	\par\vspace{.5\parskip}%
-	{\Large\headingfont\color{headercolor} #3}
-	\par\vspace{.25\parskip}%
-}
-
-\renewcommand{\subsubsection}[4]{
-	\par\vspace{.5\parskip}%
-	{\Large\headingfont\color{headercolor} #4}
-	\par\vspace{.25\parskip}%
-}
-
-\renewcommand{\subsubsection}[5]{
-	\par\vspace{.5\parskip}%
-	{\Large\headingfont\color{headercolor} #5}
 	\par\vspace{.25\parskip}%
 }
 
@@ -193,18 +133,18 @@
 %%%%%%%%%%%%%%%%%%%%
 \setlength{\tabcolsep}{0pt}
 \newenvironment{entrylist}{%
+  \needspace{4\baselineskip}% keep an entry heading with its first bullets
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
 }{%
   \end{tabular*}
 }
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
 \newcommand{\entry}[4]{%
-  {\textbf{\tiny\addfontfeature{Color=textcolor} #1}}&\parbox[t]{12.3cm}{%
+  {\textbf{\tiny\addfontfeature{Color=textcolor} #1}}&\parbox[t]{\dimexpr\textwidth-2.4cm\relax}{%
  	\textbf{#2}%
     \hfill%
-	\hfill%
-	\hfill%
     {\textbf{\scriptsize\addfontfeature{Color=mainpurple} #3}}%
+    \ifthenelse{\equal{#4}{}}{}{\\{\footnotesize\itshape\addfontfeature{Color=darkgray} #4}}%
   }\\}
 
 
@@ -254,9 +194,9 @@
 			\fontsize{24pt}{50pt}\color{white}%
 			{\thinfont #1}{\bodyfont  #2}
 		};
-		\node [anchor=west] at (-4.82cm,-2.72cm) {%
+		\node [anchor=east] at (-0.7cm,-2.72cm) {% right-aligned inside the sidebar edge
 			\fontsize{12pt}{24pt}\color{headerpurple}%
-			\bodyfont ~#3%
+			\bodyfont #3%
 		};
 	\end{tikzpicture}
 }
@@ -271,6 +211,7 @@
   }
   \begin{textblock}{4.9}(0.4, 6.0)
   \begin{flushleft}
+  \setlength{\lineskip}{3pt}% breathing room between wrapped rows of skill chips
   \obeycr
 }{%
   \restorecr
@@ -299,10 +240,9 @@
 
 % Programming Pie Chart
 \RequirePackage{pgf-pie}
-\RequirePackage{pstricks}
 
 \newcommand{\programmingPie}{%
-	\begin{tikzpicture}[remember picture, xscale=0.55, yscale=0.55, opacity=0.5]
+	\begin{tikzpicture}[remember picture, xscale=0.5, yscale=0.5, opacity=0.5]
 	\pie[% settings
 			pos={-568,0},
 			%explode=0.22,
@@ -317,54 +257,28 @@
 			%style = drop shadow,
 			%scale font
 	]
-	{30/\scriptsize TypeScript, 25/\scriptsize Python, 20/\scriptsize Java, 12/\scriptsize C\#, 8/\scriptsize JS, 5/\scriptsize Other}% values and labels
+	% Slices run counterclockwise from 3 o'clock; order places long labels at
+	% the roomy top/bottom pins and short ones at the tight left/right pins.
+	{15/\scriptsize Architecture, 30/\scriptsize Agentic Systems, 20/\scriptsize Platform, 25/\scriptsize Context Eng., 10/\scriptsize Tooling}% values size slices; numbers are hidden
 	\end{tikzpicture}
 	\vspace{0.1cm}
 	\vspace{-2\parskip}
 }
 
-% Command for printing skill progress bars
-\newcommand\interests[1]{ 
-	\renewcommand{\interests}{
-		\begin{tikzpicture}[remember picture]
-		\foreach [count=\i] \x/\y in {#1}{
-			\draw[fill=lightgray,lightgray] (0,\i) rectangle (6,\i+0.4);
-			\draw[fill=white,mainpurple](0,\i) rectangle (\y,\i+0.4);
-			\node [above left] at (0,\i+0.4) {\x};
-		}
-		\end{tikzpicture}
-	}
-}
-
-\newcommand\showInterests
-{%
-	\interests{{Data Mining \& Statistical Analysis/5},{Software Development/5.8},{Cryptography/4.3},{UI Design/4},{Cloud Computing/5}}
-	\interests
-}
-
-%Bubble Diagram
-\RequirePackage{smartdiagram}
-
-\smartdiagramset{
-	bubble center node font = \scriptsize,
-	bubble node font = \scriptsize,
-	% specifies the minimum size of the bubble center node
-	bubble center node size = 0.5cm,
-	%  specifies the minimum size of the bubbles
-	bubble node size = 0.5cm,
-	% specifies which is the distance among the bubble center node and the other bubbles
-	distance center/other bubbles = 0.3cm,
-	% sets the distance from the text to the border of the bubble center node
-	distance text center bubble = 0.5cm,
-	% set center bubble color
-	bubble center node color = mainpurple,
-	% define the list of colors usable in the diagram
-	set color list = {lightgray, materialcyan, orange, green, materialorange, materialteal, materialamber, materialindigo, materialgreen, materiallime},
-	% sets the opacity at which the bubbles are shown
-	bubble fill opacity = 0.75,
-	% sets the opacity at which the bubble text is shown
-	bubble text opacity = 1.0,
-}
+% Skill chips: \skillgroup{Category} heads a run of \skilltag{...} pills.
+% Chips wrap naturally inside the aside; row spacing comes from \lineskip.
+\tikzset{skilltag/.style={
+	draw=mainpurple!60,
+	line width=0.6pt,
+	fill=white,
+	rounded corners=4pt,
+	inner xsep=5pt,
+	inner ysep=2.5pt,
+	outer sep=1.5pt,
+	text=darkgray,
+}}
+\newcommand{\skillgroup}[1]{{\footnotesize\headingfont\color{darkgray}\MakeUppercase{#1}}}
+\newcommand{\skilltag}[1]{\tikz[baseline=(t.base)]{\node[skilltag] (t) {\footnotesize\bodyfont #1};}}
 
 
 %%%%%%%%%%%%%%%%

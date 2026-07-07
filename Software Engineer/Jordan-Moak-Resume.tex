@@ -1,0 +1,160 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Jordan Moak's Resume               %
+% Type: Software Engineer            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%!TEX TS-program = xelatex
+\documentclass[]{moak-resume}
+% All packages are loaded by moak-resume.cls
+
+% Document Meta information.
+\hypersetup{
+    pdftitle={Jordan Moak - Senior Software Engineer Resume},
+    pdfauthor={Jordan Moak},
+    pdfsubject={Resume of Jordan Moak, Senior Software Engineer and Systems Architect},
+    pdfkeywords={Senior Software Engineer, Systems Architect, Platform Engineering, TypeScript, Python, Java, C\#, Node.js, LLM Integration, MCP, Model Context Protocol, AI Agent Architecture, Agentic Systems, AI Agents, LangGraph, Local LLM Deployment, Context Engineering, Automation, Test Automation, CI/CD, Continuous Integration, Continuous Delivery, Microservices, Backstage, SonarQube, Akamai, Selenium, Appium, Developer Tooling},
+    colorlinks=false,           % no link border color
+    allbordercolors=white,      % white border color for all
+    pdfcreator={XeLaTeX}
+}
+
+\begin{document}
+
+\makeprofile{Jordan}{Moak}
+            {Senior Software Engineer}
+            {\icon{\faPhone} +513 417 4499}
+            {\icon{\faEnvelope[regular]} \href{mailto:jordan.moak@gmail.com}{ jordan.moak@gmail.com}}
+            {\icon{\faGithub} \href{https://github.com/JMoak/}{ JMoak}}
+            {\icon{\faLinkedin} \href{https://www.linkedin.com/in/jmoak/}{ /in/JMoak}}
+            {\icon{\faMapMarker} \href{https://www.google.com/maps/place/Greendale,+IN+47025/@39.1487958,-84.7652822,12z/data=!4m6!3m5!1s0x8841d3fcc3d9708d:0x528857ad3dfc5551!8m2!3d39.1125572!4d-84.8641178!16zL20vMHNrdHk?entry=ttu}{ Greendale, IN}}
+
+% In the aside, each new line forces a line break
+\begin{aside}
+  \profilesection{About Me}
+  \small\bodyfont Systems architect with 12+ years of experience designing and shipping software across healthcare, marketplace, and platform engineering domains. I translate complex system designs into production infrastructure — from Java microservices to AI agent orchestration.
+  \profilesection{Focus}
+	\programmingPie{}
+  ~
+  \profilesection{Technical Skills}
+  \skillgroup{Languages}
+  \skilltag{TypeScript} \skilltag{Python} \skilltag{Java} \skilltag{C\#}
+  \skillgroup{Platform}
+  \skilltag{CI/CD} \skilltag{Microservices} \skilltag{Node.js} \skilltag{Automation} \skilltag{Backstage}
+  \skillgroup{AI Engineering}
+  \skilltag{MCP} \skilltag{LangGraph} \skilltag{AI Agents} \skilltag{Local LLMs} \skilltag{Context Design}
+\end{aside}
+~
+\section{Exp|erience}
+
+  % -- Care.com
+  \begin{entrylist}
+    \entry
+    {[Oct 2021 - Jun 2026]}
+    {Senior Software Engineer}
+    {Care.com}
+    {Promoted Feb 2024}
+  \end{entrylist}
+  \begin{itemize}
+    \item Architected and delivered automation on critical monolith production deployment pipeline, reclaiming 1+ engineer-week per week and enabling safe, quality deployment of 10-70 commits twice weekly (up from bi-weekly releases of 140+ commits with no automation).
+    \item Delivered \$48K+ annual cost savings via Apache to Akamai subset replatform completed in 2 weeks.
+    \item Led integration of Backstage Service Catalog (Node.js) and SonarQube with associated CI/CD pipelines, establishing platform engineering standards adopted organization-wide.
+    \item Serve as technical anchor for legacy platform knowledge with ownership in rehabbing critical platform features and CI/CD processes for 10-person senior engineering team.
+    \item Drive architectural pattern improvements scaling across multiple teams with strategic bend toward new AI/LLM agentic tooling.
+  \end{itemize}
+
+ % -- ANGI
+ \begin{entrylist}
+  \entry
+    {[Nov 2018 - Oct 2021]}
+    {Software Engineer III}
+    {Angi (formerly known as Angie's List)}
+    {}
+\end{entrylist}
+\begin{itemize}
+  \item Designed and implemented code-generation templates and developer tooling adopted by delivery teams across the organization.
+  \item Architected RESTful microservice testing framework using Node.js, Mountebank, and Cucumber, enabling CI/CD support via CircleCI.
+  \item Led development of Appium-based mobile testing framework supporting four mobile applications with Python, XCUITest, and UIAutomator2.
+  \item Built and maintained Selenium-based frontend testing framework for microfrontend architecture.
+  \item Evangelized automation best practices through documentation, bootcamps, and organizational support.
+\end{itemize}
+
+ % -- ROCHE
+\begin{entrylist}
+  \entry
+    {[Sep 2014 - Nov 2018]}
+    {DV Software Engineer}
+    {Roche Diagnostics (Contracted through PRO Unlimited)}
+    {}
+\end{entrylist}
+\begin{itemize}
+  \item Automated mobile-web-medical-device ecosystem using Java, Appium, Selenium, and Linux bash for FDA-compliant medical device validation.
+  \item Created reusable automation tools using Java, Selenium, PowerShell, and SAS within regulated standard operating procedures.
+  \item Led team automation of test dataset and configuration file generation for medical software verification.
+\end{itemize}
+
+% -- TSC
+\begin{entrylist}
+  \entry
+    {[Mar 2014 - Aug 2014]}
+    {Programmer/Analyst}
+    {The Stevenson Company}
+    {}
+\end{entrylist}
+\begin{itemize}
+  \item Developed statistical procedures for quality analysis and data cleaning in market research web applications.
+  \item Migrated SAS programs to MySQL and PHP, improving processing efficiency and code maintainability.
+\end{itemize}
+
+% -- STATKING
+\begin{entrylist}
+    \entry
+    {[Jan 2013 - Dec 2013]}
+    {Statistical Programmer}
+    {STATKING Clinical Services}
+    {}
+  \end{entrylist}
+\begin{itemize}
+  \item Led programming for 20+ Phase I-III clinical trials in SAS, producing CDISC SDTM/ADaM datasets and 160+ analysis tables for a Phase III submission.
+\end{itemize}
+
+\section{Sel|ected Personal Projects}
+\begin{entrylist}
+  \entry
+    {[GitHub: JMoak]}
+    {Published NPM Packages}
+    {MCP Server Ecosystem}
+    {}
+\end{entrylist}
+\begin{itemize}
+  \item \textbf{chrono-mcp}: Production Model Context Protocol server for date/time operations. Dynamically-shaped, token-optimized responses. Published to NPM with 400+ IANA timezone support.
+  \item \textbf{vibrissa}: JSON-driven MCP integration test runner. Declarative test cases over stdio, CI/CD ready with JUnit output.
+  \item Applied protocol-based architecture and comprehensive documentation patterns (ARCHITECTURE.md, AGENTS.md) from platform engineering to developer tooling.
+\end{itemize}
+
+\begin{entrylist}
+  \entry
+    {[GitHub: JMoak]}
+    {AI Agent Architecture}
+    {LangGraph Multi-Agent System}
+    {}
+\end{entrylist}
+\begin{itemize}
+  \item Built multi-workflow AI agent platform supporting plan-execute-validate, screenshot analysis, and game automation workflows.
+  \item Architected unified LLM abstraction layer supporting LangChain, direct HTTP, and local LLM backends (LM Studio) with graceful stub fallbacks.
+  \item Implemented protocol-based agent composition, source tracking for observability, and feature-flag safety controls.
+\end{itemize}
+
+\section{Edu|cation}
+\begin{entrylist}
+  \entry
+    {[2008 - 2013]}
+    {Bachelor's Degree in Mathematics}
+    {Northern Kentucky University}
+    {Specialization in Applied Mathematics}
+  \entry
+    {[2008 - 2013]}
+    {Bachelor's Degree in Statistics}
+    {Northern Kentucky University}
+    {Capstone: R-based anomaly detection for credit card fraud}
+\end{entrylist}
+\end{document}
