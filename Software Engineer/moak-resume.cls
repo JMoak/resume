@@ -22,7 +22,7 @@
 \RequirePackage{needspace}
 \RequirePackage{enumitem}
 % Font is set at list level so wrapped lines and inter-item gaps share one baseline grid
-\setlist[itemize]{itemsep=2pt, parsep=0pt, topsep=3pt, partopsep=0pt, leftmargin=1.2em, before=\small\bodyfont}
+\setlist[itemize]{itemsep=2pt, parsep=0pt, topsep=2pt, partopsep=0pt, leftmargin=1.2em, before=\small\bodyfont}
 
 
 %%%%%%%%%%
@@ -194,9 +194,9 @@
 			\fontsize{24pt}{50pt}\color{white}%
 			{\thinfont #1}{\bodyfont  #2}
 		};
-		\node [anchor=west] at (-4.82cm,-2.72cm) {%
+		\node [anchor=east] at (-0.7cm,-2.72cm) {% right-aligned inside the sidebar edge
 			\fontsize{12pt}{24pt}\color{headerpurple}%
-			\bodyfont ~#3%
+			\bodyfont #3%
 		};
 	\end{tikzpicture}
 }
@@ -242,7 +242,7 @@
 \RequirePackage{pgf-pie}
 
 \newcommand{\programmingPie}{%
-	\begin{tikzpicture}[remember picture, xscale=0.55, yscale=0.55, opacity=0.5]
+	\begin{tikzpicture}[remember picture, xscale=0.5, yscale=0.5, opacity=0.5]
 	\pie[% settings
 			pos={-568,0},
 			%explode=0.22,
@@ -257,7 +257,9 @@
 			%style = drop shadow,
 			%scale font
 	]
-	{25/\scriptsize Agentic Systems, 20/\scriptsize Context, 20/\scriptsize Platform, 15/\scriptsize Polyglot, 10/\scriptsize Tooling, 10/\scriptsize Architecture}% values size slices; numbers are hidden
+	% Slices run counterclockwise from 3 o'clock; order places long labels at
+	% the roomy top/bottom pins and short ones at the tight left/right pins.
+	{15/\scriptsize Architecture, 30/\scriptsize Agentic Systems, 20/\scriptsize Platform, 25/\scriptsize Context Eng., 10/\scriptsize Tooling}% values size slices; numbers are hidden
 	\end{tikzpicture}
 	\vspace{0.1cm}
 	\vspace{-2\parskip}
