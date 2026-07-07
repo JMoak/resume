@@ -160,7 +160,7 @@
 	\end{tikzpicture}
 }
 
-\newcommand{\makeprofile}[8]{
+\newcommand{\makeprofile}[9]{
 
   	\makesidebar
 
@@ -170,21 +170,25 @@
 			\fontsize{12pt}{12pt}\color{textcolor}%
 			{\contactfont #4}
 		};
-		\node [anchor=west] (email) at (-5.95cm,-5.0cm) {%
+		\node [anchor=west] (email) at (-5.95cm,-4.95cm) {%
 			\fontsize{12pt}{12pt}\color{textcolor}%
 			{\contactfont #5}
 		};
-		\node [anchor=west] (github) at (-5.95cm,-5.6cm) {%
+		\node [anchor=west] (website) at (-5.95cm,-5.5cm) {%
 			\fontsize{12pt}{12pt}\color{textcolor}%
 			{\contactfont #6}
 		};
-		\node [anchor=west] (linkedin) at (-5.95cm,-6.2cm) {%
+		\node [anchor=west] (github) at (-5.95cm,-6.05cm) {%
 			\fontsize{12pt}{12pt}\color{textcolor}%
 			{\contactfont #7}
 		};
-		\node [anchor=west] (location) at (-5.95cm,-6.8cm) {%
+		\node [anchor=west] (linkedin) at (-5.95cm,-6.6cm) {%
 			\fontsize{12pt}{12pt}\color{textcolor}%
 			{\contactfont #8}
+		};
+		\node [anchor=west] (location) at (-5.95cm,-7.15cm) {%
+			\fontsize{12pt}{12pt}\color{textcolor}%
+			{\contactfont #9}
 		};
 	\end{tikzpicture}
 
