@@ -205,6 +205,26 @@
 	\end{tikzpicture}
 }
 
+% Start a clean continuation page without repeating the first-page sidebar.
+% The wider text area gives project and education entries room to breathe,
+% while the compact identity header keeps the second page self-contained.
+\newcommand{\makecontinuationpage}[3]{%
+	\clearpage
+	\newgeometry{left=1.4cm,top=1.1cm,right=1.4cm,bottom=1.2cm,nohead,nofoot}%
+	\noindent
+	\begin{minipage}[b]{0.62\textwidth}
+		{\fontsize{20pt}{22pt}\selectfont\thinfont #1 }%
+		{\fontsize{20pt}{22pt}\selectfont\bodyfont #2}%
+	\end{minipage}%
+	\begin{minipage}[b]{0.38\textwidth}
+		\raggedleft
+		{\small\headingfont\color{mainpurple} #3}%
+	\end{minipage}
+	\par\vspace{0.25cm}
+	{\color{reallylightgray}\hrule height 1pt}
+	\vspace{0.35cm}
+}
+
 
 \setlength{\TPHorizModule}{1cm}
 \setlength{\TPVertModule}{1cm}
