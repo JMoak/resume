@@ -9,10 +9,10 @@
 
 % Document Meta information.
 \hypersetup{
-    pdftitle={Jordan Moak - Senior Software Engineer Resume},
+    pdftitle={Jordan Moak - Software Engineer, Platform and AI},
     pdfauthor={Jordan Moak},
-    pdfsubject={Resume of Jordan Moak, Senior Software Engineer and Systems Architect},
-    pdfkeywords={Senior Software Engineer, Systems Architect, Platform Engineering, TypeScript, Python, Java, C\#, Node.js, LLM Integration, MCP, Model Context Protocol, AI Agent Architecture, Agentic Systems, AI Agents, LangGraph, Local LLM Deployment, Context Engineering, Automation, Test Automation, CI/CD, Continuous Integration, Continuous Delivery, Microservices, Backstage, SonarQube, Akamai, Selenium, Appium, Developer Tooling},
+    pdfsubject={Resume of Jordan Moak, Software Engineer specializing in Platform Engineering and AI},
+    pdfkeywords={Software Engineer, Systems Architect, Platform Engineering, AI Engineering, TypeScript, Python, Java, C\#, Go, Groovy, Bash, Lua, SAS, Node.js, Kubernetes, AWS, LLM Integration, MCP, Model Context Protocol, AI Agent Architecture, Agentic Systems, AI Agents, Agentic Memory, Long-Horizon Task Execution, LangGraph, Local LLM Deployment, Context Engineering, Computer Use, Automation, Test Automation, TDD, CI/CD, Microservices, Backstage, SonarQube, Akamai, Selenium, Appium, Developer Tooling},
     colorlinks=false,           % no link border color
     allbordercolors=white,      % white border color for all
     pdfcreator={XeLaTeX}
@@ -21,10 +21,10 @@
 \begin{document}
 
 \makeprofile{Jordan}{Moak}
-            {Senior Software Engineer}
+            {Software Engineer,\\Platform \& AI}
             {\icon{\faPhone} +513 417 4499}
             {\icon{\faEnvelope[regular]} \href{mailto:jordan.moak@gmail.com}{ jordan.moak@gmail.com}}
-            {\icon{\faGlobe} \href{https://moak.dev}{ moak.dev}}
+            {\icon{\faGlobe} \href{https://moak.dev}{ \contactprimary{moak.dev}}}
             {\icon{\faGithub} \href{https://github.com/JMoak/}{ JMoak}}
             {\icon{\faLinkedin} \href{https://www.linkedin.com/in/jmoak/}{ /in/JMoak}}
             {\icon{\faMapMarker} \href{https://www.google.com/maps/place/Greendale,+IN+47025/@39.1487958,-84.7652822,12z/data=!4m6!3m5!1s0x8841d3fcc3d9708d:0x528857ad3dfc5551!8m2!3d39.1125572!4d-84.8641178!16zL20vMHNrdHk?entry=ttu}{ Greendale, IN}}
@@ -32,17 +32,14 @@
 % In the aside, each new line forces a line break
 \begin{aside}
   \profilesection{About Me}
-  \small\bodyfont Systems architect with 12+ years of experience designing and shipping software across healthcare, marketplace, and platform engineering domains. I translate complex system designs into production infrastructure — from Java microservices to AI agent orchestration.
+  \small\bodyfont Systems architect with 12+ years of experience designing and shipping software across healthcare, marketplace, and platform engineering domains. I translate complex system designs into production infrastructure, from Java microservices to AI agent orchestration.
   \profilesection{Focus}
-	\programmingPie{}
+	\focusChart{}
   ~
   \profilesection{Technical Skills}
-  \skillgroup{Languages}
-  \skilltag{TypeScript} \skilltag{Python} \skilltag{Java} \skilltag{C\#}
-  \skillgroup{Platform}
-  \skilltag{CI/CD} \skilltag{Microservices} \skilltag{Node.js} \skilltag{Automation} \skilltag{Backstage}
-  \skillgroup{AI Engineering}
-  \skilltag{MCP} \skilltag{LangGraph} \skilltag{AI Agents} \skilltag{Local LLMs} \skilltag{Context Design}
+  \skillcategory{Languages}{TypeScript \skillsep Python \skillsep Java \skillsep C\#\\Go \skillsep Groovy \skillsep Bash \skillsep Lua \skillsep SAS}
+  \skillcategory{Platform}{CI/CD \skillsep Microservices \skillsep Node.js\\Automation \skillsep Backstage \skillsep K8s \skillsep AWS}
+  \skillcategory{AI Engineering}{MCP \skillsep LangGraph \skillsep AI Agents\\Local LLMs \skillsep Context Design\\Long-Horizon Task Execution \skillsep Agentic Memory}
 \end{aside}
 ~
 \section{Exp|erience}
@@ -118,19 +115,20 @@
   \item Led programming for 20+ Phase I-III clinical trials in SAS, producing CDISC SDTM/ADaM datasets and 160+ analysis tables for a Phase III submission.
 \end{itemize}
 
-\makecontinuationpage{Jordan}{Moak}{Senior Software Engineer}
+\makecontinuationpage{Jordan}{Moak}{Software Engineer, Platform \& AI}
 
 \section{Sel|ected Personal Projects}
 \begin{entrylist}
   \entry
     {[GitHub: JMoak]}
-    {Published NPM Packages}
-    {MCP Server Ecosystem}
+    {Published npm \& PyPI Packages}
+    {Developer Tooling}
     {}
 \end{entrylist}
 \begin{itemize}
-  \item \textbf{chrono-mcp}: Production Model Context Protocol server for date/time operations. Dynamically-shaped, token-optimized responses. Published to NPM with 400+ IANA timezone support.
+  \item \textbf{chrono-mcp}: Production Model Context Protocol server for date/time operations. Dynamically-shaped, token-optimized responses. Published to npm with 400+ IANA timezone support.
   \item \textbf{vibrissa}: JSON-driven MCP integration test runner. Declarative test cases over stdio, CI/CD ready with JUnit output.
+  \item \textbf{tdd-dsl}: Test-driven development DSL published to npm and PyPI.
 \end{itemize}
 
 \begin{entrylist}
@@ -138,10 +136,11 @@
     {[GitHub: JMoak]}
     {AI Agent Architecture}
     {LangGraph Multi-Agent System}
-    {}
+    {(Computer Use, E2E Game Player)}
 \end{entrylist}
 \begin{itemize}
   \item Built multi-workflow AI agent platform supporting plan-execute-validate, screenshot analysis, and game automation workflows.
+  \item Built composable agentic harnesses for reusable orchestration across specialized workflows.
   \item Architected unified LLM abstraction layer supporting LangChain, direct HTTP, and local LLM backends (LM Studio) with graceful stub fallbacks.
   \item Implemented protocol-based agent composition, source tracking for observability, and feature-flag safety controls.
 \end{itemize}

@@ -21,8 +21,9 @@
 \RequirePackage{tikz}
 \RequirePackage{needspace}
 \RequirePackage{enumitem}
-% Font is set at list level so wrapped lines and inter-item gaps share one baseline grid
-\setlist[itemize]{itemsep=2pt, parsep=0pt, topsep=2pt, partopsep=0pt, leftmargin=1.2em, before=\small\bodyfont}
+% Font is set at list level so wrapped lines and inter-item gaps share one baseline grid.
+% A measured 3pt rhythm keeps the first page open without looking artificially padded.
+\setlist[itemize]{itemsep=3pt, parsep=0pt, topsep=3pt, partopsep=0pt, leftmargin=1.2em, before=\small\bodyfont}
 
 
 %%%%%%%%%%
@@ -33,9 +34,10 @@
 \definecolor{gray}{HTML}{4D4D4D}
 \definecolor{lightgray}{HTML}{999999}
 \definecolor{reallylightgray}{HTML}{E7E7E7}
+\definecolor{contactcolor}{HTML}{303030}
 
 \definecolor{mainpurple}{HTML}{8d5daf}
-\colorlet{headerpurple}{mainpurple}
+\definecolor{headerpurple}{HTML}{D9BCEB}
 
 \definecolor{green}{HTML}{C2E15F}
 \definecolor{orange}{HTML}{FDA333}
@@ -91,16 +93,18 @@
 \setmathfont[Path=Fonts/]{texgyreheros-regular.otf}
 
 \newcommand{\rolefont}{%
-  \fontsize{14pt}{24pt}\selectfont%
-  \thinfont%
-  \color{white}%
+  \fontsize{11pt}{13pt}\selectfont%
+  \headingfont%
+  \color{headerpurple}%
 }
 
 \newcommand{\contactfont}{%
   \fontsize{10pt}{10pt}\selectfont%
   \bodyfont%
-  \color{darkgray}%
+  \color{contactcolor}%
 }
+
+\newcommand{\contactprimary}[1]{{\headingfont\color{contactcolor}#1}}
 
 %%%%%%%%%%%%%
 % Structure %
@@ -166,17 +170,17 @@
 
 	\begin{tikzpicture}[remember picture,overlay]
    		\node [rectangle, fill=lightgray, anchor=north, minimum width=9cm, minimum height=9.5cm] (contactbox) at (-5cm,2cm){};
-		\node [anchor=west] (phone) at (-5.95cm,-4.4cm) {%
+		\node [anchor=west] (website) at (-5.95cm,-4.4cm) {%
 			\fontsize{12pt}{12pt}\color{textcolor}%
-			{\contactfont #4}
+			{\contactfont #6}
 		};
 		\node [anchor=west] (email) at (-5.95cm,-4.95cm) {%
 			\fontsize{12pt}{12pt}\color{textcolor}%
 			{\contactfont #5}
 		};
-		\node [anchor=west] (website) at (-5.95cm,-5.5cm) {%
+		\node [anchor=west] (phone) at (-5.95cm,-5.5cm) {%
 			\fontsize{12pt}{12pt}\color{textcolor}%
-			{\contactfont #6}
+			{\contactfont #4}
 		};
 		\node [anchor=west] (github) at (-5.95cm,-6.05cm) {%
 			\fontsize{12pt}{12pt}\color{textcolor}%
@@ -198,9 +202,8 @@
 			\fontsize{24pt}{50pt}\color{white}%
 			{\thinfont #1}{\bodyfont  #2}
 		};
-		\node [anchor=east] at (-0.7cm,-2.72cm) {% right-aligned inside the sidebar edge
-			\fontsize{12pt}{24pt}\color{headerpurple}%
-			\bodyfont #3%
+		\node [anchor=north east, text width=4.5cm, align=right] at (-0.7cm,-2.45cm) {%
+			\rolefont #3%
 		};
 	\end{tikzpicture}
 }
@@ -262,10 +265,10 @@
 % Diagrams and Charts %
 %%%%%%%%%%%%%%%%%%%%%%%
 
-% Programming Pie Chart
+% Focus chart
 \RequirePackage{pgf-pie}
 
-\newcommand{\programmingPie}{%
+\newcommand{\focusChart}{%
 	\begin{tikzpicture}[remember picture, xscale=0.5, yscale=0.5, opacity=0.5]
 	\pie[% settings
 			pos={-568,0},
@@ -281,28 +284,35 @@
 			%style = drop shadow,
 			%scale font
 	]
-	% Slices run counterclockwise from 3 o'clock; order places long labels at
-	% the roomy top/bottom pins and short ones at the tight left/right pins.
-	{15/\scriptsize Architecture, 30/\scriptsize Agentic Systems, 20/\scriptsize Platform, 25/\scriptsize Context Eng., 10/\scriptsize Tooling}% values size slices; numbers are hidden
+	% Preserve the established slice geometry while ordering the emphasis from
+	% Tooling through Automation. Numbers are intentionally hidden.
+	{15/\scriptsize Architecture, 30/\scriptsize Tooling, 20/\scriptsize Agentic Systems, 25/\scriptsize Platform, 10/\scriptsize Automation}
 	\end{tikzpicture}
 	\vspace{0.1cm}
 	\vspace{-2\parskip}
 }
 
-% Skill chips: \skillgroup{Category} heads a run of \skilltag{...} pills.
-% Chips wrap naturally inside the aside; row spacing comes from \lineskip.
-\tikzset{skilltag/.style={
-	draw=mainpurple!60,
-	line width=0.6pt,
-	fill=white,
-	rounded corners=4pt,
-	inner xsep=5pt,
-	inner ysep=2.5pt,
-	outer sep=1.5pt,
-	text=darkgray,
+% Editorial skill index: a slim accent rail and typographic hierarchy replace
+% the common badge cloud while retaining compact, highly scannable groupings.
+\newcommand{\skillsep}{{\color{mainpurple!75}\kern0.3em\raisebox{0.18ex}{\tiny\textbullet}\kern0.3em}}
+\tikzset{skillcopy/.style={
+	anchor=north west,
+	inner sep=0pt,
+	outer sep=0pt,
+	text width=4.35cm,
 }}
-\newcommand{\skillgroup}[1]{{\footnotesize\headingfont\color{darkgray}\MakeUppercase{#1}}}
-\newcommand{\skilltag}[1]{\tikz[baseline=(t.base)]{\node[skilltag] (t) {\footnotesize\bodyfont #1};}}
+\newcommand{\skillcategory}[2]{%
+	\par\noindent
+	\begin{tikzpicture}[baseline=(copy.north)]
+		\node[skillcopy] (copy) at (0.2cm,0) {%
+			{\scriptsize\headingfont\color{mainpurple}\MakeUppercase{#1}}\\[-1pt]
+			{\scriptsize\bodyfont\color{darkgray}#2}%
+		};
+		\draw[mainpurple,line width=1.1pt]
+			([xshift=-0.17cm]copy.north west) -- ([xshift=-0.17cm]copy.south west);
+	\end{tikzpicture}%
+	\vspace{0.12cm}% the aside's active line break closes the row
+}
 
 
 %%%%%%%%%%%%%%%%
