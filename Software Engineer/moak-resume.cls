@@ -143,8 +143,9 @@
 }
 
 % Establish the first-page content pane below the profile treatment without
-% affecting the absolutely positioned sidebar.
-\newcommand{\maincontentstart}{\par\vspace*{1.75\baselineskip}}
+% affecting the absolutely positioned sidebar. The explicit half-inch term
+% keeps this design adjustment legible instead of hiding it in a magic ratio.
+\newcommand{\maincontentstart}{\par\vspace*{\dimexpr1.75\baselineskip+0.5in\relax}}
 
 \pagestyle{empty}
 
