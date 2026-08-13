@@ -12,7 +12,7 @@
     pdftitle={Jordan Moak - Software Engineer, Platform and AI},
     pdfauthor={Jordan Moak},
     pdfsubject={Resume of Jordan Moak, Software Engineer specializing in Platform Engineering and AI},
-    pdfkeywords={Software Engineer, Systems Architect, Platform Engineering, AI Engineering, TypeScript, Python, Java, C\#, Go, Groovy, Bash, Lua, SAS, Node.js, Kubernetes, AWS, LLM Integration, MCP, Model Context Protocol, AI Agent Architecture, Agentic Systems, AI Agents, Agentic Memory, Long-Horizon Task Execution, Federated Memory, Semantic Search, Hybrid Search, OpenClaw, LangGraph, Local LLM Deployment, Context Engineering, Computer Use, Automation, Test Automation, TDD, CI/CD, Microservices, Backstage, SonarQube, Akamai, Selenium, Appium, Developer Tooling},
+    pdfkeywords={Software Engineer, Systems Architect, Platform Engineering, AI Engineering, TypeScript, Python, Java, C\#, Go, Groovy, Bash, Lua, SAS, Node.js, Kubernetes, AWS, Event-Driven Architecture, CRM, LLM Integration, MCP, Model Context Protocol, AI Agent Architecture, Agentic Systems, Coding Agents, AI Agents, Agentic Memory, Long-Horizon Task Execution, Federated Memory, Semantic Search, Hybrid Search, OpenClaw, LangGraph, Local LLM Deployment, Context Engineering, Computer Use, Automation, Test Automation, TDD, CI/CD, Microservices, Backstage, SonarQube, Akamai, Selenium, Appium, Developer Tooling},
     colorlinks=false,           % no link border color
     allbordercolors=white,      % white border color for all
     pdfcreator={XeLaTeX}
@@ -37,11 +37,11 @@
 	\focusChart{}
   ~
   \profilesection{Technical Skills}
-  \skillcategory{Languages}{TypeScript \skillsep Python \skillsep Java \skillsep C\#\\Go \skillsep Groovy \skillsep Bash \skillsep Lua \skillsep SAS}
-  \skillcategory{Platform}{CI/CD \skillsep Microservices \skillsep Node.js\\Automation \skillsep Backstage \skillsep K8s \skillsep AWS}
-  \skillcategory{AI Engineering}{MCP \skillsep LangGraph \skillsep AI Agents\\Local LLMs \skillsep Context Design\\Long-Horizon Task Execution \skillsep Agentic Memory}
+  \skillcategory{01}{Languages}{TypeScript \skillsep Python \skillsep Java \skillsep C\#\\Go \skillsep Groovy \skillsep Bash \skillsep Lua \skillsep SAS}
+  \skillcategory{02}{Platform}{CI/CD \skillsep Microservices \skillsep Node.js\\Automation \skillsep Backstage \skillsep K8s \skillsep AWS}
+  \skillcategory{03}{AI Engineering}{MCP \skillsep LangGraph \skillsep AI Agents\\Local LLMs \skillsep Context Design\\Long-Horizon Task Execution \skillsep Agentic Memory}
 \end{aside}
-~
+\maincontentstart
 \section{Exp|erience}
 
   % -- Care.com
@@ -53,11 +53,13 @@
     {}
   \end{entrylist}
   \begin{itemize}
-    \item Architected and delivered automation on critical monolith production deployment pipeline, reclaiming 1+ engineer-week per week and enabling safe, quality deployment of 10-70 commits twice weekly (up from bi-weekly releases of 140+ commits with no automation).
-    \item Delivered \$48K+ annual cost savings via Apache to Akamai subset replatform completed in 2 weeks.
+    \item Architected end-to-end automation for a critical monolith deployment pipeline, removing the need for dedicated engineering oversight in the release path.
+    \item Increased release cadence from biweekly batches of 140+ commits to safe, twice-weekly deployments of 10-70 commits while freeing more than one engineer's weekly capacity.
     \item Led integration of Backstage Service Catalog (Node.js) and SonarQube with associated CI/CD pipelines, establishing platform engineering standards adopted organization-wide.
-    \item Serve as technical anchor for legacy platform knowledge with ownership in rehabbing critical platform features and CI/CD processes for 10-person senior engineering team.
-    \item Drive architectural pattern improvements scaling across multiple teams with strategic bend toward new AI/LLM agentic tooling.
+    \item Designed custom event-driven solutions supporting high-volume CRM campaigns and reliable customer lifecycle messaging.
+    \item Served as technical anchor for legacy platform knowledge, rehabilitating critical features and CI/CD processes for a 10-person senior engineering team.
+    \item Led implementation of MCP and agent-facing tooling, pairing reusable architectural patterns with hands-on enablement to accelerate adoption across engineering teams.
+    \item Delivered \$48K+ in annual cost savings by completing a targeted Apache-to-Akamai replatform in 2 weeks.
   \end{itemize}
 
  % -- ANGI
@@ -141,6 +143,18 @@
 \begin{itemize}
   \item Built a local-first OpenClaw personal assistant for maintaining code projects, testing agent methods, and preserving useful long-horizon context.
   \item Architected a custom federated memory system with domain-partitioned recall, semantic and hybrid search, and layered historical retrieval that keeps context relevant without bloat.
+\end{itemize}
+
+\begin{entrylist}
+  \entry
+    {[GitHub: JMoak]}
+    {\href{https://github.com/JMoak/keywork}{keywork}}
+    {Keyboard-First Coding Agent}
+    {}
+\end{entrylist}
+\begin{itemize}
+  \item Designing and building a TypeScript coding-agent harness with native multi-pane tiling, a minimal extensible core, and first-class Windows support.
+  \item Architected a headless, server-shaped engine around typed events, replayable tree sessions, deferred MCP schemas, and replaceable trust controls.
 \end{itemize}
 
 \begin{entrylist}

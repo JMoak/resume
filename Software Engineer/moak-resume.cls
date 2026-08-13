@@ -142,6 +142,10 @@
 	\par\vspace{.25\parskip}%
 }
 
+% Establish the first-page content pane below the profile treatment without
+% affecting the absolutely positioned sidebar.
+\newcommand{\maincontentstart}{\par\vspace*{1.35\baselineskip}}
+
 \pagestyle{empty}
 
 
@@ -282,6 +286,7 @@
 \RequirePackage{pgf-pie}
 
 \newcommand{\focusChart}{%
+	\hspace*{-0.18cm}% center the chart beneath the sidebar section heading
 	\begin{tikzpicture}[remember picture, xscale=0.5, yscale=0.5, opacity=0.5]
 	\pie[% settings
 			pos={-568,0},
@@ -305,26 +310,35 @@
 	\vspace{-2\parskip}
 }
 
-% Editorial skill index: a slim accent rail and typographic hierarchy replace
-% the common badge cloud while retaining compact, highly scannable groupings.
+% Connected capability index: numbered nodes create a subtle systems-diagram
+% motif while the typography stays compact and easy to scan.
 \newcommand{\skillsep}{{\color{mainpurple!75}\kern0.3em\raisebox{0.18ex}{\tiny\textbullet}\kern0.3em}}
+\tikzset{skillindex/.style={
+	circle,
+	fill=mainpurple,
+	draw=none,
+	minimum size=0.48cm,
+	inner sep=0pt,
+	text=white,
+}}
 \tikzset{skillcopy/.style={
 	anchor=north west,
 	inner sep=0pt,
 	outer sep=0pt,
-	text width=4.35cm,
+	text width=4.05cm,
 }}
-\newcommand{\skillcategory}[2]{%
+\newcommand{\skillcategory}[3]{%
 	\par\noindent
-	\begin{tikzpicture}[baseline=(copy.north)]
-		\node[skillcopy] (copy) at (0.2cm,0) {%
-			{\scriptsize\headingfont\color{mainpurple}\MakeUppercase{#1}}\\[-1pt]
-			{\scriptsize\bodyfont\color{darkgray}#2}%
+	\begin{tikzpicture}[baseline=(index.base)]
+		\node[skillindex] (index) at (0.24cm,0) {\tiny\headingfont #1};
+		\node[skillcopy] (copy) at (0.65cm,0.16cm) {%
+			{\scriptsize\headingfont\color{mainpurple}\MakeUppercase{#2}}\\[-1pt]
+			{\scriptsize\bodyfont\color{darkgray}#3}%
 		};
-		\draw[mainpurple,line width=1.1pt]
-			([xshift=-0.17cm]copy.north west) -- ([xshift=-0.17cm]copy.south west);
+		\draw[mainpurple!35,line width=0.6pt]
+			(index.south) -- (index.south |- copy.south);
 	\end{tikzpicture}%
-	\vspace{0.12cm}% the aside's active line break closes the row
+	\vspace{0.16cm}% the aside's active line break closes the row
 }
 
 
