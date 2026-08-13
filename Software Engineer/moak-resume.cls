@@ -144,7 +144,7 @@
 
 % Establish the first-page content pane below the profile treatment without
 % affecting the absolutely positioned sidebar.
-\newcommand{\maincontentstart}{\par\vspace*{1.35\baselineskip}}
+\newcommand{\maincontentstart}{\par\vspace*{1.75\baselineskip}}
 
 \pagestyle{empty}
 
@@ -286,7 +286,7 @@
 \RequirePackage{pgf-pie}
 
 \newcommand{\focusChart}{%
-	\hspace*{-0.18cm}% center the chart beneath the sidebar section heading
+	\hspace*{-0.36cm}% center the chart beneath the sidebar section heading
 	\begin{tikzpicture}[remember picture, xscale=0.5, yscale=0.5, opacity=0.5]
 	\pie[% settings
 			pos={-568,0},
