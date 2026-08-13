@@ -183,9 +183,9 @@
   \resumeentryrow{#1}{#2}{#3}{#4}{\normalsize}{\scriptsize}}
 
 % Experience headings carry enough visual weight to anchor the more open role
-% spacing while retaining the title-to-company proportions of the base design.
+% spacing, while company names remain quiet supporting metadata.
 \newcommand{\experienceentry}[4]{%
-  \resumeentryrow{#1}{#2}{#3}{#4}{\fontsize{11pt}{13pt}\selectfont}{\fontsize{8pt}{9.5pt}\selectfont}}
+  \resumeentryrow{#1}{#2}{#3}{#4}{\fontsize{10.5pt}{12.5pt}\selectfont}{\fontsize{7pt}{8.5pt}\selectfont}}
 
 
 %%%%%%%%%%%%%%
