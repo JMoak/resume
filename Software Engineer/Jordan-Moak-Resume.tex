@@ -9,10 +9,10 @@
 
 % Document Meta information.
 \hypersetup{
-    pdftitle={Jordan Moak - Senior Software Engineer Resume},
+    pdftitle={Jordan Moak - Software Engineer, Platform and AI},
     pdfauthor={Jordan Moak},
-    pdfsubject={Resume of Jordan Moak, Senior Software Engineer and Systems Architect},
-    pdfkeywords={Senior Software Engineer, Systems Architect, Platform Engineering, TypeScript, Python, Java, C\#, Node.js, LLM Integration, MCP, Model Context Protocol, AI Agent Architecture, Agentic Systems, AI Agents, LangGraph, Local LLM Deployment, Context Engineering, Automation, Test Automation, CI/CD, Continuous Integration, Continuous Delivery, Microservices, Backstage, SonarQube, Akamai, Selenium, Appium, Developer Tooling},
+    pdfsubject={Resume of Jordan Moak, Software Engineer specializing in Platform Engineering and AI},
+    pdfkeywords={Software Engineer, Systems Architect, Platform Engineering, AI Engineering, TypeScript, Python, Java, C\#, Go, Groovy, Bash, Lua, SAS, Node.js, Kubernetes, AWS, Event-Driven Architecture, CRM, LLM Integration, MCP, Model Context Protocol, AI Agent Architecture, Agentic Systems, Coding Agents, AI Agents, Agentic Memory, Long-Horizon Task Execution, Federated Memory, Semantic Search, Hybrid Search, OpenClaw, LangGraph, Local LLM Deployment, Context Engineering, Computer Use, Automation, Test Automation, TDD, CI/CD, Microservices, Backstage, SonarQube, Akamai, Selenium, Appium, Developer Tooling},
     colorlinks=false,           % no link border color
     allbordercolors=white,      % white border color for all
     pdfcreator={XeLaTeX}
@@ -21,115 +21,147 @@
 \begin{document}
 
 \makeprofile{Jordan}{Moak}
-            {Senior Software Engineer}
+            {Software Engineer, Platform \& AI}
             {\icon{\faPhone} +513 417 4499}
             {\icon{\faEnvelope[regular]} \href{mailto:jordan.moak@gmail.com}{ jordan.moak@gmail.com}}
-            {\icon{\faGlobe} \href{https://moak.dev}{ moak.dev}}
+            {\icon{\faGlobe} \href{https://moak.dev}{ \contactprimary{moak.dev}}}
             {\icon{\faGithub} \href{https://github.com/JMoak/}{ JMoak}}
             {\icon{\faLinkedin} \href{https://www.linkedin.com/in/jmoak/}{ /in/JMoak}}
-            {\icon{\faMapMarker} \href{https://www.google.com/maps/place/Greendale,+IN+47025/@39.1487958,-84.7652822,12z/data=!4m6!3m5!1s0x8841d3fcc3d9708d:0x528857ad3dfc5551!8m2!3d39.1125572!4d-84.8641178!16zL20vMHNrdHk?entry=ttu}{ Greendale, IN}}
+            {\icon{\faMapMarker} Loveland, OH}
 
 % In the aside, each new line forces a line break
 \begin{aside}
   \profilesection{About Me}
-  \small\bodyfont Systems architect with 12+ years of experience designing and shipping software across healthcare, marketplace, and platform engineering domains. I translate complex system designs into production infrastructure — from Java microservices to AI agent orchestration.
+  \small\bodyfont Systems architect with 12+ years of experience designing and shipping software across healthcare, marketplace, and platform engineering domains. I translate complex system designs into production infrastructure, from Java microservices to AI agent orchestration.
   \profilesection{Focus}
-	\programmingPie{}
+	\focusChart{}
   ~
   \profilesection{Technical Skills}
-  \skillgroup{Languages}
-  \skilltag{TypeScript} \skilltag{Python} \skilltag{Java} \skilltag{C\#}
-  \skillgroup{Platform}
-  \skilltag{CI/CD} \skilltag{Microservices} \skilltag{Node.js} \skilltag{Automation} \skilltag{Backstage}
-  \skillgroup{AI Engineering}
-  \skilltag{MCP} \skilltag{LangGraph} \skilltag{AI Agents} \skilltag{Local LLMs} \skilltag{Context Design}
+  \skillcategory{01}{Languages}{TypeScript \skillsep Python \skillsep Java \skillsep C\#\\Go \skillsep Groovy \skillsep Bash \skillsep Lua \skillsep SAS}
+  \skillcategory{02}{Platform}{CI/CD \skillsep Microservices \skillsep Node.js\\Automation \skillsep Backstage \skillsep K8s \skillsep AWS}
+  \skillcategory{03}{AI Engineering}{MCP \skillsep LangGraph \skillsep AI Agents\\Local LLMs \skillsep Context Design\\Long-Horizon Task Execution \skillsep Agentic Memory}
 \end{aside}
-~
+\maincontentstart
 \section{Exp|erience}
 
   % -- Care.com
   \begin{entrylist}
-    \entry
+    \experienceentry
     {[Oct 2021 - Jun 2026]}
     {Senior Software Engineer}
     {Care.com}
-    {Promoted Feb 2024}
+    {}
   \end{entrylist}
-  \begin{itemize}
-    \item Architected and delivered automation on critical monolith production deployment pipeline, reclaiming 1+ engineer-week per week and enabling safe, quality deployment of 10-70 commits twice weekly (up from bi-weekly releases of 140+ commits with no automation).
-    \item Delivered \$48K+ annual cost savings via Apache to Akamai subset replatform completed in 2 weeks.
+  \begin{experienceitems}
+    \item Architected end-to-end automation for a critical monolith deployment pipeline, removing the need for dedicated engineering oversight in the release path.
+    \item Increased release cadence from biweekly batches of 140+ commits to safe, twice-weekly deployments of 10-70 commits while freeing more than one engineer's weekly capacity.
     \item Led integration of Backstage Service Catalog (Node.js) and SonarQube with associated CI/CD pipelines, establishing platform engineering standards adopted organization-wide.
-    \item Serve as technical anchor for legacy platform knowledge with ownership in rehabbing critical platform features and CI/CD processes for 10-person senior engineering team.
-    \item Drive architectural pattern improvements scaling across multiple teams with strategic bend toward new AI/LLM agentic tooling.
-  \end{itemize}
+    \item Designed custom event-driven solutions supporting high-volume CRM campaigns and reliable customer lifecycle messaging.
+    \item Served as technical anchor for legacy platform knowledge, rehabilitating critical features and CI/CD processes for a 10-person senior engineering team.
+    \item Led implementation of MCP and agent-facing tooling, pairing reusable architectural patterns with hands-on enablement to accelerate adoption across engineering teams.
+    \item Delivered recurring department-wide technical presentations on platform changes, new engineering methodologies, and rollout plans, aligning teams on adoption and execution.
+    \item Delivered \$48K+ in annual cost savings by completing a targeted Apache-to-Akamai replatform in 2 weeks.
+  \end{experienceitems}
+  \experiencegap
 
  % -- ANGI
  \begin{entrylist}
-  \entry
+  \experienceentry
     {[Nov 2018 - Oct 2021]}
     {Software Engineer III}
     {Angi (formerly known as Angie's List)}
     {}
 \end{entrylist}
-\begin{itemize}
+\begin{experienceitems}
   \item Designed and implemented code-generation templates and developer tooling adopted by delivery teams across the organization.
   \item Architected RESTful microservice testing framework using Node.js, Mountebank, and Cucumber, enabling CI/CD support via CircleCI.
   \item Led development of Appium-based mobile testing framework supporting four mobile applications with Python, XCUITest, and UIAutomator2.
   \item Built and maintained Selenium-based frontend testing framework for microfrontend architecture.
   \item Evangelized automation best practices through documentation, bootcamps, and organizational support.
-\end{itemize}
+\end{experienceitems}
+\experiencegap
 
  % -- ROCHE
 \begin{entrylist}
-  \entry
+  \experienceentry
     {[Sep 2014 - Nov 2018]}
     {DV Software Engineer}
     {Roche Diagnostics (Contracted through PRO Unlimited)}
     {}
 \end{entrylist}
-\begin{itemize}
+\begin{experienceitems}
+  \item Diagnosed and resolved a floating-point precision defect, restoring result validity and returning a production line with millions of dollars in daily output to operation.
   \item Automated mobile-web-medical-device ecosystem using Java, Appium, Selenium, and Linux bash for FDA-compliant medical device validation.
   \item Created reusable automation tools using Java, Selenium, PowerShell, and SAS within regulated standard operating procedures.
   \item Led team automation of test dataset and configuration file generation for medical software verification.
-\end{itemize}
+\end{experienceitems}
+\experiencegap
 
 % -- TSC
 \begin{entrylist}
-  \entry
+  \experienceentry
     {[Mar 2014 - Aug 2014]}
     {Programmer/Analyst}
     {The Stevenson Company}
     {}
 \end{entrylist}
-\begin{itemize}
+\begin{experienceitems}
   \item Developed statistical procedures for quality analysis and data cleaning in market research web applications.
   \item Migrated SAS programs to MySQL and PHP, improving processing efficiency and code maintainability.
-\end{itemize}
+\end{experienceitems}
+\experiencegap
 
 % -- STATKING
 \begin{entrylist}
-    \entry
+    \experienceentry
     {[Jan 2013 - Dec 2013]}
     {Statistical Programmer}
     {STATKING Clinical Services}
     {}
   \end{entrylist}
-\begin{itemize}
-  \item Led programming for 20+ Phase I-III clinical trials in SAS, producing CDISC SDTM/ADaM datasets and 160+ analysis tables for a Phase III submission.
-\end{itemize}
+\begin{experienceitems}
+  \item Led SAS programming for 20+ Phase I-III clinical trials, developing CDISC SDTM/ADaM datasets.
+  \item Produced 160+ analysis tables and listings for a Phase III clinical trial submission.
+\end{experienceitems}
+
+\makecontinuationpage{Jordan}{Moak}{Software Engineer, Platform \& AI}
 
 \section{Sel|ected Personal Projects}
 \begin{entrylist}
   \entry
     {[GitHub: JMoak]}
-    {Published NPM Packages}
-    {MCP Server Ecosystem}
+    {Published npm \& PyPI Packages}
+    {Developer Tooling}
     {}
 \end{entrylist}
 \begin{itemize}
-  \item \textbf{chrono-mcp}: Production Model Context Protocol server for date/time operations. Dynamically-shaped, token-optimized responses. Published to NPM with 400+ IANA timezone support.
+  \item \textbf{chrono-mcp}: Production Model Context Protocol server for date/time operations. Dynamically-shaped, token-optimized responses. Published to npm with 400+ IANA timezone support.
   \item \textbf{vibrissa}: JSON-driven MCP integration test runner. Declarative test cases over stdio, CI/CD ready with JUnit output.
-  \item Applied protocol-based architecture and comprehensive documentation patterns (ARCHITECTURE.md, AGENTS.md) from platform engineering to developer tooling.
+  \item \textbf{tdd-dsl}: Test-driven development DSL published to npm and PyPI.
+\end{itemize}
+
+\begin{entrylist}
+  \entry
+    {[GitHub: Rosavera-I]}
+    {\href{https://github.com/Rosavera-I}{rosavera}}
+    {OpenClaw Personal Assistant}
+    {}
+\end{entrylist}
+\begin{itemize}
+  \item Built a local-first OpenClaw personal assistant for maintaining code projects, testing agent methods, and preserving useful long-horizon context.
+  \item Architected a custom federated memory system with domain-partitioned recall, semantic and hybrid search, and layered historical retrieval that keeps context relevant without bloat.
+\end{itemize}
+
+\begin{entrylist}
+  \entry
+    {[GitHub: JMoak]}
+    {\href{https://github.com/JMoak/keywork}{keywork}}
+    {Keyboard-First Coding Agent}
+    {}
+\end{entrylist}
+\begin{itemize}
+  \item Designing and building a TypeScript coding-agent harness with native multi-pane tiling, a minimal extensible core, and first-class Windows support.
+  \item Architected a headless, server-shaped engine around typed events, replayable tree sessions, deferred MCP schemas, and replaceable trust controls.
 \end{itemize}
 
 \begin{entrylist}
@@ -137,10 +169,11 @@
     {[GitHub: JMoak]}
     {AI Agent Architecture}
     {LangGraph Multi-Agent System}
-    {}
+    {(Computer Use, E2E Game Player)}
 \end{entrylist}
 \begin{itemize}
   \item Built multi-workflow AI agent platform supporting plan-execute-validate, screenshot analysis, and game automation workflows.
+  \item Built composable agentic harnesses for reusable orchestration across specialized workflows.
   \item Architected unified LLM abstraction layer supporting LangChain, direct HTTP, and local LLM backends (LM Studio) with graceful stub fallbacks.
   \item Implemented protocol-based agent composition, source tracking for observability, and feature-flag safety controls.
 \end{itemize}

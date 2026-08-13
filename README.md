@@ -2,7 +2,7 @@
 
 [![Build Resume PDF](https://github.com/JMoak/resume/actions/workflows/build-pdf.yml/badge.svg)](https://github.com/JMoak/resume/actions/workflows/build-pdf.yml)
 
-**Current Role:** Senior Software Engineer @ Care.com (Promoted 2024)
+**Most Recent Role:** Senior Software Engineer @ Care.com
 
 📄 **[Download Latest Resume PDF](https://github.com/JMoak/resume/actions/workflows/build-pdf.yml)**
 

@@ -19,10 +19,12 @@
 \RequirePackage{ifthen}
 \RequirePackage{parskip}
 \RequirePackage{tikz}
+\RequirePackage{graphicx}
 \RequirePackage{needspace}
 \RequirePackage{enumitem}
-% Font is set at list level so wrapped lines and inter-item gaps share one baseline grid
-\setlist[itemize]{itemsep=2pt, parsep=0pt, topsep=2pt, partopsep=0pt, leftmargin=1.2em, before=\small\bodyfont}
+% Font is set at list level so wrapped lines and inter-item gaps share one baseline grid.
+% A measured 3pt rhythm keeps the first page open without looking artificially padded.
+\setlist[itemize]{itemsep=3pt, parsep=0pt, topsep=3pt, partopsep=0pt, leftmargin=1.2em, before=\small\bodyfont}
 
 
 %%%%%%%%%%
@@ -33,6 +35,7 @@
 \definecolor{gray}{HTML}{4D4D4D}
 \definecolor{lightgray}{HTML}{999999}
 \definecolor{reallylightgray}{HTML}{E7E7E7}
+\definecolor{contactcolor}{HTML}{303030}
 
 \definecolor{mainpurple}{HTML}{8d5daf}
 \colorlet{headerpurple}{mainpurple}
@@ -91,16 +94,30 @@
 \setmathfont[Path=Fonts/]{texgyreheros-regular.otf}
 
 \newcommand{\rolefont}{%
-  \fontsize{14pt}{24pt}\selectfont%
-  \thinfont%
-  \color{white}%
+  \fontsize{10pt}{12pt}\selectfont%
+  \headingfont%
+  \color{headerpurple}%
+}
+
+% Keep the profile title on one line, scaling down only when its measured
+% width exceeds the available sidebar column.
+\newsavebox{\roletitlebox}
+\newcommand{\fitroletitle}[1]{%
+  \sbox{\roletitlebox}{\rolefont #1}%
+  \ifdim\wd\roletitlebox>4.85cm
+    \resizebox{4.85cm}{!}{\usebox{\roletitlebox}}%
+  \else
+    \usebox{\roletitlebox}%
+  \fi
 }
 
 \newcommand{\contactfont}{%
   \fontsize{10pt}{10pt}\selectfont%
   \bodyfont%
-  \color{darkgray}%
+  \color{contactcolor}%
 }
+
+\newcommand{\contactprimary}[1]{{\headingfont\color{contactcolor}#1}}
 
 %%%%%%%%%%%%%
 % Structure %
@@ -125,6 +142,22 @@
 	\par\vspace{.25\parskip}%
 }
 
+% Establish the first-page content pane below the profile treatment without
+% affecting the absolutely positioned sidebar.
+\newcommand{\maincontentstart}{\par\vspace*{0.5in}}
+
+% Separate adjacent roles by roughly one visual line once the list's natural
+% trailing space is included. Kept explicit so project entries are unaffected.
+\newcommand{\experiencegap}{\par\vspace{0.65\baselineskip}}
+
+% Give employment accomplishments a modest readability lift without changing
+% the denser project and education typography on the continuation page.
+\newenvironment{experienceitems}{%
+  \begin{itemize}[before={\fontsize{9.5pt}{11.5pt}\selectfont\bodyfont}]%
+}{%
+  \end{itemize}%
+}
+
 \pagestyle{empty}
 
 
@@ -139,13 +172,20 @@
   \end{tabular*}
 }
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
-\newcommand{\entry}[4]{%
+\newcommand{\resumeentryrow}[6]{%
   {\textbf{\tiny\addfontfeature{Color=textcolor} #1}}&\parbox[t]{\dimexpr\textwidth-2.4cm\relax}{%
- 	\textbf{#2}%
+    {#5\textbf{#2}}%
     \hfill%
-    {\textbf{\scriptsize\addfontfeature{Color=mainpurple} #3}}%
+    {#6\textbf{\addfontfeature{Color=mainpurple} #3}}%
     \ifthenelse{\equal{#4}{}}{}{\\{\footnotesize\itshape\addfontfeature{Color=darkgray} #4}}%
   }\\}
+\newcommand{\entry}[4]{%
+  \resumeentryrow{#1}{#2}{#3}{#4}{\normalsize}{\scriptsize}}
+
+% Experience headings carry enough visual weight to anchor the more open role
+% spacing, while company names remain quiet supporting metadata.
+\newcommand{\experienceentry}[4]{%
+  \resumeentryrow{#1}{#2}{#3}{#4}{\fontsize{10.5pt}{12.5pt}\selectfont}{\fontsize{7pt}{8.5pt}\selectfont}}
 
 
 %%%%%%%%%%%%%%
@@ -166,17 +206,17 @@
 
 	\begin{tikzpicture}[remember picture,overlay]
    		\node [rectangle, fill=lightgray, anchor=north, minimum width=9cm, minimum height=9.5cm] (contactbox) at (-5cm,2cm){};
-		\node [anchor=west] (phone) at (-5.95cm,-4.4cm) {%
+		\node [anchor=west] (website) at (-5.95cm,-4.4cm) {%
 			\fontsize{12pt}{12pt}\color{textcolor}%
-			{\contactfont #4}
+			{\contactfont #6}
 		};
 		\node [anchor=west] (email) at (-5.95cm,-4.95cm) {%
 			\fontsize{12pt}{12pt}\color{textcolor}%
 			{\contactfont #5}
 		};
-		\node [anchor=west] (website) at (-5.95cm,-5.5cm) {%
+		\node [anchor=west] (phone) at (-5.95cm,-5.5cm) {%
 			\fontsize{12pt}{12pt}\color{textcolor}%
-			{\contactfont #6}
+			{\contactfont #4}
 		};
 		\node [anchor=west] (github) at (-5.95cm,-6.05cm) {%
 			\fontsize{12pt}{12pt}\color{textcolor}%
@@ -198,11 +238,30 @@
 			\fontsize{24pt}{50pt}\color{white}%
 			{\thinfont #1}{\bodyfont  #2}
 		};
-		\node [anchor=east] at (-0.7cm,-2.72cm) {% right-aligned inside the sidebar edge
-			\fontsize{12pt}{24pt}\color{headerpurple}%
-			\bodyfont #3%
+		\node [anchor=east] at (-0.7cm,-2.72cm) {%
+			\fitroletitle{#3}%
 		};
 	\end{tikzpicture}
+}
+
+% Start a clean continuation page without repeating the first-page sidebar.
+% The wider text area gives project and education entries room to breathe,
+% while the compact identity header keeps the second page self-contained.
+\newcommand{\makecontinuationpage}[3]{%
+	\clearpage
+	\newgeometry{left=1.4cm,top=1.1cm,right=1.4cm,bottom=1.2cm,nohead,nofoot}%
+	\noindent
+	\begin{minipage}[b]{0.62\textwidth}
+		{\fontsize{20pt}{22pt}\selectfont\thinfont #1 }%
+		{\fontsize{20pt}{22pt}\selectfont\bodyfont #2}%
+	\end{minipage}%
+	\begin{minipage}[b]{0.38\textwidth}
+		\raggedleft
+		{\small\headingfont\color{mainpurple} #3}%
+	\end{minipage}
+	\par\vspace{0.25cm}
+	{\color{reallylightgray}\hrule height 1pt}
+	\vspace{0.35cm}
 }
 
 
@@ -242,10 +301,11 @@
 % Diagrams and Charts %
 %%%%%%%%%%%%%%%%%%%%%%%
 
-% Programming Pie Chart
+% Focus chart
 \RequirePackage{pgf-pie}
 
-\newcommand{\programmingPie}{%
+\newcommand{\focusChart}{%
+	\hspace*{-0.36cm}% center the chart beneath the sidebar section heading
 	\begin{tikzpicture}[remember picture, xscale=0.5, yscale=0.5, opacity=0.5]
 	\pie[% settings
 			pos={-568,0},
@@ -261,28 +321,44 @@
 			%style = drop shadow,
 			%scale font
 	]
-	% Slices run counterclockwise from 3 o'clock; order places long labels at
-	% the roomy top/bottom pins and short ones at the tight left/right pins.
-	{15/\scriptsize Architecture, 30/\scriptsize Agentic Systems, 20/\scriptsize Platform, 25/\scriptsize Context Eng., 10/\scriptsize Tooling}% values size slices; numbers are hidden
+	% Preserve the established slice geometry while keeping the shortest label
+	% in the alignment-sensitive left position. Numbers are intentionally hidden.
+	{15/\scriptsize Architecture, 30/\scriptsize Agentic Systems, 20/\scriptsize Quality, 25/\scriptsize Platform Tooling, 10/\scriptsize Automation}
 	\end{tikzpicture}
 	\vspace{0.1cm}
 	\vspace{-2\parskip}
 }
 
-% Skill chips: \skillgroup{Category} heads a run of \skilltag{...} pills.
-% Chips wrap naturally inside the aside; row spacing comes from \lineskip.
-\tikzset{skilltag/.style={
-	draw=mainpurple!60,
-	line width=0.6pt,
-	fill=white,
-	rounded corners=4pt,
-	inner xsep=5pt,
-	inner ysep=2.5pt,
-	outer sep=1.5pt,
-	text=darkgray,
+% Connected capability index: numbered nodes create a subtle systems-diagram
+% motif while the typography stays compact and easy to scan.
+\newcommand{\skillsep}{{\color{mainpurple!75}\kern0.3em\raisebox{0.18ex}{\tiny\textbullet}\kern0.3em}}
+\tikzset{skillindex/.style={
+	circle,
+	fill=mainpurple,
+	draw=none,
+	minimum size=0.48cm,
+	inner sep=0pt,
+	text=white,
 }}
-\newcommand{\skillgroup}[1]{{\footnotesize\headingfont\color{darkgray}\MakeUppercase{#1}}}
-\newcommand{\skilltag}[1]{\tikz[baseline=(t.base)]{\node[skilltag] (t) {\footnotesize\bodyfont #1};}}
+\tikzset{skillcopy/.style={
+	anchor=north west,
+	inner sep=0pt,
+	outer sep=0pt,
+	text width=4.05cm,
+}}
+\newcommand{\skillcategory}[3]{%
+	\par\noindent
+	\begin{tikzpicture}[baseline=(index.base)]
+		\node[skillindex] (index) at (0.24cm,0) {\tiny\headingfont #1};
+		\node[skillcopy] (copy) at (0.65cm,0.16cm) {%
+			{\scriptsize\headingfont\color{mainpurple}\MakeUppercase{#2}}\\[-1pt]
+			{\scriptsize\bodyfont\color{darkgray}#3}%
+		};
+		\draw[mainpurple!35,line width=0.6pt]
+			(index.south) -- (index.south |- copy.south);
+	\end{tikzpicture}%
+	\vspace{0.16cm}% the aside's active line break closes the row
+}
 
 
 %%%%%%%%%%%%%%%%
