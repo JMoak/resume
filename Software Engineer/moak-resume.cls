@@ -19,6 +19,7 @@
 \RequirePackage{ifthen}
 \RequirePackage{parskip}
 \RequirePackage{tikz}
+\RequirePackage{graphicx}
 \RequirePackage{needspace}
 \RequirePackage{enumitem}
 % Font is set at list level so wrapped lines and inter-item gaps share one baseline grid.
@@ -37,7 +38,7 @@
 \definecolor{contactcolor}{HTML}{303030}
 
 \definecolor{mainpurple}{HTML}{8d5daf}
-\definecolor{headerpurple}{HTML}{D9BCEB}
+\colorlet{headerpurple}{mainpurple}
 
 \definecolor{green}{HTML}{C2E15F}
 \definecolor{orange}{HTML}{FDA333}
@@ -93,9 +94,21 @@
 \setmathfont[Path=Fonts/]{texgyreheros-regular.otf}
 
 \newcommand{\rolefont}{%
-  \fontsize{11pt}{13pt}\selectfont%
+  \fontsize{10pt}{12pt}\selectfont%
   \headingfont%
   \color{headerpurple}%
+}
+
+% Keep the profile title on one line, scaling down only when its measured
+% width exceeds the available sidebar column.
+\newsavebox{\roletitlebox}
+\newcommand{\fitroletitle}[1]{%
+  \sbox{\roletitlebox}{\rolefont #1}%
+  \ifdim\wd\roletitlebox>4.85cm
+    \resizebox{4.85cm}{!}{\usebox{\roletitlebox}}%
+  \else
+    \usebox{\roletitlebox}%
+  \fi
 }
 
 \newcommand{\contactfont}{%
@@ -202,8 +215,8 @@
 			\fontsize{24pt}{50pt}\color{white}%
 			{\thinfont #1}{\bodyfont  #2}
 		};
-		\node [anchor=north east, text width=4.5cm, align=right] at (-0.7cm,-2.45cm) {%
-			\rolefont #3%
+		\node [anchor=east] at (-0.7cm,-2.72cm) {%
+			\fitroletitle{#3}%
 		};
 	\end{tikzpicture}
 }
@@ -284,9 +297,9 @@
 			%style = drop shadow,
 			%scale font
 	]
-	% Preserve the established slice geometry while ordering the emphasis from
-	% Tooling through Automation. Numbers are intentionally hidden.
-	{15/\scriptsize Architecture, 30/\scriptsize Tooling, 20/\scriptsize Agentic Systems, 25/\scriptsize Platform, 10/\scriptsize Automation}
+	% Preserve the established slice geometry while keeping the shortest label
+	% in the alignment-sensitive left position. Numbers are intentionally hidden.
+	{15/\scriptsize Architecture, 30/\scriptsize Agentic Systems, 20/\scriptsize Quality, 25/\scriptsize Platform Tooling, 10/\scriptsize Automation}
 	\end{tikzpicture}
 	\vspace{0.1cm}
 	\vspace{-2\parskip}
