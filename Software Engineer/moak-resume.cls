@@ -143,9 +143,20 @@
 }
 
 % Establish the first-page content pane below the profile treatment without
-% affecting the absolutely positioned sidebar. The explicit half-inch term
-% keeps this design adjustment legible instead of hiding it in a magic ratio.
-\newcommand{\maincontentstart}{\par\vspace*{\dimexpr1.75\baselineskip+0.5in\relax}}
+% affecting the absolutely positioned sidebar.
+\newcommand{\maincontentstart}{\par\vspace*{0.5in}}
+
+% Separate adjacent roles by roughly one visual line once the list's natural
+% trailing space is included. Kept explicit so project entries are unaffected.
+\newcommand{\experiencegap}{\par\vspace{0.65\baselineskip}}
+
+% Give employment accomplishments a modest readability lift without changing
+% the denser project and education typography on the continuation page.
+\newenvironment{experienceitems}{%
+  \begin{itemize}[before={\fontsize{9.5pt}{11.5pt}\selectfont\bodyfont}]%
+}{%
+  \end{itemize}%
+}
 
 \pagestyle{empty}
 
@@ -161,13 +172,20 @@
   \end{tabular*}
 }
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
-\newcommand{\entry}[4]{%
+\newcommand{\resumeentryrow}[6]{%
   {\textbf{\tiny\addfontfeature{Color=textcolor} #1}}&\parbox[t]{\dimexpr\textwidth-2.4cm\relax}{%
- 	\textbf{#2}%
+    {#5\textbf{#2}}%
     \hfill%
-    {\textbf{\scriptsize\addfontfeature{Color=mainpurple} #3}}%
+    {#6\textbf{\addfontfeature{Color=mainpurple} #3}}%
     \ifthenelse{\equal{#4}{}}{}{\\{\footnotesize\itshape\addfontfeature{Color=darkgray} #4}}%
   }\\}
+\newcommand{\entry}[4]{%
+  \resumeentryrow{#1}{#2}{#3}{#4}{\normalsize}{\scriptsize}}
+
+% Experience headings carry enough visual weight to anchor the more open role
+% spacing while retaining the title-to-company proportions of the base design.
+\newcommand{\experienceentry}[4]{%
+  \resumeentryrow{#1}{#2}{#3}{#4}{\fontsize{11pt}{13pt}\selectfont}{\fontsize{8pt}{9.5pt}\selectfont}}
 
 
 %%%%%%%%%%%%%%
