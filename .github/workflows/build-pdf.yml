@@ -38,30 +38,52 @@ jobs:
         path: "Software Engineer/Jordan Moak Resume.pdf"
         retention-days: 30
         
-    # NO AUTO-COMMIT: PDF is available as artifact only
-    # This keeps git history clean for personal resume repos
+    # NO AUTO-COMMIT: PDF ships as an artifact, and as a release asset
+    # from the release job below. This keeps git history clean.
         
+  # Publishes on every push to the default branch, and on v* tags, so this
+  # URL always serves the newest build:
+  # https://github.com/JMoak/resume/releases/latest/download/Jordan-Moak-Resume.pdf
+  # Pull requests only build.
   release:
     needs: build
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: >-
+      github.event_name != 'pull_request' &&
+      (github.ref == 'refs/heads/master' ||
+      github.ref == 'refs/heads/main' ||
+      startsWith(github.ref, 'refs/tags/v'))
     permissions:
       contents: write  # Only for release creation, not commits
-    
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
     - name: Download PDF artifact
       uses: actions/download-artifact@v4
       with:
         name: resume-pdf
         path: ./
-        
+
+    - name: Name the release and the asset
+      id: meta
+      run: |
+        # GitHub turns spaces in asset names into dots, so publish a
+        # hyphenated copy to keep the download URL stable and readable.
+        cp "Jordan Moak Resume.pdf" "Jordan-Moak-Resume.pdf"
+        if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+          echo "tag=$GITHUB_REF_NAME" >> "$GITHUB_OUTPUT"
+          echo "name=Resume $GITHUB_REF_NAME" >> "$GITHUB_OUTPUT"
+        else
+          day=$(date -u +%Y-%m-%d)
+          echo "tag=resume-$day-${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+          echo "name=Resume $day" >> "$GITHUB_OUTPUT"
+        fi
+
     - name: Create Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       with:
-        files: Jordan Moak Resume.pdf
+        tag_name: ${{ steps.meta.outputs.tag }}
+        name: ${{ steps.meta.outputs.name }}
+        target_commitish: ${{ github.sha }}
+        files: Jordan-Moak-Resume.pdf
+        make_latest: true
         generate_release_notes: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
