@@ -12,7 +12,7 @@
     pdftitle={Jordan Moak - Software Engineer, Platform and AI},
     pdfauthor={Jordan Moak},
     pdfsubject={Resume of Jordan Moak, Software Engineer specializing in Platform Engineering and AI},
-    pdfkeywords={Software Engineer, Systems Architect, Platform Engineering, AI Engineering, TypeScript, Python, Java, C\#, Go, Groovy, Bash, Lua, SAS, Node.js, Kubernetes, AWS, Event-Driven Architecture, CRM, LLM Integration, MCP, Model Context Protocol, AI Agent Architecture, Agentic Systems, Coding Agents, AI Agents, Agentic Memory, Long-Horizon Task Execution, Federated Memory, Semantic Search, Hybrid Search, OpenClaw, LangGraph, Local LLM Deployment, Context Engineering, Computer Use, Automation, Test Automation, TDD, CI/CD, Microservices, Backstage, SonarQube, Akamai, Selenium, Appium, Developer Tooling},
+    pdfkeywords={Software Engineer, Platform Engineering, Developer Tooling, AI Engineering, Release Engineering, Deployment Automation, CI/CD, Jenkins, Backstage, SonarQube, Akamai, Entra ID, Kubernetes, AWS, MCP, Model Context Protocol, AI Enablement, Agentic Development, Coding Agents, Context Engineering, Cursor, opencode, LangGraph, LangChain, Local LLMs, Agent Memory, OpenClaw, TypeScript, Python, Go, Java, SQL, Bash, Groovy, PowerShell, SAS, Node.js, Bun, Event-Driven Architecture, Microservices, Test Automation, Appium, Selenium},
     colorlinks=false,           % no link border color
     allbordercolors=white,      % white border color for all
     pdfcreator={XeLaTeX}
@@ -32,14 +32,14 @@
 % In the aside, each new line forces a line break
 \begin{aside}
   \profilesection{About Me}
-  \small\bodyfont Systems architect with 12+ years of experience designing and shipping software across healthcare, marketplace, and platform engineering domains. I translate complex system designs into production infrastructure, from Java microservices to AI agent orchestration.
+  \small\bodyfont Since 2013 I have built the things that let other people ship: deployment pipelines, test frameworks, release tooling. Now I build them for coding agents: MCP servers, and keywork, a workspace for running agents. I believe a change should leave the next one easier to make.
   \profilesection{Focus}
 	\focusChart{}
   ~
   \profilesection{Technical Skills}
-  \skillcategory{01}{Languages}{TypeScript \skillsep Python \skillsep Java \skillsep C\#\\Go \skillsep Groovy \skillsep Bash \skillsep Lua \skillsep SAS}
-  \skillcategory{02}{Platform}{CI/CD \skillsep Microservices \skillsep Node.js\\Automation \skillsep Backstage \skillsep K8s \skillsep AWS}
-  \skillcategory{03}{AI Engineering}{MCP \skillsep LangGraph \skillsep AI Agents\\Local LLMs \skillsep Context Design\\Long-Horizon Task Execution \skillsep Agentic Memory}
+  \skillcategory{01}{Languages}{TypeScript \skillsep Python \skillsep Go \skillsep Java\\SQL \skillsep Bash \skillsep Groovy\\PowerShell \skillsep SAS}
+  \skillcategory{02}{Platform}{Release Automation \skillsep CI/CD\\Jenkins \skillsep Backstage \skillsep SonarQube\\Akamai \skillsep AWS \skillsep K8s}
+  \skillcategory{03}{AI Engineering}{MCP Servers \skillsep Coding Agents\\Context Engineering \skillsep LangGraph\\Local LLMs \skillsep Agent Memory}
 \end{aside}
 \maincontentstart
 \section{Exp|erience}
@@ -47,20 +47,25 @@
   % -- Care.com
   \begin{entrylist}
     \experienceentry
-    {[Oct 2021 - Jun 2026]}
+    {[Oct 2021 - Present]}
     {Senior Software Engineer}
     {Care.com}
     {}
   \end{entrylist}
   \begin{experienceitems}
-    \item Architected end-to-end automation for a critical monolith deployment pipeline, removing the need for dedicated engineering oversight in the release path.
-    \item Increased release cadence from biweekly batches of 140+ commits to safe, twice-weekly deployments of 10-70 commits while freeing more than one engineer's weekly capacity.
-    \item Led integration of Backstage Service Catalog (Node.js) and SonarQube with associated CI/CD pipelines, establishing platform engineering standards adopted organization-wide.
-    \item Designed custom event-driven solutions supporting high-volume CRM campaigns and reliable customer lifecycle messaging.
-    \item Served as technical anchor for legacy platform knowledge, rehabilitating critical features and CI/CD processes for a 10-person senior engineering team.
-    \item Led implementation of MCP and agent-facing tooling, pairing reusable architectural patterns with hands-on enablement to accelerate adoption across engineering teams.
-    \item Delivered recurring department-wide technical presentations on platform changes, new engineering methodologies, and rollout plans, aligning teams on adoption and execution.
-    \item Delivered \$48K+ in annual cost savings by completing a targeted Apache-to-Akamai replatform in 2 weeks.
+    \item Automated the critical monolith's deployment pipeline end to end and rolled it out across the engineering organization; no engineer is assigned to the release path anymore.
+    \item Production P0 and P1 incidents fell 90\% from 2023 to 2024; most of those that went away were human error in the release, and engineering got the time back for development.
+    \item Took releases from one 140+ commit batch every two weeks to twice a week (10--70 commits) in late 2023, then to a deploy every weekday from 2025.
+    \item Lead the company's AI enablement (since early 2025): introduced Cursor and built the AI context for the critical monoliths, aligning those codebases to agentic development.
+    \item Lead MCP development: built the first internal MCP servers, a domain-expert agent prototype, and a prototype MCP connector for the flagship AI assistants.
+    \item Brought engineering onto MCP with reusable patterns and hands-on enablement.
+    \item Led the proof of concept of a custom containerized coding agent on opencode that meets the company's strict security standards; gave top leadership a model cost analysis.
+    \item Unblocked the Backstage service catalog: Active Directory and Entra ID sign-in, SonarQube in CI/CD pipelines, and platform-agnostic patterns adopted as organization-wide standards.
+    \item Completed a targeted replatform from Apache to Akamai in two weeks, saving \$48K+ a year.
+    \item Anchored the legacy platform for a 10-person senior team, restoring critical features and CI/CD.
+    \item Designed event-driven solutions for high-volume CRM campaigns and lifecycle messaging.
+    \item Gave recurring department-wide talks on platform changes, engineering methods, and rollouts.
+    \item Languages: Go for backend services, Groovy for Jenkins pipelines, TypeScript, Python, Java, Bash, and SQL.
   \end{experienceitems}
   \experiencegap
 
@@ -73,11 +78,11 @@
     {}
 \end{entrylist}
 \begin{experienceitems}
-  \item Designed and implemented code-generation templates and developer tooling adopted by delivery teams across the organization.
-  \item Architected RESTful microservice testing framework using Node.js, Mountebank, and Cucumber, enabling CI/CD support via CircleCI.
-  \item Led development of Appium-based mobile testing framework supporting four mobile applications with Python, XCUITest, and UIAutomator2.
-  \item Built and maintained Selenium-based frontend testing framework for microfrontend architecture.
-  \item Evangelized automation best practices through documentation, bootcamps, and organizational support.
+  \item Built code-generation templates and developer tooling adopted by delivery teams across Angi.
+  \item Designed a testing framework for REST microservices on Node.js, Mountebank, and Cucumber, with CI/CD on CircleCI.
+  \item Led development of an Appium mobile testing framework in Python, with XCUITest and UIAutomator2, for four mobile apps.
+  \item Built and maintained a Selenium frontend testing framework for a microfrontend architecture.
+  \item Taught automation practices through bootcamps, documentation, and organizational support.
 \end{experienceitems}
 \experiencegap
 
@@ -90,10 +95,10 @@
     {}
 \end{entrylist}
 \begin{experienceitems}
-  \item Diagnosed and resolved a floating-point precision defect, restoring result validity and returning a production line with millions of dollars in daily output to operation.
-  \item Automated mobile-web-medical-device ecosystem using Java, Appium, Selenium, and Linux bash for FDA-compliant medical device validation.
-  \item Created reusable automation tools using Java, Selenium, PowerShell, and SAS within regulated standard operating procedures.
-  \item Led team automation of test dataset and configuration file generation for medical software verification.
+  \item Diagnosed and fixed a floating-point precision defect, restoring valid results and returning a production line with millions of dollars in daily output to operation.
+  \item Automated FDA-compliant validation of a mobile, web, and medical-device system in Java, Appium, Selenium, and Bash on Linux.
+  \item Built reusable automation tools in Java, Selenium, PowerShell, and SAS within regulated SOPs.
+  \item Led team automation of test datasets and configuration files for medical software verification.
 \end{experienceitems}
 \experiencegap
 
@@ -106,8 +111,8 @@
     {}
 \end{entrylist}
 \begin{experienceitems}
-  \item Developed statistical procedures for quality analysis and data cleaning in market research web applications.
-  \item Migrated SAS programs to MySQL and PHP, improving processing efficiency and code maintainability.
+  \item Wrote statistical procedures for quality analysis and data cleaning in market research web apps.
+  \item Migrated SAS programs to MySQL and PHP.
 \end{experienceitems}
 \experiencegap
 
@@ -130,14 +135,39 @@
 \begin{entrylist}
   \entry
     {[GitHub: JMoak]}
-    {Published npm \& PyPI Packages}
+    {\href{https://github.com/JMoak/keywork}{keywork} and \href{https://github.com/JMoak/keywork-app}{keywork-app}}
+    {Terminal Workspace for Coding Agents}
+    {TypeScript on Bun; early releases}
+\end{entrylist}
+\begin{itemize}
+  \item A keyboard-first workspace for coding agents: tiled panes with an agent in each, conversations that fork the way a repository branches, and a trust gate where every edit and command waits for approval.
+  \item A headless engine on one typed event bus; the terminal UI, headless CI runs, and keywork-app's desktop window are all clients of it. A turn that edits files is snapshotted in git, so /undo walks it back.
+  \item Released as single-file binaries for Linux, macOS, and Windows and as keywork-cli on npm; keywork-app ships installers for all three.
+\end{itemize}
+
+\begin{entrylist}
+  \entry
+    {[npm: @jmoak]}
+    {\href{https://github.com/JMoak/ratchet}{ratchet}}
+    {Decision Engine for Model Judgments}
+    {}
+\end{entrylist}
+\begin{itemize}
+  \item A TypeScript library for acting on cheap model judgments: the model proposes, code decides. Answers are pooled with a correction for correlated errors, and floors written in code can only raise caution.
+  \item Every call lands in a ledger; a gate starts in shadow and acts only once a planned exact-bound test promotes it. Published on npm; the API is experimental until 1.0.
+\end{itemize}
+
+\begin{entrylist}
+  \entry
+    {[npm \& PyPI]}
+    {MCP and Testing Packages}
     {Developer Tooling}
     {}
 \end{entrylist}
 \begin{itemize}
-  \item \textbf{chrono-mcp}: Production Model Context Protocol server for date/time operations. Dynamically-shaped, token-optimized responses. Published to npm with 400+ IANA timezone support.
-  \item \textbf{vibrissa}: JSON-driven MCP integration test runner. Declarative test cases over stdio, CI/CD ready with JUnit output.
-  \item \textbf{tdd-dsl}: Test-driven development DSL published to npm and PyPI.
+  \item \textbf{chrono-mcp} (@jmoak/chrono-mcp): an MCP server for current time, timezone conversion, and batch date arithmetic.
+  \item \textbf{vibrissa} (@jmoak/vibrissa): records real MCP server responses as JSON cases and replays them in CI; chrono-mcp's CI uses it.
+  \item \textbf{tdd-dsl}: a test-driven development DSL, published to npm and PyPI.
 \end{itemize}
 
 \begin{entrylist}
@@ -148,34 +178,32 @@
     {}
 \end{entrylist}
 \begin{itemize}
-  \item Built a local-first OpenClaw personal assistant for maintaining code projects, testing agent methods, and preserving useful long-horizon context.
-  \item Architected a custom federated memory system with domain-partitioned recall, semantic and hybrid search, and layered historical retrieval that keeps context relevant without bloat.
+  \item An OpenClaw personal assistant in daily use for maintaining code projects and trying agent ideas.
+  \item Federated memory: the people in a conversation decide which vaults retrieval may search and where its transcript is stored; embeddings run locally through Ollama, indexed in SQLite with sqlite-vec.
 \end{itemize}
 
 \begin{entrylist}
   \entry
     {[GitHub: JMoak]}
-    {\href{https://github.com/JMoak/keywork}{keywork}}
-    {Keyboard-First Coding Agent}
-    {}
+    {\href{https://github.com/JMoak/nrly}{nrly}}
+    {Weight-Editing Workbench}
+    {Experimental; source only, no release}
 \end{entrylist}
 \begin{itemize}
-  \item Designing and building a TypeScript coding-agent harness with native multi-pane tiling, a minimal extensible core, and first-class Windows support.
-  \item Architected a headless, server-shaped engine around typed events, replayable tree sessions, deferred MCP schemas, and replaceable trust controls.
+  \item A local workbench for editing a model's weights and measuring what changed: a Python kernel on PyTorch, a CLI, a 26-tool MCP server, and a typed TypeScript client.
+  \item First real-model study (Qwen3-0.6B): 16,384 changed values recorded, original restored exactly, run replayed; verdict inconclusive.
 \end{itemize}
 
 \begin{entrylist}
   \entry
-    {[GitHub: JMoak]}
-    {AI Agent Architecture}
-    {LangGraph Multi-Agent System}
+    {[Private repo]}
+    {plaia}
+    {LangGraph Agent Playground}
     {(Computer Use, E2E Game Player)}
 \end{entrylist}
 \begin{itemize}
-  \item Built multi-workflow AI agent platform supporting plan-execute-validate, screenshot analysis, and game automation workflows.
-  \item Built composable agentic harnesses for reusable orchestration across specialized workflows.
-  \item Architected unified LLM abstraction layer supporting LangChain, direct HTTP, and local LLM backends (LM Studio) with graceful stub fallbacks.
-  \item Implemented protocol-based agent composition, source tracking for observability, and feature-flag safety controls.
+  \item A Python playground on LangChain and LangGraph for turning visual analysis into agent actions: plan-execute-validate, screenshot-analysis, and game-automation workflows.
+  \item One LLM layer over LangChain, direct HTTP, and local backends (LM Studio) with stub fallbacks; protocol-based agent composition, source tracking for observability, and feature-flag safety controls.
 \end{itemize}
 
 \section{Edu|cation}
