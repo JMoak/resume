@@ -53,19 +53,17 @@
     {}
   \end{entrylist}
   \begin{experienceitems}
-    \item Automated the critical monolith's deployment pipeline end to end and rolled it out across the engineering organization; no engineer is assigned to the release path anymore.
-    \item Production P0 and P1 incidents fell 90\% from 2023 to 2024; most of those that went away were human error in the release, and engineering got the time back for development.
-    \item Took releases from one 140+ commit batch every two weeks to twice a week (10--70 commits) in late 2023, then to a deploy every weekday from 2025.
-    \item Lead the company's AI enablement (since early 2025): introduced Cursor and built the AI context for the critical monoliths, aligning those codebases to agentic development.
-    \item Lead MCP development: built the first internal MCP servers, a domain-expert agent prototype, and a prototype MCP connector for the flagship AI assistants.
-    \item Brought engineering onto MCP with reusable patterns and hands-on enablement.
-    \item Led the proof of concept of a custom containerized coding agent on opencode that meets the company's strict security standards; gave top leadership a model cost analysis.
-    \item Unblocked the Backstage service catalog: Active Directory and Entra ID sign-in, SonarQube in CI/CD pipelines, and platform-agnostic patterns adopted as organization-wide standards.
-    \item Completed a targeted replatform from Apache to Akamai in two weeks, saving \$48K+ a year.
-    \item Anchored the legacy platform for a 10-person senior team, restoring critical features and CI/CD.
-    \item Designed event-driven solutions for high-volume CRM campaigns and lifecycle messaging.
+    \item Automated the critical monolith's deployment pipeline in Groovy/Jenkins across engineering: biweekly 140+ commit batches became twice-weekly releases of 10--70 commits in late 2023, then weekday deployments from 2025, with no engineer assigned to releases.
+    \item Production P0 and P1 incidents fell 90\% from 2023 to 2024, largely through fewer human errors in releases, returning engineering time to development.
+    \item Developed event-driven systems processing billions of consumer-data records annually, supporting CRM campaigns and lifecycle messaging.
+    \item Lead the company's AI enablement since early 2025: introduced Cursor and built context to help coding agents navigate and work in the critical monoliths.
+    \item Lead MCP development: built the first internal MCP servers and enabled adoption across engineering through reusable patterns and hands-on guidance.
+    \item Built a domain-expert agent prototype and a prototype MCP connector for flagship AI assistants.
+    \item Led a proof of concept for a containerized coding agent on opencode meeting company security standards; presented model cost comparisons to senior leadership.
+    \item Unblocked the Backstage service catalog with Active Directory and Entra ID sign-in and SonarQube in CI/CD; established platform-agnostic patterns adopted as organization-wide standards.
+    \item Completed a targeted replatform from Apache to Akamai in two weeks, saving \$48K+ annually.
+    \item Restored critical features and CI/CD for the legacy platform supporting a 10-person senior engineering team.
     \item Gave recurring department-wide talks on platform changes, engineering methods, and rollouts.
-    \item Languages: Go for backend services, Groovy for Jenkins pipelines, TypeScript, Python, Java, Bash, and SQL.
   \end{experienceitems}
   \experiencegap
 
@@ -136,12 +134,12 @@
   \entry
     {[GitHub: JMoak]}
     {\href{https://github.com/JMoak/keywork}{keywork} and \href{https://github.com/JMoak/keywork-app}{keywork-app}}
-    {Terminal Workspace for Coding Agents}
-    {TypeScript on Bun; early releases}
+    {Terminal and Desktop Agent Workspaces}
+    {TypeScript, Bun, Electron, Solid; public releases}
 \end{entrylist}
 \begin{itemize}
-  \item A keyboard-first workspace for coding agents: tiled panes with an agent in each, conversations that fork the way a repository branches, and a trust gate where every edit and command waits for approval.
-  \item A headless engine on one typed event bus; the terminal UI, headless CI runs, and keywork-app's desktop window are all clients of it. A turn that edits files is snapshotted in git, so /undo walks it back.
+  \item Built keyboard-first terminal and desktop workspaces for coding agents, with tiled sessions, branching conversations, and a permission gate that requires approval for edits and commands by default.
+  \item A shared headless engine serves the terminal, CI runs, and desktop through one typed event stream. File-editing turns are snapshotted in git for undo; desktop approval cards show diffs, commands, and tool arguments before execution.
   \item Released as single-file binaries for Linux, macOS, and Windows and as keywork-cli on npm; keywork-app ships installers for all three.
 \end{itemize}
 
@@ -153,8 +151,8 @@
     {}
 \end{entrylist}
 \begin{itemize}
-  \item A TypeScript library for acting on cheap model judgments: the model proposes, code decides. Answers are pooled with a correction for correlated errors, and floors written in code can only raise caution.
-  \item Every call lands in a ledger; a gate starts in shadow and acts only once a planned exact-bound test promotes it. Published on npm; the API is experimental until 1.0.
+  \item Built a TypeScript decision library that pools model judgments with a correction for correlated errors; deterministic rules can require review or refusal regardless of model confidence.
+  \item Decisions are logged in shadow mode before a gate may act; promotion requires passing a predefined statistical test on labeled outcomes. Published on npm with an experimental API; operational accuracy not yet established.
 \end{itemize}
 
 \begin{entrylist}
@@ -190,20 +188,20 @@
     {Experimental; source only, no release}
 \end{entrylist}
 \begin{itemize}
-  \item A local workbench for editing a model's weights and measuring what changed: a Python kernel on PyTorch, a CLI, a 26-tool MCP server, and a typed TypeScript client.
-  \item First real-model study (Qwen3-0.6B): 16,384 changed values recorded, original restored exactly, run replayed; verdict inconclusive.
+  \item Built a local workbench for reversible, reproducible model-weight experiments: a Python/PyTorch kernel, CLI, 26-tool MCP server, and typed TypeScript client.
+  \item Recorded and replayed a Qwen3-0.6B weight-editing study with exact restoration of the original model; results were inconclusive against a simple prompt-change control.
 \end{itemize}
 
 \begin{entrylist}
   \entry
     {[Private repo]}
-    {plaia}
-    {LangGraph Agent Playground}
-    {(Computer Use, E2E Game Player)}
+    {\href{https://moak.dev/stead}{stead}}
+    {Personal Agent Desktop}
+    {In development; private repository, no release}
 \end{entrylist}
 \begin{itemize}
-  \item A Python playground on LangChain and LangGraph for turning visual analysis into agent actions: plan-execute-validate, screenshot-analysis, and game-automation workflows.
-  \item One LLM layer over LangChain, direct HTTP, and local backends (LM Studio) with stub fallbacks; protocol-based agent composition, source tracking for observability, and feature-flag safety controls.
+  \item Built a separate Electron app on keywork-app's SDK and keywork's runtime, presenting personal agents as creatures in a homestead.
+  \item Designed a visual language for agent activity, pending approvals, and returned work, with scoped permissions that keep authorization with the user.
 \end{itemize}
 
 \section{Edu|cation}
